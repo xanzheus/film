@@ -1,0 +1,25 @@
+body {
+  font-family: $font-family-main;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.133;
+  background-color: $color-light-main
+}
+  
+  a, button {
+  cursor: pointer;
+   color: inherit;
+  font-family: inherit;
+}
+
+ a {
+  text-decoration: none;
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}

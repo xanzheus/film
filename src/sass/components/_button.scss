@@ -1,0 +1,28 @@
+.button {
+    width: 40vw;
+    height: 14vw;
+    background-color: transparent;
+    color: $color-light-main;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    text-transform: uppercase;
+    line-height: 1.333;
+    border: 1px solid $color-light-main;
+    border-radius: 5px;
+
+    &--current {
+        color: $color-accent;
+        border: 1px solid $color-accent;
+    }
+
+    @media screen and (min-width: $mobile) {
+    width: 130px;
+    height: 44px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 136px;
+  }
+}
