@@ -11,8 +11,8 @@ export { showLoader, hideLoader };
 
 /* 
 
--------/ Markup /-------
-<div class="whirly-loader"></div>
+-------/ awaiting anchor class /-------
+class="whirly-loader"
 -------/ Import /-------
 import { showLoader, hideLoader } from './js/_loader';
 -------/ start  /-------
