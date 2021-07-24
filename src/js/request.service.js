@@ -1,43 +1,75 @@
 import axios from 'axios';
 
-const API__KEY = '16092738eabd8acc3b7b5db91d1d6d26';
-axios.defaults.baseURL = 'https://api.themoviedb.org';
+axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
+const API__KEY = 'api_key=16092738eabd8acc3b7b5db91d1d6d26';
 
-export const getTrendingMovies = async () => {
-  try {
-    const response = await axios.get(`/3/trending/movie/day?api_key=${API__KEY}`);
-    return response?.data;
-  } catch (error) {
-    console.log(error.message);
+export default class RequestService {
+  constructor() {
+    this.IMG__URL = 'https://image.tmdb.org/t/p/w500';
+    this.trendingMovies = 'trending/movie/day';
+    this.searchMovies = 'search/movie';
+    this.movieById = 'movie';
+    this.geners = 'genre/movie/list';
+    this.searchQuery = '';
   }
-};
 
-export const getSearchMovies = async searchquery => {
-  try {
-    const response = await axios.get(
-      `/3/search/movie?api_key=${API__KEY}&query=${searchquery}&language=en-US`,
-    );
-    return response?.data;
-  } catch (error) {
-    console.log(error.message);
+  async getTrendingMovies(callback) {
+    const url = `${this.trendingMovies}?${API__KEY}`;
+    try {
+      const response = await axios.get(url);
+      return response?.data;
+    } catch (error) {
+      console.log(error.message);
+      callback();
+    }
   }
-};
 
-export const getDescriptionMovie = async movieId => {
-  try {
-    const response = await axios.get(`/3/movie/${movieId}?api_key=${API__KEY}`);
-    return response?.data;
-  } catch (error) {
-    console.log(error.message);
+  async getSearchMovies(callback) {
+    const searchParams = new URLSearchParams({
+      query: this.searchQuery,
+      language: 'en-US',
+    });
+    const url = `${this.searchMovies}?${API__KEY}&${searchParams}`;
+    try {
+      const response = await axios.get(url);
+      return response?.data;
+    } catch (error) {
+      console.log(error.message);
+      callback();
+    }
   }
-};
 
-export const getGenresMovies = async () => {
-  try {
-    const response = await axios.get(`/3/genre/movie/list?api_key=${API__KEY}&language=en-US`);
-    const genresArray = await response.data.genres;
-    return genresArray;
-  } catch (error) {
-    console.log(error.message);
+  async getDescriptionMovie(movieId, callback) {
+    const url = `${this.movieById}/${movieId}?${API__KEY}`;
+    try {
+      const response = await axios.get(url);
+      return response?.data;
+    } catch (error) {
+      console.log(error.message);
+      callback();
+    }
   }
-};
+
+  async getGenresMovies() {
+    const url = `${this.geners}?${API__KEY}`;
+    try {
+      const response = await axios.get(url);
+      const genresArray = await response.data.genres;
+      return genresArray;
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  getPrefixUrlImg(url) {
+    return this.IMG__URL + url;
+  }
+
+  get query() {
+    this.searchQuery;
+  }
+
+  set query(newQuery) {
+    this.searchQuery = newQuery;
+  }
+}
