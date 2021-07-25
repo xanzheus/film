@@ -18,7 +18,7 @@ export default class RequestService {
     const url = `${this.trendingMovies}?${API__KEY}`;
     try {
       const response = await axios.get(url);
-      return response?.data;
+      return response?.data?.results;
     } catch (error) {
       console.log(error.message);
       callback();
