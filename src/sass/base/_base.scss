@@ -2,17 +2,18 @@ body {
   font-family: $font-family-main;
   font-weight: 500;
   font-size: 12px;
-  line-height: 1.133;
-  background-color: $color-light-main
+  line-height: 1.333;
+  background-color: $color-light-main;
 }
-  
-  a, button {
+
+a,
+button {
   cursor: pointer;
-   color: inherit;
+  color: inherit;
   font-family: inherit;
 }
 
- a {
+a {
   text-decoration: none;
 }
 

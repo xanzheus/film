@@ -1,0 +1,25 @@
+{{#each this}}
+<li class="result__item">
+    <div class="card">
+        <div class="card__image-box">
+            <img class="card__image" src="{{poster_path}}" alt="{{original_title}}" />
+        </div>
+        <div class="card__info-box">
+            <h2 class="card__name">{{original_title}}</h2>
+            <div class="card__details">
+                <ul class="genres__list list">
+                    {{#each genre_ids}}
+                    <li class="genres__item">
+                        <p class="genres__text">{{this.name}}</p>
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+            <p class="card__text">{{release_date}}</p>
+            <div class="card__vote-box">
+                <p class="card__vote"></p>
+            </div>
+        </div>
+    </div>
+</li>
+{{/each}}
