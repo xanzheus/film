@@ -1,0 +1,13 @@
+.pagination {
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  @media screen and (min-width: $tablet) {
+    padding-top: 50px;
+    padding-bottom: 60px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    padding-top: 46px;
+  }
+}

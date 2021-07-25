@@ -1,0 +1,17 @@
+.result {
+  padding-top: 20px;
+
+  @media screen and (min-width: $tablet) {
+    padding-top: 60px;
+  }
+}
+
+.result__title {
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.167;
+  text-align: center;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: $color-dark-main;
+}
