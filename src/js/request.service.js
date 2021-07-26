@@ -52,7 +52,7 @@ export default class RequestService {
   }
 
   async getGenresMovies() {
-    const url = `${this.geners}?${API__KEY}`;
+    const url = `genre/movie/list?${API__KEY}`;/////было так const url = ` ${this.geners}?${API__KEY}`;
     try {
       const response = await axios.get(url);
       const genresArray = await response.data.genres;
@@ -63,7 +63,7 @@ export default class RequestService {
   }
 
   getPrefixUrlImg(url) {
-    return this.IMG__URL + url;
+    return `${this.IMG__URL}${url}`;
   }
 
   get query() {
