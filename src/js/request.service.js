@@ -12,10 +12,11 @@ export default class RequestService {
     this.movieById = 'movie';
     this.geners = 'genre/movie/list';
     this.searchQuery = '';
+    this.page = 1;
   }
-// This function await callback to output an error in hendler
+  // This function await callback to output an error in hendler
   async getTrendingMovies(callback) {
-    const url = `${this.trendingMovies}?${API__KEY}`;
+    const url = `${this.trendingMovies}?${API__KEY}&page=${this.page}`;
     try {
       const response = await axios.get(url);
       return response?.data;
@@ -24,7 +25,7 @@ export default class RequestService {
       callback();
     }
   }
-// This function await callback to output an error in hendler
+  // This function await callback to output an error in hendler
   async getSearchMovies(callback) {
     const searchParams = new URLSearchParams({
       query: this.searchQuery,
@@ -39,7 +40,7 @@ export default class RequestService {
       callback();
     }
   }
-// This function await callback to output an error in hendler
+  // This function await callback to output an error in hendler
   async getDescriptionMovie(movieId, callback) {
     const url = `${this.movieById}/${movieId}?${API__KEY}`;
     try {
@@ -64,6 +65,10 @@ export default class RequestService {
 
   getPrefixUrlImg(url) {
     return this.IMG__URL + url;
+  }
+
+  page(currentPage) {
+    this.page = currentPage;
   }
 
   get query() {
