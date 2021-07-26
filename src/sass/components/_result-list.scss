@@ -1,0 +1,28 @@
+.result__list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-left: -20px;
+  margin-top: -20px;
+
+  @media screen and (min-width: $tablet) {
+    margin-left: -30px;
+    margin-top: -30px;
+  }
+}
+
+.result__item {
+  flex-basis: calc(100% / 1 - 20px);
+  margin-left: 20px;
+  margin-top: 20px;
+
+  @media screen and (min-width: $tablet) {
+    flex-basis: calc(100% / 2 - 30px);
+    margin-left: 30px;
+    margin-top: 30px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    flex-basis: calc(100% / 3 - 30px);
+  }
+}

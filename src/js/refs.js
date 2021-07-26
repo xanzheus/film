@@ -1,4 +1,6 @@
 export default {
     add_btn: document.querySelector('.add_btn'),
-    modal: document.querySelector('.modal__close') 
-}
+    modal: document.querySelector('.modal__close'),
+    resultAnchor: document.querySelector('[data-anchor="result"]'),
+};
+
