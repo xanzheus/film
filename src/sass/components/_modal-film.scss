@@ -1,0 +1,190 @@
+.modal {
+  position: relative;
+  display: inline-block;
+  width: 88vw;
+  height: 95vh;
+  max-width: 450px;
+  background-color: #fff;
+  overflow: scroll;
+  padding: 48px 20px 41px;
+  @media screen and (min-width: $tablet) {
+    width: 618px;
+    max-width: 900px;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 882px;
+    max-width: 900px;
+  }
+
+  &__close {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    
+
+    width: 14px;
+    height: 14px;
+  }
+  &__icon--close{
+    width: 14px;
+    height: 14px;
+    fill: $color-dark-main;
+  }
+
+  &__poster{
+    width: 100%;
+  }
+
+  &__box {
+    display: block;
+    margin: -15px;
+
+@media screen and(min-width:$tablet) {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    &--item {
+      margin: 15px;
+      @media screen and(min-width:$tablet) {
+        width: calc((100% - 3 * 30px) / 2);
+      }
+    }
+
+    
+  }
+}
+
+// Description
+.description{
+&__title {
+  font-size: 20px;
+  line-height: 1.15;
+  margin-top: 30px;
+  color: $color-dark-main;
+
+  @media screen and(min-width:$tablet) {
+    margin-top: 0;
+  }
+}
+&__box {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+
+  @media screen and(min-width:$desktop) {
+    justify-content: flex-start;
+  }
+}
+
+&__item {
+  margin-right: 83px;
+  line-height: 1.33;
+  color: $color-text-secondary;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+&__content {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+&__vote {
+  display: inline-block;
+  width: 36px;
+  height: 16px;
+  background-color: $color-accent;
+
+  line-height: 1.16;
+
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 5px;
+  color: $color-light-main;
+}
+
+&__votes {
+  width: 36px;
+  height: 16px;
+  line-height: 1.16;
+  border-radius: 5px;
+  background-color: $color-accent-secondary;
+
+  text-transform: uppercase;
+
+  color: $color-dark-main;
+}
+
+&__divider {
+  color: $color-accent-secondary;
+}
+}
+
+//   About Content
+
+.about__title {
+  line-height: 1.33;
+  text-transform: uppercase;
+
+  color: $color-dark-main;
+  margin-top: 20px;
+}
+.about__overview {
+  line-height: 1.67;
+  color: $color-dark-main;
+  margin-top: 10px;
+}
+
+// Button
+
+.nav__btn {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 21px;
+  @media screen and (min-width: $desktop) {
+    justify-content: flex-start;
+  }
+
+  &--item {
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+
+  &--queue,
+  &--watched {
+    width: 100%;
+    max-width: 113px;
+    height: 44px;
+    border-radius: 5px;
+    line-height: 1.33;
+    text-transform: uppercase;
+
+    @media screen and (min-width: $mobile) {
+      width: 130px;
+      height: 44px;
+    }
+
+    @media screen and (min-width: $tablet) {
+      width: 136px;
+    }
+  }
+
+  &--watched {
+    color: $color-light-main;
+    
+    background-color: $color-accent;
+    border: transparent;
+    padding: 9px 8px 12px;
+  }
+
+  &--queue {
+    
+    border: 1px solid $color-dark-main;
+    background-color: transparent;
+    color: $color-dark-main;
+  }
+}

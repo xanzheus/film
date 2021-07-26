@@ -1,0 +1,53 @@
+
+{{#each this}}
+<div class="modal">
+    <button type="button" class="modal__close">
+        <svg class="modal__icon-close" width="14" height="18">
+            <use href=".src/images/close.svg#icon-close"></use>
+        </svg>
+    </button>
+
+    <ul class="modal__box">
+        <li>
+            <a href="">
+                <img src="" alt="">
+            </a>
+        </li>
+        <li>
+            <h2 class="film__title"></h2>
+            <ul class="description__box">
+                <li class="description__list">
+                    <p class="description__item">Vote / Votes</p>
+                    <p class="description__item">Popularity</p>
+                    <p class="description__item">Original Title</p>
+                    <p class="description__item">Genre</p>
+                </li>
+
+                <li>
+                    <p class="description__item"><span>{{vote_average}}</span> <span>/</span>
+                        <span>{{vote_count}}</span> </p>
+                    <p class="description__item">{{popularity}}</p>
+                    <p class="description__item">{{title}}</p>
+                    <p class="description__item">{{genre_ids.}}</p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <h3 class="about__title">About</h3>
+    <p class="about__overview">{{overview}}</p>
+
+    <ul class="nav__btn">
+        <li>
+            <button class="nav__btn--watched">
+                add to Watched
+            </button>
+        </li>
+
+        <li>
+            <button class="nav__btn--queue">
+                add to queue
+            </button>
+        </li>
+    </ul>
+</div>
+{{/each}}
