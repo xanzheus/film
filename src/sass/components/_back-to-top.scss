@@ -1,0 +1,26 @@
+  #back-to-top {
+    padding: 3px;
+    transition: 250ms;
+    background-color: $color-accent-secondary;
+
+    &:hover {
+      fill: $color-accent-secondary;
+      background-color: $color-accent;
+    }
+
+    svg {
+      fill: $color-accent;
+      width: 40px;
+      height: 50px;
+
+      margin: auto;
+      border-radius: 50%;
+      transition: 250ms;
+
+      &:hover {
+        transform: scale(1.3);
+        fill: $color-accent-secondary;
+      }
+
+    }
+  }
