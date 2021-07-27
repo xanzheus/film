@@ -18,7 +18,7 @@ import { renderPaginationTrandingMovie, renderPaginationSearchMovie } from './pa
 // To get the full url of the picture. Runing the first part
 // console.log(requestServise.getPrefixUrlImg('/5bFK5d3mVTAvBCXi5NPWH0tYjKl.jpg'));
 
-// ======================================================
+//! ======================================================
 import testTpl from '../templates/test.hbs';
 
 const cardsContainer = document.querySelector('.gallery');
@@ -39,10 +39,15 @@ requestServise.getTrendingMovies().then(data => {
   appendMoviesMarkup(markup);
 });
 
+//* =======================
 // const searchQuery = 'Titanic';
 // requestServise.query = searchQuery;
 
 // requestServise.getSearchMovies().then(data => {
-//   renderPaginationSearchMovie(data.total_pages);
+//   renderPaginationSearchMovie(searchQuery, data.total_pages);
 //   console.log(data.results);
+
+//   const markup = data.results;
+//   reset();
+//   appendMoviesMarkup(markup);
 // });

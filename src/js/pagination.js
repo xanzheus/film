@@ -32,19 +32,25 @@ export function renderPaginationTrandingMovie(totalItems) {
   });
 }
 
-export function renderPaginationSearchMovie(totalItems) {
+export function renderPaginationSearchMovie(query, totalItems) {
+  if (query === '') {
+    console.log('Error');
+    return;
+  }
+
   const options = {
     totalItems,
     itemsPerPage: 1,
     visiblePages: 5,
   };
   const pagination = new Pagination(container, options);
+  pagination.query = query;
 
   pagination.on('afterMove', event => {
     const currentPage = event.page;
     requestServise.page = currentPage;
 
-    console.log(requestServise.query);
+    requestServise.query = pagination.query;
 
     requestServise.getSearchMovies().then(data => {
       const markup = data.results;
