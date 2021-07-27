@@ -27,8 +27,10 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "basiclightbox": "^5.0.4",
     "handlebars": "^4.7.7",
     "jquery": "^3.6.0",
+    "movie-trailer": "^2.1.0",
     "vanilla-back-to-top": "^7.2.1"
   }
 }
