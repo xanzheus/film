@@ -19,16 +19,16 @@ import { renderPaginationTrandingMovie, renderPaginationSearchMovie } from './pa
 // console.log(requestServise.getPrefixUrlImg('/5bFK5d3mVTAvBCXi5NPWH0tYjKl.jpg'));
 
 //! ==================== Examples ==================================
-import testTpl from '../templates/test.hbs';
+import testTpl from '../templates/mosalov-test.hbs';
 
-const cardsContainer = document.querySelector('.gallery');
+import refs from './refs';
 
 const appendMoviesMarkup = images => {
-  cardsContainer.insertAdjacentHTML('beforeend', testTpl(images));
+  refs.resultAnchor.insertAdjacentHTML('beforeend', testTpl(images));
 };
 
 const resetMarkup = () => {
-  cardsContainer.innerHTML = '';
+  refs.resultAnchor.innerHTML = '';
 };
 
 // requestServise.getTrendingMovies().then(data => {

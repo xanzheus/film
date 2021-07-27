@@ -1,14 +1,13 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
-import testTpl from '../templates/test.hbs';
+import testTpl from '../templates/mosalov-test.hbs'; // need change to correct
 
 import RequestService from './request.service';
 const requestServise = new RequestService();
 
-// ref - need to substitute correct refs
-import refs from './refs'; // anchor its correct
-const cardsContainer = document.querySelector('.gallery'); // Movies list. Need change!
+// refs correct
+import refs from './refs';
 
 export function renderPaginationTrandingMovie(totalItems) {
   const options = {
@@ -59,9 +58,9 @@ export function renderPaginationSearchMovie(query, totalItems) {
 }
 
 const appendMoviesMarkup = movies => {
-  cardsContainer.insertAdjacentHTML('beforeend', testTpl(movies));
+  refs.resultAnchor.insertAdjacentHTML('beforeend', testTpl(movies));
 };
 
 const resetMarkup = () => {
-  cardsContainer.innerHTML = '';
+  refs.resultAnchor.innerHTML = '';
 };
