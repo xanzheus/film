@@ -7,8 +7,8 @@ import RequestService from './request.service';
 const requestServise = new RequestService();
 
 // ref - need to substitute correct refs
-const container = document.getElementById('tui-pagination-container'); // anchor
-const cardsContainer = document.querySelector('.gallery'); // Movies list
+import refs from './refs'; // anchor its correct
+const cardsContainer = document.querySelector('.gallery'); // Movies list. Need change!
 
 export function renderPaginationTrandingMovie(totalItems) {
   const options = {
@@ -16,17 +16,15 @@ export function renderPaginationTrandingMovie(totalItems) {
     itemsPerPage: 1,
     visiblePages: 5,
   };
-  const pagination = new Pagination(container, options);
+  const pagination = new Pagination(refs.paginationAnchorRef, options);
 
   pagination.on('afterMove', event => {
     const currentPage = event.page;
     requestServise.page = currentPage;
-    console.log(currentPage);
 
     requestServise.getTrendingMovies().then(data => {
       const markup = data.results;
-      console.log(markup);
-      reset();
+      resetMarkup();
       appendMoviesMarkup(markup);
     });
   });
@@ -43,7 +41,7 @@ export function renderPaginationSearchMovie(query, totalItems) {
     itemsPerPage: 1,
     visiblePages: 5,
   };
-  const pagination = new Pagination(container, options);
+  const pagination = new Pagination(refs.paginationAnchorRef, options);
   pagination.query = query;
 
   pagination.on('afterMove', event => {
@@ -54,7 +52,7 @@ export function renderPaginationSearchMovie(query, totalItems) {
 
     requestServise.getSearchMovies().then(data => {
       const markup = data.results;
-      reset();
+      resetMarkup();
       appendMoviesMarkup(markup);
     });
   });
@@ -64,6 +62,6 @@ const appendMoviesMarkup = movies => {
   cardsContainer.insertAdjacentHTML('beforeend', testTpl(movies));
 };
 
-const reset = () => {
+const resetMarkup = () => {
   cardsContainer.innerHTML = '';
 };
