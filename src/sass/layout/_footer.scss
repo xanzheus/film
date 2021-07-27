@@ -37,6 +37,7 @@
 
 .footer__link {
   text-decoration: underline;
+  width: 10px;
 }
 
 .footer__developed-parth {
@@ -49,6 +50,7 @@
   font-size: 16px;
   line-height: 1.171;
   font-weight: 400;
+  display: flex;
 }
 
 .material-icons {
