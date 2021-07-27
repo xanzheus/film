@@ -16,7 +16,7 @@ export default class RequestService {
   }
   // This function await callback to output an error in hendler
   async getTrendingMovies(callback) {
-    const url = `${this.trendingMovies}?${API__KEY}&page=${this.page}`;
+    const url = `${this.trendingMovies}?${API__KEY}&page=${this.page}&language=en`;
     try {
       const response = await axios.get(url);
       return response?.data;
@@ -31,7 +31,7 @@ export default class RequestService {
       query: this.searchQuery,
       language: 'en-US',
     });
-    const url = `${this.searchMovies}?${API__KEY}&${searchParams}`;
+    const url = `${this.searchMovies}?${API__KEY}&${searchParams}&page=${this.page}`;
     try {
       const response = await axios.get(url);
       return response?.data;
