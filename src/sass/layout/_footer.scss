@@ -24,13 +24,17 @@
   font-weight: 400;
   color: $color-dark-secondary;
 
+  @media screen and(min-width: $tablet) {
+    font-size: 14px;
+  }
+
   &::after {
     position: absolute;
     top: 0;
     right: -10px;
     display: block;
     width: 1px;
-    height: 16px;
+    height: 100%;
     margin-left: 5px;
     margin-right: 5px;
     content: '';
@@ -55,6 +59,10 @@
   line-height: 1.171;
   font-weight: 400;
   display: flex;
+
+  @media screen and(min-width:$tablet) {
+    font-size: 14px;
+  }
 }
 
 .material-icons {
