@@ -28,6 +28,10 @@
   "dependencies": {
     "axios": "^0.21.1",
     "jquery": "^3.6.0",
-    "tui-pagination": "^3.4.1"
+    "tui-pagination": "^3.4.1",
+    "basiclightbox": "^5.0.4",
+    "handlebars": "^4.7.7",
+    "movie-trailer": "^2.1.0",
+    "vanilla-back-to-top": "^7.2.1"
   }
 }

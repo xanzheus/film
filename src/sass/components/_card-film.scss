@@ -13,6 +13,9 @@
 .card__image-box {
   width: 280px;
   height: 398px;
+  // margin-bottom: 10px;
+  border-radius: 5px;
+  overflow: hidden;
 
   @media screen and (min-width: $tablet) {
     width: 294px;
@@ -25,13 +28,14 @@
 
 .card__image {
   object-fit: cover;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  overflow: hidden;
+  // margin-bottom: 10px;
+  // border-radius: 5px;
+  // overflow: hidden;
 }
 
 .card__info-box {
   width: 100%;
+  padding-top: 10px;
 }
 
 .card__name {
@@ -109,7 +113,7 @@
 .card__vote-box {
   display: flex;
   justify-content: center;
-  text-align: center;
+  align-items: center;
   width: 36px;
   height: 16px;
   background-color: $color-accent;

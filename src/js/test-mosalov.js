@@ -1,6 +1,6 @@
-import RequestService from './request.service';
-// to get started, you need to create an instance of the class
-const requestServise = new RequestService();
+// import RequestService from './request.service';
+// // to get started, you need to create an instance of the class
+// const requestServise = new RequestService();
 
 import { renderPaginationTrandingMovie, renderPaginationSearchMovie } from './pagination';
 
