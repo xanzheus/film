@@ -23,9 +23,9 @@ requestServise.getTrendingMovies().then(data => {
   renderPaginationTrandingMovie(data.total_pages);
 });
 
-const searchQuery = 'Titanic';
-requestServise.query = searchQuery;
+// const searchQuery = 'Titanic';
+// requestServise.query = searchQuery;
 
-requestServise.getSearchMovies().then(data => {
-  renderPaginationSearchMovie(data.total_pages);
-});
+// requestServise.getSearchMovies().then(data => {
+//   renderPaginationSearchMovie(data.total_pages);
+// });
