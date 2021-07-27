@@ -20,7 +20,7 @@ export default class RequestService {
     const url = `${this.trendingMovies}?${API__KEY}&page=${this.page}&language=${this.language}`;
     try {
       const response = await axios.get(url);
-      return response?.data?.results;
+      return response?.data;
     } catch (error) {
       console.log(error.message);
       callback();
@@ -54,7 +54,7 @@ export default class RequestService {
   }
 
   async getGenresMovies() {
-    const url = `genre/movie/list?${API__KEY}`; /////было так const url = ` ${this.geners}?${API__KEY}`;
+    const url = `${this.geners}?${API__KEY}`;
     try {
       const response = await axios.get(url);
       const genresArray = await response.data.genres;
