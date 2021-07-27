@@ -6,9 +6,9 @@ import testTpl from '../templates/test.hbs';
 import RequestService from './request.service';
 const requestServise = new RequestService();
 
-// ref
-const container = document.getElementById('tui-pagination-container');
-const cardsContainer = document.querySelector('.gallery');
+// ref - need to substitute correct refs
+const container = document.getElementById('tui-pagination-container'); // anchor
+const cardsContainer = document.querySelector('.gallery'); // Movies list
 
 export function renderPaginationTrandingMovie(totalItems) {
   const options = {
@@ -34,7 +34,7 @@ export function renderPaginationTrandingMovie(totalItems) {
 
 export function renderPaginationSearchMovie(query, totalItems) {
   if (query === '') {
-    console.log('Error');
+    console.log('Error: Empty searchQuery');
     return;
   }
 
