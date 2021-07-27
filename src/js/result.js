@@ -6,6 +6,8 @@ const requestService = new RequestService();
 const IMG__URL = 'https://image.tmdb.org/t/p/w500';
 
 const makeMarkupCardsList = (array) => {
+    console.log(array)
+    console.log(refs.resultAnchor)
     refs.resultAnchor.insertAdjacentHTML('beforeend', markupCardTpl(array))
 }
 
@@ -19,16 +21,17 @@ const makeValidatesReleaseDate = data => {
 
 const makeValidatesGenreName = array => {
     array.forEach(object => {
-        object.genre_names = [];
+        // console.log(array)
+        // object.genre_names = [];
         object.genre_ids.forEach(
             (idGenre, indexGenre, arrayMain) => {
                 requestService.getGenresMovies()
                     .then(array => {
                         array.forEach(objectNames => {
                             if (objectNames.id === idGenre) {
-                                // object.genre_ids.splice(indexGenre, 1, objectNames['name'])
+                                object.genre_ids.splice(indexGenre, 1, objectNames['name'])
                                 
-                                object.genre_names.push(objectNames['name'])
+                                // object.genre_names.push(objectNames['name'])
                                 // console.log(object.genre_names)
                             }
                            
@@ -37,10 +40,10 @@ const makeValidatesGenreName = array => {
                     })
                 // console.log(array)
                 // console.log(array)
-                makeMarkupCardsList(array)
+                
             })
     })
-    // makeMarkupCardsList(array)
+    makeMarkupCardsList(array)
 }
 
 // const setValidatesPosterPath = (array) => {
