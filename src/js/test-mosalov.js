@@ -19,8 +19,24 @@ import { renderPaginationTrandingMovie, renderPaginationSearchMovie } from './pa
 // console.log(requestServise.getPrefixUrlImg('/5bFK5d3mVTAvBCXi5NPWH0tYjKl.jpg'));
 
 // ======================================================
+import testTpl from '../templates/test.hbs';
+
+const cardsContainer = document.querySelector('.gallery');
+
+const appendMoviesMarkup = images => {
+  cardsContainer.insertAdjacentHTML('beforeend', testTpl(images));
+};
+
+const reset = () => {
+  cardsContainer.innerHTML = '';
+};
+
 requestServise.getTrendingMovies().then(data => {
-  renderPaginationTrandingMovie(data.total_pages);
+  const totalPages = data.total_pages;
+  renderPaginationTrandingMovie(totalPages);
+  const markup = data.results;
+  reset();
+  appendMoviesMarkup(markup);
 });
 
 // const searchQuery = 'Titanic';
@@ -28,4 +44,5 @@ requestServise.getTrendingMovies().then(data => {
 
 // requestServise.getSearchMovies().then(data => {
 //   renderPaginationSearchMovie(data.total_pages);
+//   console.log(data.results);
 // });

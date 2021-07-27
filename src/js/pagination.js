@@ -21,12 +21,13 @@ export function renderPaginationTrandingMovie(totalItems) {
   pagination.on('afterMove', event => {
     const currentPage = event.page;
     requestServise.page = currentPage;
+    console.log(currentPage);
 
     requestServise.getTrendingMovies().then(data => {
       const markup = data.results;
       console.log(markup);
       reset();
-      appendImagesMarkup(markup);
+      appendMoviesMarkup(markup);
     });
   });
 }
@@ -43,16 +44,18 @@ export function renderPaginationSearchMovie(totalItems) {
     const currentPage = event.page;
     requestServise.page = currentPage;
 
+    console.log(requestServise.query);
+
     requestServise.getSearchMovies().then(data => {
       const markup = data.results;
       reset();
-      appendImagesMarkup(markup);
+      appendMoviesMarkup(markup);
     });
   });
 }
 
-const appendImagesMarkup = images => {
-  cardsContainer.insertAdjacentHTML('beforeend', testTpl(images));
+const appendMoviesMarkup = movies => {
+  cardsContainer.insertAdjacentHTML('beforeend', testTpl(movies));
 };
 
 const reset = () => {
