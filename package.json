@@ -31,6 +31,7 @@
     "handlebars": "^4.7.7",
     "jquery": "^3.6.0",
     "movie-trailer": "^2.1.0",
+    "tui-pagination": "^3.4.1",
     "vanilla-back-to-top": "^7.2.1"
   }
 }
