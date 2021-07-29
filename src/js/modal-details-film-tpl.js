@@ -40,22 +40,22 @@
                 <h3 class="about__title">About</h3>
                     <p class="about__overview">${obj.overview}</p>
         </div>
-        <ul class="buttons__list list">
+    </div>
+    <ul class="buttons__list list">
             <li class="buttons__item">
-                <button class="buttons__modal buttons__modal--accent">
+                <button class="buttons__modal buttons__modal--accent data-anchor="watched"">
                     Add to watched
                 </button>
             </li>        
             <li class="buttons__item">
-                <button class="buttons__modal buttons__modal--secondary">
+                <button class="buttons__modal buttons__modal--secondary data-anchor="queue"">
                     Add to queue
                 </button>
             </li>        
             <li class="buttons__item">
-                <button class="buttons__modal buttons__modal--secondary">Trailer</button>
+                <button class="buttons__modal buttons__modal--secondary data-anchor="trailer"">Trailer</button>
             </li>        
         </ul>
-    </div>
 </div>`
 }
     
