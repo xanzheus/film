@@ -1,0 +1,249 @@
+.modal{
+  position: relative;
+  display: inline-block;
+  width: 88vw;
+  height: 95vh;
+  max-width: 450px;
+  background-color: #fff;
+  overflow: scroll;
+  padding: 48px 30px 41px;
+  @media screen and (min-width: $tablet) {
+    width: 618px;
+    max-width: 900px;
+  }
+  @media screen and (min-width: $desktop) {
+    width: 882px;
+    max-width: 900px;
+    padding: 50px 30px 41px;
+  }
+
+  &__wrapper{
+    @media screen and(min-width:$tablet){
+      margin-right: 32px;
+    }
+  }
+
+  
+  &__wrapper,
+  &__box-info{
+    @media screen and(min-width:$tablet){
+      width: 50%;
+    }
+    
+  }
+  
+  &__icon--close{
+    width: 14px;
+    height: 14px;
+    fill: $color-dark-main;
+  }
+
+  &__poster{
+    width: 100%;
+  }
+
+  &__box {
+    display: block;
+    margin: -15px;
+
+@media screen and(min-width:$tablet) {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    &--item {
+      margin: 15px;
+      @media screen and(min-width:$tablet) {
+        width: calc((100% - 3 * 30px) / 2);
+      }
+    }
+
+    
+  }
+}
+
+// Description
+.description{
+&__title {
+  font-size: 20px;
+  line-height: 1.15;
+  margin-top: 30px;
+  color: $color-dark-main;
+
+  @media screen and(min-width:$tablet) {
+    margin-top: 0;
+  }
+}
+&__list{
+  margin-top: 20px;
+}
+// &__box {
+//   display: flex;
+//   justify-content: space-between;
+//   margin-top: 20px;
+
+//   @media screen and(min-width:$desktop) {
+//     justify-content: flex-start;
+//   }
+// }
+
+&__votes--wrapper{
+  display: flex;
+}
+&__name{
+  min-width: 120px;
+}
+
+&__item {
+  display: flex;
+  // margin-right: 83px;
+  
+  color: $color-text-secondary;
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+&__genre,
+&__content {
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+&__votes,
+&__vote{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+&__vote {
+  display: inline-block;
+  width: 36px;
+  height: 16px;
+  background-color: $color-accent;
+
+  line-height: 1.16;
+
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 5px;
+  color: $color-light-main;
+  margin-right: 3px;
+}
+
+&__votes {
+  width: 36px;
+  height: 16px;
+  line-height: 1.16;
+  border-radius: 5px;
+  background-color: $color-accent-secondary;
+
+  text-transform: uppercase;
+
+  color: $color-dark-main;
+}
+
+&__divider {
+  color: $color-text-secondary;
+  margin-right: 3px;
+}
+}
+
+//   About Content
+
+.about__title {
+  line-height: 1.33;
+  text-transform: uppercase;
+
+  color: $color-dark-main;
+  margin-top: 20px;
+}
+.about__overview {
+  line-height: 1.67;
+  color: $color-dark-main;
+  margin-top: 10px;
+  margin-bottom: 21px;
+}
+
+// Button
+
+.nav__btn {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 21px;
+  @media screen and (min-width: $desktop) {
+    justify-content: flex-start;
+  }
+
+  &--item {
+    &:not(:last-child) {
+      margin-right: 15px;
+    }
+  }
+
+ 
+}
+  .button__trailer,
+  .button__queue,
+  .button__watched {
+    width: 100%;
+    max-width: 113px;
+    height: 44px;
+    border-radius: 5px;
+    line-height: 1.33;
+    text-transform: uppercase;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    padding: 10px
+  }
+
+  .button__trailer,
+  .watched {
+    color: $color-light-main;
+    
+    background-color: $color-accent;
+    border: transparent;
+    padding: 9px 8px 12px;
+  }
+
+ .queue {
+    
+    border: 1px solid $color-dark-main;
+    background-color: transparent;
+    color: $color-dark-main;
+  }
+
+.button__list{
+  display: flex;
+  margin: -15px;
+}
+
+.button__item{
+  margin: 15px;
+    width: calc((100% - 3 * 30px) / 3)
+}
+
+.btn__close {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    bottom: 16px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    padding: 0;
+    // border: none;
+
+    @media screen and (min-width:$tablet){
+      right: 10px;
+    top: 10px
+    }
+  }
+
+  .btn__icon{
+    width: 14px;
+    height: 14px;
+    fill: $color-dark-main;
+  }
