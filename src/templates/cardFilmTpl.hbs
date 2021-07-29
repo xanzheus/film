@@ -8,9 +8,9 @@
             <h2 class="card__name">{{original_title}}</h2>
             <div class="card__details">
                 <ul class="genres__list list">
-                    {{#each this.genre_names}}
+                    {{#each genre_ids}}
                     <li class="genres__item">
-                        <p class="genres__text">121</p>
+                        <p class="genres__text">{{this}}</p>
                     </li>
                     {{/each}}
                 </ul>
