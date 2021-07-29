@@ -1,5 +1,5 @@
- const makeMarkup = function (obj) {
-     return  `<div class="modal">
+const makeMarkup = function (obj) {
+  return `<div class="modal">
      <button type="button" class="btn__close">
         <svg width="14" height="14">
             <use href="./images/sprite.svg#icon-close"></use>
@@ -53,11 +53,10 @@
                 </button>
             </li>        
             <li class="buttons__item">
-                <button class="buttons__modal buttons__modal--secondary data-anchor="trailer"">Trailer</button>
+                <button class="buttons__modal buttons__modal--secondary" data-anchor="trailer">Trailer</button>
             </li>        
         </ul>
-</div>`
-}
-    
-export {makeMarkup}
-    
+</div>`;
+};
+
+export { makeMarkup };
