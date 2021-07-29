@@ -1,6 +1,6 @@
 export default {
-    add_btn: document.querySelector('.add_btn'),
-    modal: document.querySelector('.modal__close'),
+    modalDetailsFilm: '',
+    modalDetailsFilmButtonClose: '',
     resultAnchor: document.querySelector('[data-anchor="result"]'),
 };
 

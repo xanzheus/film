@@ -6,4 +6,4 @@ import filmTpl from './templates/modal-window'
 
 import './js/result';
 
-import './js/test-mosalov';d
+import './js/test-mosalov';

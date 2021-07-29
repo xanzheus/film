@@ -1,86 +1,74 @@
 import * as basicLightbox from 'basiclightbox'
 import 'basiclightbox/src/styles/main.scss'
 import refs from './refs';
-import filmTpl from '../templates/modal-window'
+import requestService from './request.service'
+import {makeMarkup} from './modaltpl'
+import { func } from 'assert-plus';
+
+const request = new requestService
 
 
 
-export default function openModal(e) {
-    // if (e.target.nodeName !== 'IMG') return
-    // else if (e.code === 'Escape') return
-    e.preventDefault()
-    return basicLightbox.create(`{{#each this}}
- <div class="modal">
-    <button type="button" class="modal__close">
-        <svg class="modal__icon--close" >
-            <use href="..src/images/sprite.svg#icon-close"></use>
-        </svg>
-    </button>
-
-    <ul class="modal__box list">
-        <li class="modal__box--item">
-            <a href="${e.target.dataset.source}" href="src="/poster.c9693295.jpg">
-            
-                <img class="modal__poster" src="${e.target.dataset.source}"  data-source={{backdrop_path}}  alt="">
-            </a>
-            </li>
-        <li class="modal__box--item">
-        <div class="description">
-        <h2 class="description__title">{{title}}</h2>
-            <ul class="description__box list">
-                <li class="description__list">
-                    <p class="description__item">Vote / Votes</p>
-                    <p class="description__item">Popularity</p>
-                    <p class="description__item">Original Title</p>
-                    <p class="description__item">Genre</p>
-                </li>
-
-                <li>
-                    <p class="description__content">
-                    <span class="description__vote">{{vote_average}}</span>
-                    <span class="description__divider">/</span> <span class="description__votes">{{vote_count}}</span>
-                     </p>
-                    <p class="description__content">{{popularity}}</p>
-                    <p class="description__content">{{original_title}} </p>
-                    <p class="description__content"{{genre_ids}}</p>
-                </li>
-                
-            </ul>
-
-            <h3 class="about__title">About</h3>
-            <p class="about__overview">{{overview}}</p>
-
-             <ul class="nav__btn list">
-        <li class="nav__btn--item">
-            <button class="nav__btn--watched">
-                add to Watched
-            </button>
-            </li>
-
-            <li class="nav__btn--item">
-            <button class="nav__btn--queue">
-                add to queue
-            </button> 
-            </li>
-    </ul>
-
-        </li>
-        </div>
-            
-
-    </ul>
-    
-</div>
-{{/each}}
-`).show()
+const getMoreDetailfilm = function (description) {
+    const description_film = {}
+    description_film.title = description.title,
+    description_film.poster_path = description.poster_path
+    description_film.vote_average= description.vote_average,
+    description_film.vote_count = description.vote_count,
+    description_film.popularity = description.popularity,
+    description_film.original_title = description.original_title,
+    description_film.overview = description.overview
+    description_film.genres = description.genres.map(genre => {return genre.name})
+    console.log(description_film.genres)
+    return description_film
 }
 
 
 
-refs.add_btn.addEventListener('click', openModal);
 
+const setValidatesBackdrop_path = (obj) => {
+    console.log(request.getPrefixUrlImg(obj.poster_path))
+    obj.poster_path = request.getPrefixUrlImg(obj.poster_path)
+      return obj
+}
 
+const getActiveInfo = function (id) {
+    return request.getDescriptionMovie(id)
+        .then(getMoreDetailfilm)
+        .then(setValidatesBackdrop_path)
+        .then(makeMarkup)
+        .then(actionsShowModal)
+        
+}
 
-    
  
+let target = ''
+
+const showModal = function (markup) {
+   target = basicLightbox.create(markup);
+    target.show()
+}
+ 
+const closeModalDetails = function ()  {
+    target.close()
+     refs.modalDetailsFilmButtonClose.removeEventListener('click',closeModalDetails)
+}
+
+const actionsShowModal = function (markup) {
+    showModal(markup);
+    refs.modalDetailsFilm = document.querySelector('.modal')
+    refs.modalDetailsFilmButtonClose = refs.modalDetailsFilm.querySelector('.modal .btn__close')
+    refs.modalDetailsFilmButtonClose.addEventListener('click',closeModalDetails)
+}
+
+
+
+
+
+ const renderModal = function (e) {
+     const id =e.target.dataset.id
+    getActiveInfo(id)
+}
+
+refs.resultAnchor.addEventListener('click', renderModal);
 
