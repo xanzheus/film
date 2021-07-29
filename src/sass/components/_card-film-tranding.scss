@@ -1,28 +1,28 @@
 .card {
-  width: 280px;
+  width: 100%;
 
-  @media screen and (min-width: $tablet) {
-    width: 273px;
-  }
+  // @media screen and (min-width: $tablet) {
+  //   width: 273px;
+  // }
 
-  @media screen and (min-width: $desktop) {
-    width: 274px;
-  }
+  // @media screen and (min-width: $desktop) {
+  //   width: 274px;
+  // }
 }
 
 .card__image-box {
-  width: 280px;
+  width: 100%;
   height: 398px;
   border-radius: 5px;
   overflow: hidden;
 
-  @media screen and (min-width: $tablet) {
-    width: 294px;
-  }
+  // @media screen and (min-width: $tablet) {
+  //   width: 294px;
+  // }
 
-  @media screen and (min-width: $desktop) {
-    width: 274px;
-  }
+  // @media screen and (min-width: $desktop) {
+  //   width: 274px;
+  // }
 }
 
 .card__image {

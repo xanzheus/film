@@ -1,9 +1,7 @@
 const makeMarkup = function (obj) {
   return `<div class="modal">
-     <button type="button" class="btn__close">
-        <svg width="14" height="14">
-            <use href="./images/sprite.svg#icon-close"></use>
-        </svg>
+    <button type="button" class="btn__close">
+        <i class="material-icons"> close </i>
     </button>    
     <div class="modal__box">
         <div class="modal__box-img">

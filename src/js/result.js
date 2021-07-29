@@ -1,6 +1,8 @@
 import refs from './refs';
 import RequestService from './request.service';
-import markupCardTpl from '../templates/cardFilmTrandingTpl.hbs';
+import markupCarTrandingdTpl from '../templates/cardFilmTrandingTpl.hbs';
+import {cardMoreLoad} from './cardLoadNextTpl.js';
+import {setLibraryToLocalStorage} from './local-storage'
 
 
 const requestService = new RequestService();
@@ -9,9 +11,17 @@ const setResults = (response) => {
  return response?.results
 }
 
-const makeMarkupCardsList = (array) => {    
-    refs.resultAnchor.insertAdjacentHTML('beforeend', markupCardTpl(array))
+const makeMarkupCardList = () => {
+    console.log(cardMoreLoad())    
+    refs.resultAnchor.insertAdjacentHTML('beforeend', cardMoreLoad())
 }
+
+const makeMarkupCardsList = (array) => {    
+    refs.resultAnchor.insertAdjacentHTML('beforeend', markupCarTrandingdTpl(array));
+    makeMarkupCardList()
+}
+
+
 
 const makeValidatesReleaseDate = data => {
     return data.slice(0, 4);
@@ -81,9 +91,21 @@ const renderingTrendingCardsList = () => {
         .then(setValidatesReleaseDate)
         .then(makeValidatesGenreName)
         .then(makeMarkupCardsList)
+        // .then(makeMarkupCardsList)
+}
+
+const renderingLibraryCardsList = () => {
+    clearCardsList()
+    setLibraryToLocalStorage()//////функция от Леши
+        .then(setResults)
+        .then(makefilterObjects)
+        .then(setValidatesPosterPath)
+        .then(setValidatesReleaseDate)
+        .then(makeValidatesGenreName)
+        // .then(makeMarkupCardList)
 }
 
 makeGenresList();
 renderingTrendingCardsList()
 
-export { clearCardsList, renderingTrendingCardsList}
+export { clearCardsList, renderingTrendingCardsList, renderingLibraryCardsList}
