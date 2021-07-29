@@ -231,12 +231,11 @@
     border: none;
     color: #000;
     fill: currentColor;
+}
 
-    @media screen and (min-width:$tablet){
-      right: 10px;
-    top: 10px
-    }
-  }
+.btn__close .material-icons {
+  font-size: 20px;
+}
 
   // .btn__icon{
   //   // width: 14px;

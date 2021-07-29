@@ -84,3 +84,5 @@ const setLibraryToLocalStorage = function (library) {
 
 // console.log(getDataFromLocalStorage('watch'));
 // console.log(getDataFromLocalStorage('queue'));
+
+export {addDataToTheLibrary, setLibraryToLocalStorage}
