@@ -52,6 +52,7 @@
 
 .result__wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .genres__item {
@@ -61,25 +62,23 @@
   color: $color-accent;
 
   &:not(:last-child)::after {
-    content: '';
+    content: ',';
     position: absolute;
-    bottom: 2px;
-    border-radius: 0px 0px 100% 0px;
-    right: -1px;
+    bottom: 0;
+    right: -3px;
     display: block;
-    width: 1px;
-    height: 3px;
-    background-color: $color-accent;
+    color: $color-accent;
   }
-}
 
-.genres__item:not(:last-child) {
-  margin-right: 6px;
+  &:not(:last-child) {
+    margin-right: 6px;
+  }
 }
 
 .genres__list {
   position: relative;
   display: flex;
+  flex-wrap: wrap;
   margin-right: 10px;
 
   &::after {
