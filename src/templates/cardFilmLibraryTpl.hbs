@@ -6,7 +6,8 @@
         </div>
         <div class="card__info-box">
             <h2 class="card__name">{{original_title}}</h2>
-            <div class="card__details">
+            <div class ="result__wrapper">
+                <div class="card__details">
                 <ul class="genres__list list">
                     {{#each genre_ids}}
                     <li class="genres__item">
@@ -18,6 +19,7 @@
             <p class="card__text">{{release_date}}</p>
             <div class="card__vote-box">
                 <p class="card__vote">{{vote_average}}</p>
+            </div>
             </div>
         </div>
     </div>

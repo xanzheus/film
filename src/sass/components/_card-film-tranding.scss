@@ -13,7 +13,6 @@
 .card__image-box {
   width: 280px;
   height: 398px;
-  // margin-bottom: 10px;
   border-radius: 5px;
   overflow: hidden;
 
@@ -28,9 +27,6 @@
 
 .card__image {
   object-fit: cover;
-  // margin-bottom: 10px;
-  // border-radius: 5px;
-  // overflow: hidden;
 }
 
 .card__info-box {
@@ -54,6 +50,10 @@
   }
 }
 
+.result__wrapper {
+  display: flex;
+}
+
 .genres__item {
   position: relative;
   font-weight: 500;
@@ -64,10 +64,10 @@
     content: '';
     position: absolute;
     bottom: 2px;
-    border-radius: 100% 0px 100% 0px;
-    right: -2px;
+    border-radius: 0px 0px 100% 0px;
+    right: -1px;
     display: block;
-    width: 2px;
+    width: 1px;
     height: 3px;
     background-color: $color-accent;
   }
