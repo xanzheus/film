@@ -6,7 +6,7 @@ addBackToTop({
   id: 'back-to-top',
   onClickScrollTo: 0,
   scrollContainer: document.body,
-  scrollDuration: 100,
+  scrollDuration: 400,
   showWhenScrollTopIs: 400,
   textColor: '#fff',
   zIndex: 1,
