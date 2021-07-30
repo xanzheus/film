@@ -73,6 +73,7 @@ let genresList;
 
 const setGenresList = array => {
   genresList = [...array];
+  renderingTrendingCardsList();
 };
 
 const makeValidatesGenreName = array => {
@@ -147,7 +148,7 @@ const renderingSearchCardsList = searchQuery => {
 };
 
 makeGenresList();
-renderingTrendingCardsList();
+
 
 export {
   setResults,
