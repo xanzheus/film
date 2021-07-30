@@ -64,10 +64,16 @@ export function renderPaginationSearchMovie(query, totalItems) {
 
     requestServise.query = pagination.query;
 
-    requestServise.getSearchMovies().then(data => {
-      const markup = data.results;
-      resetMarkup();
-      appendMoviesMarkup(markup);
-    });
+    clearCardsList();
+
+    requestServise
+      .getSearchMovies()
+      .then(setResults)
+      .then(makefilterObjects)
+      .then(setValidatesPosterPath)
+      .then(setValidatesReleaseDate)
+      .then(makeValidatesGenreName)
+      .then(makeMarkupTrandingCardsList)
+      .then(makeMarkupCardMoreLoad);
   });
 }
