@@ -1,15 +1,19 @@
-const btnEl = document.querySelector('.modal-close-btn');
-const backdrobEl = document.querySelector('.modal-backdrop');
-const linkEl = document.querySelector('.footer__link');
-btnEl.addEventListener('click', onBtnCkick);
-linkEl.addEventListener('click', onLinkClick);
+import team from './team-members.json';
+import itemsTemplate from '../templates/cardsOurTeam.hbs';
+import refs from './refs';
 
-function onBtnCkick(event) {
+refs.ftBtnEl.addEventListener('click', onCloseModal);
+refs.ftLinkEl.addEventListener('click', onOpenModal);
+
+function onCloseModal(event) {
   console.log('click');
-  backdrobEl.classList.add('is-hidden');
+  refs.ftBackdropEl.classList.add('is-hidden');
 }
 
-function onLinkClick(event) {
+function onOpenModal(event) {
   event.preventDefault();
-  backdrobEl.classList.remove('is-hidden');
+  refs.ftBackdropEl.classList.remove('is-hidden');
 }
+
+const markUp = itemsTemplate(team);
+refs.ftTeamListEl.insertAdjacentHTML('beforeend', markUp);

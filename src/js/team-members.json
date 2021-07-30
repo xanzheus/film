@@ -1,23 +1,37 @@
 [
   {
-    "name": "Nataliia Valko"
+    "name": "Nataliia Valko",
+    "position": "team-lead",
+    "meta": "all"
   },
   {
-    "name": "Nikolay Mosalov"
+    "name": "Nikolay Mosalov",
+    "position": "scrum-master",
+    "meta": "all"
   },
   {
-    "name": "Hennadiy Mariev"
+    "name": "Hennadiy Mariev",
+    "position": "developer",
+    "meta": "header"
   },
   {
-    "name": "Volodimir Marchuk"
+    "name": "Volodimir Marchuk",
+    "position": "developer",
+    "meta": "all"
   },
   {
-    "name": "Alexei Voloshin"
+    "name": "Alexei Voloshin",
+    "position": "developer",
+    "meta": "functional"
   },
   {
-    "name": "Vitaliy Vovk"
+    "name": "Mykola Kolesnyk",
+    "position": "developer",
+    "meta": "modal window "
   },
   {
-    "name": "Mykola Kolesnyk"
+    "name": "Vitaliy Vovk",
+    "position": "developer",
+    "meta": "footer"
   }
 ]
