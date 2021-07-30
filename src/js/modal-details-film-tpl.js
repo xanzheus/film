@@ -1,10 +1,9 @@
  const makeMarkup = function (obj) {
      return  `<div class="modal">
      <button type="button" class="btn__close">
-        <svg width="14" height="14">
-            <use href="./images/sprite.svg#icon-close"></use>
-        </svg>
-    </button>    
+        <i class="material-icons"> close </i>
+    </button>
+        
     <div class="modal__box">
         <div class="modal__box-img">
             <img class="modal__poster" src="${obj.poster_path}" alt="${obj.title}">
@@ -29,19 +28,23 @@
                     <p class="description__content">${obj.popularity}</p>
                 </li>
                 <li class="description__item">
-                    <p class="description__name">Original Title</p>
+                <div>
+                <p class="description__name">Original Title</p>
+                </div>
                     <p class="description__content">${obj.original_title} </p>
                 </li>
                 <li class="description__item">
-                    <p class="description__name">Genre</p>
+                <div>
+                <p class="description__name">Genre</p>
+                </div>
+                    
                     <p class="description__content">${obj.genres}</p>
                 </li>    
             </ul>
                 <h3 class="about__title">About</h3>
                     <p class="about__overview">${obj.overview}</p>
-        </div>
-    </div>
-    <ul class="buttons__list list">
+
+                     <ul class="buttons__list list">
             <li class="buttons__item">
                 <button class="buttons__modal buttons__modal--accent data-anchor="watched"">
                     Add to watched
@@ -56,6 +59,10 @@
                 <button class="buttons__modal buttons__modal--secondary data-anchor="trailer"">Trailer</button>
             </li>        
         </ul>
+        </div>
+       
+    </div>
+    
 </div>`
 }
     

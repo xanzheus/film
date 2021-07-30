@@ -10,27 +10,25 @@ const getMoreDetailfilm = function ({title, poster_path, vote_average, vote_coun
     const descriptionFilm = {}
     descriptionFilm.title = title;
     descriptionFilm.poster_path = poster_path;
-    descriptionFilm.vote_average= vote_average;
-    descriptionFilm.vote_count = vote_count;
-    descriptionFilm.popularity = popularity;
+    descriptionFilm.vote_average = vote_average.toFixed(1);
+    descriptionFilm.vote_count = vote_count.toFixed(1);
+    descriptionFilm.popularity = popularity.toFixed(1);
     descriptionFilm.original_title = original_title;
     descriptionFilm.overview = overview;
-    descriptionFilm.genres = genres.reduce((acc, genre) => {return `${acc}${genre.name}, `}, '').slice(0, -2);
+    descriptionFilm.genres = genres.reduce((acc, genre) => { return `${acc}${genre.name}, ` }, '').slice(0, -2);
     return descriptionFilm
 }
+let target = ''
+
+// IMAGE PATH
 
 const setValidatesBackdrop_path = (obj) => {
     obj.poster_path = request.getPrefixUrlImg(obj.poster_path)
       return obj
 }
 
-const doActionsShowModal = function (markup) {
-    showModal(markup);
-    refs.modalDetailsFilm = document.querySelector('.modal')
-    refs.modalDetailsFilmButtonClose = refs.modalDetailsFilm.querySelector('.modal .btn__close')
-    refs.modalDetailsFilmButtonClose.addEventListener('click',closeModalDetails)
-}
 
+// API
 const getActiveInfo = function (id) {
     return request.getDescriptionMovie(id)
         .then(getMoreDetailfilm)
@@ -39,21 +37,54 @@ const getActiveInfo = function (id) {
         .then(doActionsShowModal)        
 }
  
-let target = ''
+// SHOW MODAL
+
+const doActionsShowModal = function (markup) {
+    showModal(markup);
+    refs.modalBackdrop = document.querySelector('.basicLightbox');
+    refs.modalBackdrop.addEventListener('click', onBackdropClose);
+
+    refs.modalDetailsFilm = document.querySelector('.modal');
+    refs.modalDetailsFilmButtonClose = refs.modalDetailsFilm.querySelector('.modal .btn__close');
+
+    refs.modalDetailsFilmButtonClose.addEventListener('click', closeModalDetails);
+}
+
+const getModalId = function (e) {
+    
+     const id =e.target.dataset.id
+    getActiveInfo(id)
+    document.body.classList.add('no__scroll');
+}
 
 const showModal = function (markup) {
    target = basicLightbox.create(markup);
     target.show()
+    
 }
  
-const closeModalDetails = function ()  {
+// CLOSE MODAL
+
+const closeModalDetails = function () {
+    document.body.classList.remove('no__scroll');
+    refs.modalDetailsFilmButtonClose.removeEventListener('click', closeModalDetails)
     target.close()
-     refs.modalDetailsFilmButtonClose.removeEventListener('click',closeModalDetails)
+    
+    
 }
 
-const renderModal = function (e) {
-     const id =e.target.dataset.id
-    getActiveInfo(id)
+const onEscClose = e => {
+    if (e.code === 'Escape') {
+        document.body.classList.remove('no__scroll');
+        target.close()
+    }
 }
 
-refs.resultAnchor.addEventListener('click', renderModal);
+const onBackdropClose = e => {
+    if (e.currentTarget === e.target) {
+     document.body.classList.remove('no__scroll');
+}
+}
+
+refs.resultAnchor.addEventListener('click', getModalId);
+window.addEventListener('keydown',onEscClose)
