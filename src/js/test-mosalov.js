@@ -1,8 +1,8 @@
-import RequestService from './request.service';
+// import RequestService from './request.service';
 // // to get started, you need to create an instance of the class
-const requestServise = new RequestService();
+// const requestServise = new RequestService();
 
-import { renderPaginationTrandingMovie, renderPaginationSearchMovie } from './pagination';
+// import { renderPaginationTrandingMovie, renderPaginationSearchMovie } from './pagination';
 
 // searchQuery this is the value of the input
 // const searchQuery = 'Titanic';
@@ -19,34 +19,34 @@ import { renderPaginationTrandingMovie, renderPaginationSearchMovie } from './pa
 // console.log(requestServise.getPrefixUrlImg('/5bFK5d3mVTAvBCXi5NPWH0tYjKl.jpg'));
 
 //! ==================== Examples ==================================
-import testTpl from '../templates/mosalov-test.hbs';
+// import testTpl from '../templates/mosalov-test.hbs';
 
-import refs from './refs';
+// import refs from './refs';
 
-const appendMoviesMarkup = images => {
-  refs.resultAnchor.insertAdjacentHTML('beforeend', testTpl(images));
-};
+// const appendMoviesMarkup = images => {
+//   refs.resultAnchor.insertAdjacentHTML('beforeend', testTpl(images));
+// };
 
-const resetMarkup = () => {
-  refs.resultAnchor.innerHTML = '';
-};
+// const resetMarkup = () => {
+//   refs.resultAnchor.innerHTML = '';
+// };
 
-requestServise.getTrendingMovies().then(data => {
-  const totalPages = data.total_pages;
-  renderPaginationTrandingMovie(totalPages);
-  const markup = data.results;
-  resetMarkup();
-  appendMoviesMarkup(markup);
-});
+// requestServise.getTrendingMovies().then(data => {
+//   const totalPages = data.total_pages;
+//   renderPaginationTrandingMovie(totalPages);
+//   const markup = data.results;
+//   resetMarkup();
+//   appendMoviesMarkup(markup);
+// });
 
-//* =======================
-const searchQuery = 'Titanic';
-requestServise.query = searchQuery;
+// //* =======================
+// const searchQuery = 'Titanic';
+// requestServise.query = searchQuery;
 
-requestServise.getSearchMovies().then(data => {
-  renderPaginationSearchMovie(searchQuery, data.total_pages);
+// requestServise.getSearchMovies().then(data => {
+//   renderPaginationSearchMovie(searchQuery, data.total_pages);
 
-  const markup = data.results;
-  resetMarkup();
-  appendMoviesMarkup(markup);
-});
+//   const markup = data.results;
+//   resetMarkup();
+//   appendMoviesMarkup(markup);
+// });

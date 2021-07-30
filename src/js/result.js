@@ -2,6 +2,7 @@ import refs from './refs';
 import RequestService from './request.service';
 import markupCarTrandingTpl from '../templates/cardFilmTrandingTpl.hbs';
 import markupCarLibraryTpl from '../templates/cardFilmLibraryTpl.hbs';
+import { getCardsMarkup } from './hover-responsive';
 
 import { cardMoreLoad } from './cardLoadNextTpl.js';
 import { setLibraryToLocalStorage } from './local-storage';
@@ -33,10 +34,12 @@ const makeMarkupCardMoreLoad = () => {
 
 const makeMarkupTrandingCardsList = array => {
   refs.resultAnchor.insertAdjacentHTML('beforeend', markupCarTrandingTpl(array));
+  getCardsMarkup();
 };
 
 const makeMarkupLibraryCardsList = array => {
   refs.resultAnchor.insertAdjacentHTML('beforeend', markupCarLibraryTpl(array));
+  getCardsMarkup();
 };
 
 const makeValidatesReleaseDate = data => {
