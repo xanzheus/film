@@ -1,7 +1,7 @@
 div.tui-pagination {
   margin: 0;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: 38px;
+  padding-bottom: 38px;
   height: auto;
 
   @media screen and (min-width: $tablet) {
@@ -24,8 +24,8 @@ a.tui-page-btn.tui-first{
 .tui-pagination a.tui-page-btn {
   border-left: none;
   color: $color-dark-main;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   padding: 13px;
   line-height: 1.333;
   border-radius: 5px;
@@ -38,8 +38,8 @@ a.tui-page-btn.tui-first{
 .tui-pagination strong.tui-page-btn {
   border-left: none;
   color: $color-light-main;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   padding: 13px;
   line-height: 1.333;
   border-radius: 5px;
@@ -48,12 +48,17 @@ a.tui-page-btn.tui-first{
   background-color: $color-accent;  
 }
 
+.tui-pagination strong.tui-page-btn:hover,
+.tui-pagination strong.tui-page-btn:focus {
+background-color: $color-accent;
+}
+
 .tui-page-btn.tui-is-disabled.tui-prev,
 .tui-page-btn.tui-is-disabled.tui-prev
  {
   color: $color-dark-main;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   padding: 13px;
   line-height: 1.333;
   border-radius: 5px;
