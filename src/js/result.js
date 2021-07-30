@@ -147,7 +147,6 @@ makeGenresList();
 renderingTrendingCardsList();
 
 export {
-  addPaginationTranding,
   setResults,
   makefilterObjects,
   setValidatesPosterPath,

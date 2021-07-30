@@ -6,7 +6,6 @@ const requestServise = new RequestService();
 
 import {
   clearCardsList,
-  addPaginationTranding,
   setResults,
   makefilterObjects,
   setValidatesPosterPath,
