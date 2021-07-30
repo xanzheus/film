@@ -1,15 +1,24 @@
 import refs from './refs';
 import RequestService from './request.service';
-import markupCarTrandingdTpl from '../templates/cardFilmTrandingTpl.hbs';
+import markupCarTrandingTpl from '../templates/cardFilmTrandingTpl.hbs';
+import markupCarLibraryTpl from '../templates/cardFilmLibraryTpl.hbs';
+
 import {cardMoreLoad} from './cardLoadNextTpl.js';
 import {setLibraryToLocalStorage} from './local-storage'
 import { renderPaginationTrandingMovie, renderPaginationSearchMovie } from './pagination';
 
 const requestService = new RequestService();
 
-const addPagination = (data) => {
+const addPaginationTranding = (data) => {
     if(data.total_pages > 1) {     
         renderPaginationTrandingMovie(data.total_pages);
+    }
+    return data   
+}
+
+const addPaginationSearch = (data) => {
+    if(data.total_pages > 1) {     
+        renderPaginationSearchMovie(requestServise.query, data.total_pages);
     }
     return data   
 }
@@ -18,13 +27,16 @@ const setResults = (response) => {
  return response?.results
 }
 
-const makeMarkupCardList = () => {
+const makeMarkupCardMoreLoad = () => {
     refs.resultAnchor.insertAdjacentHTML('beforeend', cardMoreLoad())
 }
 
-const makeMarkupCardsList = (array) => {    
-    refs.resultAnchor.insertAdjacentHTML('beforeend', markupCarTrandingdTpl(array));
-    makeMarkupCardList()
+const makeMarkupTrandingCardsList = (array) => {    
+    refs.resultAnchor.insertAdjacentHTML('beforeend', markupCarTrandingTpl(array));
+}
+
+const makeMarkupLibraryCardsList = (array) => {    
+    refs.resultAnchor.insertAdjacentHTML('beforeend', markupCarLibraryTpl(array));
 }
 
 const makeValidatesReleaseDate = data => {
@@ -38,7 +50,7 @@ const makefilterObject = ({poster_path, genre_ids,id, original_title, release_da
     newObject.id = id;
     newObject.original_title = original_title;
     newObject.release_date = release_date;
-    newObject.vote_average = vote_average;
+    newObject.vote_average = vote_average.toFixed(1);
 return newObject
 }
 
@@ -89,27 +101,38 @@ const clearCardsList = () => {
 const renderingTrendingCardsList = () => {
     clearCardsList()
     requestService.getTrendingMovies()
-        .then(addPagination)
+        .then(addPaginationTranding)
         .then(setResults)
         .then(makefilterObjects)
         .then(setValidatesPosterPath)
         .then(setValidatesReleaseDate)
         .then(makeValidatesGenreName)
-        .then(makeMarkupCardsList)
+        .then(makeMarkupTrandingCardsList)
+        .then(makeMarkupCardMoreLoad)
 }
 
 const renderingLibraryCardsList = () => {
     clearCardsList()
-    setLibraryToLocalStorage()//////функция от Леши
+    setLibraryToLocalStorage()//////функция от Леши, с тотал пейджс и массивом обьектов
+    .then(addPaginationTranding)
+    .then(makeMarkupLibraryCardsList)
+}
+
+const renderingSearchCardsList = (searchQuery) => {
+    requestServise.query = searchQuery
+    clearCardsList()
+    requestService.getSearchMovies()
+        .then(addPaginationSearch)
         .then(setResults)
         .then(makefilterObjects)
         .then(setValidatesPosterPath)
         .then(setValidatesReleaseDate)
         .then(makeValidatesGenreName)
-        // .then(makeMarkupCardList)
+        .then(makeMarkupLibraryCardsList)
+        .then(makeMarkupCardMoreLoad)
 }
 
 makeGenresList();
 renderingTrendingCardsList()
 
-export { clearCardsList, renderingTrendingCardsList, renderingLibraryCardsList}
+export { clearCardsList, renderingTrendingCardsList, renderingLibraryCardsList, renderingSearchCardsList}
