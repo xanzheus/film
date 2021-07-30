@@ -80,8 +80,9 @@
   display: flex;
   flex-wrap: wrap;
   margin-right: 10px;
+}
 
-  &::after {
+  .genres__item:last-child::after {
     content: '';
     position: absolute;
     bottom: 3px;
@@ -91,7 +92,7 @@
     height: 10px;
     background-color: $color-accent;
   }
-}
+
 
 .card__details {
   display: flex;

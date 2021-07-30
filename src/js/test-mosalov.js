@@ -39,14 +39,14 @@
 //   appendMoviesMarkup(markup);
 // });
 
-// //* =======================
-// // const searchQuery = 'Titanic';
-// // requestServise.query = searchQuery;
+//* =======================
+// const searchQuery = 'Titanic';
+// requestServise.query = searchQuery;
 
-// // requestServise.getSearchMovies().then(data => {
-// //   renderPaginationSearchMovie(searchQuery, data.total_pages);
+// requestServise.getSearchMovies().then(data => {
+//   renderPaginationSearchMovie(searchQuery, data.total_pages);
 
-// //   const markup = data.results;
-// //   resetMarkup();
-// //   appendMoviesMarkup(markup);
-// // });
+//   const markup = data.results;
+//   resetMarkup();
+//   appendMoviesMarkup(markup);
+// });
