@@ -1,10 +1,20 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
-import testTpl from '../templates/mosalov-test.hbs'; // need change to correct
-
 import RequestService from './request.service';
 const requestServise = new RequestService();
+
+import {
+  clearCardsList,
+  addPaginationTranding,
+  setResults,
+  makefilterObjects,
+  setValidatesPosterPath,
+  setValidatesReleaseDate,
+  makeValidatesGenreName,
+  makeMarkupTrandingCardsList,
+  makeMarkupCardMoreLoad,
+} from './result';
 
 // refs correct
 import refs from './refs';
@@ -21,11 +31,17 @@ export function renderPaginationTrandingMovie(totalItems) {
     const currentPage = event.page;
     requestServise.page = currentPage;
 
-    requestServise.getTrendingMovies().then(data => {
-      const markup = data.results;
-      resetMarkup();
-      appendMoviesMarkup(markup);
-    });
+    clearCardsList();
+
+    requestServise
+      .getTrendingMovies()
+      .then(setResults)
+      .then(makefilterObjects)
+      .then(setValidatesPosterPath)
+      .then(setValidatesReleaseDate)
+      .then(makeValidatesGenreName)
+      .then(makeMarkupTrandingCardsList)
+      .then(makeMarkupCardMoreLoad);
   });
 }
 
@@ -56,11 +72,3 @@ export function renderPaginationSearchMovie(query, totalItems) {
     });
   });
 }
-
-const appendMoviesMarkup = movies => {
-  refs.resultAnchor.insertAdjacentHTML('beforeend', testTpl(movies));
-};
-
-const resetMarkup = () => {
-  refs.resultAnchor.innerHTML = '';
-};
