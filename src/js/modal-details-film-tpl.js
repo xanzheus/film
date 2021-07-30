@@ -1,9 +1,10 @@
+
  const makeMarkup = function (obj) {
      return  `<div class="modal">
      <button type="button" class="btn__close">
         <i class="material-icons"> close </i>
     </button>
-        
+    
     <div class="modal__box">
         <div class="modal__box-img">
             <img class="modal__poster" src="${obj.poster_path}" alt="${obj.title}">
@@ -56,15 +57,14 @@
                 </button>
             </li>        
             <li class="buttons__item">
-                <button class="buttons__modal buttons__modal--secondary data-anchor="trailer"">Trailer</button>
+                <button class="buttons__modal buttons__modal--secondary" data-anchor="trailer">Trailer</button>
             </li>        
         </ul>
         </div>
-       
     </div>
-    
 </div>`
 }
     
 export {makeMarkup}
     
+

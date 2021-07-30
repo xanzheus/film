@@ -31,7 +31,7 @@
 //   refs.resultAnchor.innerHTML = '';
 // };
 
-// requestServise.getTrendi.ngMovies().then(data => {
+// requestServise.getTrendingMovies().then(data => {
 //   const totalPages = data.total_pages;
 //   renderPaginationTrandingMovie(totalPages);
 //   const markup = data.results;
@@ -40,13 +40,13 @@
 // });
 
 // //* =======================
-// const searchQuery = 'Titanic';
-// requestServise.query = searchQuery;
+// // const searchQuery = 'Titanic';
+// // requestServise.query = searchQuery;
 
-// requestServise.getSearchMovies().then(data => {
-//   renderPaginationSearchMovie(searchQuery, data.total_pages);
+// // requestServise.getSearchMovies().then(data => {
+// //   renderPaginationSearchMovie(searchQuery, data.total_pages);
 
-//   const markup = data.results;
-//   resetMarkup();
-//   appendMoviesMarkup(markup);
-// });
+// //   const markup = data.results;
+// //   resetMarkup();
+// //   appendMoviesMarkup(markup);
+// // });

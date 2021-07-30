@@ -1,10 +1,9 @@
-import * as basicLightbox from 'basiclightbox'
-import 'basiclightbox/src/styles/main.scss'
+import * as basicLightbox from 'basiclightbox';
+import 'basiclightbox/src/styles/main.scss';
 import refs from './refs';
-import requestService from './request.service'
-import {makeMarkup} from './modal-details-film-tpl'
-
-const request = new requestService
+import requestService from './request.service';
+import { makeMarkup } from './modal-details-film-tpl';
+import { ShowTrailer } from './_trailer_to_film';
 
 const getMoreDetailfilm = function ({title, poster_path, vote_average, vote_count, popularity, original_title, overview,genres}) {
     const descriptionFilm = {}
@@ -18,7 +17,10 @@ const getMoreDetailfilm = function ({title, poster_path, vote_average, vote_coun
     descriptionFilm.genres = genres.reduce((acc, genre) => { return `${acc}${genre.name}, ` }, '').slice(0, -2);
     return descriptionFilm
 }
+
 let target = ''
+const showTrailer = new ShowTrailer();
+const request = new requestService();
 
 // IMAGE PATH
 
@@ -27,9 +29,9 @@ const setValidatesBackdrop_path = (obj) => {
       return obj
 }
 
-
 // API
 const getActiveInfo = function (id) {
+
     return request.getDescriptionMovie(id)
         .then(getMoreDetailfilm)
         .then(setValidatesBackdrop_path)
@@ -58,10 +60,11 @@ const getModalId = function (e) {
 }
 
 const showModal = function (markup) {
-   target = basicLightbox.create(markup);
-    target.show()
-    
-}
+  target = basicLightbox.create(markup);
+  target.show();
+
+  showTrailer.show();
+};
  
 // CLOSE MODAL
 
@@ -69,8 +72,6 @@ const closeModalDetails = function () {
     document.body.classList.remove('no__scroll');
     refs.modalDetailsFilmButtonClose.removeEventListener('click', closeModalDetails)
     target.close()
-    
-    
 }
 
 const onEscClose = e => {
@@ -82,9 +83,11 @@ const onEscClose = e => {
 
 const onBackdropClose = e => {
     if (e.currentTarget === e.target) {
-     document.body.classList.remove('no__scroll');
+        document.body.classList.remove('no__scroll');
+        window.removeEventListener('keydown',onEscClose)
 }
 }
 
 refs.resultAnchor.addEventListener('click', getModalId);
 window.addEventListener('keydown',onEscClose)
+

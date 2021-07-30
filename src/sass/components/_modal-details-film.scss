@@ -221,12 +221,11 @@
     border: none;
     color: #000;
     fill: currentColor;
+}
 
-    @media screen and (min-width:$tablet){
-      right: 10px;
-    top: 10px
-    }
-  }
+.btn__close .material-icons {
+  font-size: 20px;
+}
 
   .no__scroll{
   overflow: hidden;
