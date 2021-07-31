@@ -54,7 +54,8 @@ const doActionsShowModal = function (markup) {
 
 const getModalId = function (e) {
     
-     const id =e.target.dataset.id
+    const id = e.target.dataset.id
+    showTrailer.id = id
     getActiveInfo(id)
     document.body.classList.add('no__scroll');
 }
