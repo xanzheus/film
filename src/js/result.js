@@ -10,6 +10,10 @@ import { renderPaginationTrandingMovie, renderPaginationSearchMovie } from './pa
 
 const requestService = new RequestService();
 
+const onErrorMessage = (error) => {
+  console.log(error)
+}
+
 const addPaginationTranding = data => {
   if (data.total_pages > 1) {
     renderPaginationTrandingMovie(data.total_pages);
@@ -42,9 +46,9 @@ const makeMarkupLibraryCardsList = array => {
   getCardsMarkup();
 };
 
-// const makeValidatesReleaseDate = data => {
-//   return data.slice(0, 4);
-// };
+const makeValidatesReleaseDate = data => {
+  return data.slice(0, 4);
+};
 
 const makefilterObject = ({
   poster_path,
@@ -54,14 +58,14 @@ const makefilterObject = ({
   release_date,
   vote_average,
 }) => {
-  const newObject = {};
-  newObject.poster_path = poster_path;
-  newObject.genre_ids = genre_ids;
-  newObject.id = id;
-  newObject.original_title = original_title;
-  newObject.release_date = release_date;
-  newObject.vote_average = vote_average.toFixed(1);
-  return newObject;
+    const newObject = {};
+    newObject.poster_path = poster_path;
+    newObject.genre_ids = genre_ids;
+    newObject.id = id;
+    newObject.original_title = original_title;
+    newObject.release_date = release_date;
+    newObject.vote_average = vote_average.toFixed(1);
+    return newObject;
 };
 
 const makefilterObjects = array => {
@@ -78,14 +82,17 @@ const setGenresList = array => {
 
 const makeValidatesGenreName = array => {
   array.forEach(object => {
-    object.genre_ids.forEach((idGenre, indexGenre) => {
+    if(object.genre_ids) {
+      object.genre_ids.forEach((idGenre, indexGenre) => {
       genresList.forEach(objectNames => {
         if (objectNames.id === idGenre) {
           object.genre_ids.splice(indexGenre, 1, objectNames['name']);
         }
       });
-    });
+    })} else {
+      object.genre_ids = ''}
   });
+
   return array;
 };
 
@@ -94,16 +101,23 @@ const makeGenresList = () => {
 };
 
 const setValidatesPosterPath = array => {
-  array.forEach(object => {
-    object.poster_path = requestService.getPrefixUrlImg(object.poster_path);
-  });
-  return array;
+
+    array.forEach(object => {
+      object.poster_path = object.poster_path
+      ? requestService.getPrefixUrlImg(object.poster_path)
+      : "https://more-show.ru/upload/not-available.png"
+    });
+    console.log(array)
+    return array;
 };
 
 const setValidatesReleaseDate = array => {
   array.forEach(object => {
-    // object.release_date = makeValidatesReleaseDate(object.release_date);
+    object.release_date = object.release_date
+    ? makeValidatesReleaseDate(object.release_date)
+    : '';
   });
+
   return array;
 };
 
@@ -122,7 +136,8 @@ const renderingTrendingCardsList = () => {
     .then(setValidatesReleaseDate)
     .then(makeValidatesGenreName)
     .then(makeMarkupTrandingCardsList)
-    .then(makeMarkupCardMoreLoad);
+    .then(makeMarkupCardMoreLoad)
+    .catch(onErrorMessage)
 };
 
 const renderingLibraryCardsList = () => {
@@ -144,7 +159,8 @@ const renderingSearchCardsList = searchQuery => {
     .then(setValidatesReleaseDate)
     .then(makeValidatesGenreName)
     .then(makeMarkupLibraryCardsList)
-    .then(makeMarkupCardMoreLoad);
+    .then(makeMarkupCardMoreLoad)
+    .catch(onErrorMessage)
 };
 
 makeGenresList();
