@@ -1,0 +1,35 @@
+<section class="header authorized">
+    <div class="container">
+        <div class="header__wrapper">
+            <div class="logo">
+                <svg class="logo__icon" width="24" height="24" aria-label="Logotype">
+                    <use href="/images/sprite.svg#icon-logo"></use>
+                  </svg>
+                  <a class="logo__link link" href="#">Filmoteka</a>
+            </div>
+    
+            <nav class="navigation">
+                <ul class="navigation__list list">
+                    <li class="navigation__item">
+                        <a href="#" class="navigation__link link navigation__link--current">Home</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="#" class="navigation__link link">My library</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="search__wrapper">
+            <input type="text" class="search__input" placeholder="Поиск фильмов">
+            <button type="button" class="search__button">
+                <svg class="search__icon" width="12" height="12" aria-label="Logotype">
+                    <use href="/images/sprite.svg#icon-search"></use>
+                  </svg>
+            </button>
+        </div>
+        <div class="result__wrapper">
+            <p class="result__message visually-hidden">Search result not successful. Enter the correct movie name and try again.</p>
+        </div>
+    </div>
+</section>
