@@ -42,9 +42,9 @@ const makeMarkupLibraryCardsList = array => {
   getCardsMarkup();
 };
 
-const makeValidatesReleaseDate = data => {
-  return data.slice(0, 4);
-};
+// const makeValidatesReleaseDate = data => {
+//   return data.slice(0, 4);
+// };
 
 const makefilterObject = ({
   poster_path,
@@ -102,7 +102,7 @@ const setValidatesPosterPath = array => {
 
 const setValidatesReleaseDate = array => {
   array.forEach(object => {
-    object.release_date = makeValidatesReleaseDate(object.release_date);
+    // object.release_date = makeValidatesReleaseDate(object.release_date);
   });
   return array;
 };
@@ -148,7 +148,6 @@ const renderingSearchCardsList = searchQuery => {
 };
 
 makeGenresList();
-
 
 export {
   setResults,
