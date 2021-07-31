@@ -1,4 +1,4 @@
-<section class="header">
+<header class="header">
     <div class="container">
         <div class="header__wrapper">
             <div class="logo">
@@ -11,33 +11,33 @@
             <nav class="navigation">
                 <ul class="navigation__list list">
                     <li class="navigation__item">
-                        <a href="#" class="navigation__link link navigation__link--current">Home</a>
+                        <a href="#" class="navigation__link link navigation__link--current" id="home-link">Home</a>
                     </li>
                     <li class="navigation__item">
-                        <a href="#" class="navigation__link link">My library</a>
+                        <a href="#" class="navigation__link link" id="library-link">My library</a>
                     </li>
                 </ul>
             </nav>
         </div>
 
-        <div class="search__wrapper visually-hidden">
-            <input type="text" class="search__input" placeholder="Поиск фильмов">
+        <div class="search__wrapper">
+            <input type="text" class="search__input" placeholder="Поиск фильмов" id="search-input">
             <button type="button" class="search__button">
                 <svg class="search__icon" width="12" height="12" aria-label="Logotype">
                     <use href="/images/sprite.svg#icon-search"></use>
                   </svg>
             </button>
         </div>
-        <div class="control__wrapper">
-            <button type="button" class="control__button">
+        <div class="control__wrapper non-displayed">
+            <a href="#" class="control__button link" id="watched-button">
                 Watched
-            </button>
-            <button type="button" class="control__button">
+            </a>
+            <a href="#" class="control__button link" id="queue-button">
                 Queue
-            </button>
+            </a>
         </div>
-        <div class="result__wrapper">
-            <p class="result__message visually-hidden">Search result not successful. Enter the correct movie name and try again.</p>
+        <div class="result__wrapper non-displayed">
+            <p class="result__message">Search result not successful. Enter the correct movie name and try again.</p>
         </div>
     </div>
-</section>
+</header>
