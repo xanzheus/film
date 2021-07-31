@@ -267,7 +267,7 @@
   }
 }
 
-.result {
+.error-box {
     margin-top: 22px;
 
   &__message {
@@ -283,14 +283,19 @@
   }
 }
 
-.control {
+.button-box {
     &__wrapper {
         display: flex;
         justify-content: center;
     }
 
     &__button {
-        padding: 14px 36px;
+        width: 136px;
+
+        display: flex;
+        justify-content: center;
+
+        padding: 14px 0;
 
         font-family: inherit;
         font-size: 12px;
