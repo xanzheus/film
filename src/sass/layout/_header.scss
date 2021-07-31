@@ -1,239 +1,330 @@
 .header {
-    background-image: linear-gradient(to right, 
-    $background-filter-header, $background-filter-header), url('/images/header/rectangle_@1x_mob.jpg');
-    background-repeat: no-repeat;
-    background-position: top center;
-    overflow: hidden;
+  background-image: linear-gradient(to right, $background-filter-header, $background-filter-header),
+    url('/images/header/rectangle_@1x_mob.jpg');
+  background-repeat: no-repeat;
+  background-position: top center;
+  overflow: hidden;
 
-    width: 100%;
-    height: 230px;
+  width: 100%;
+  height: 230px;
 
-    padding: 46px 0 43px;
+  padding: 46px 0 43px;
 
-    &__wrapper {
-        display: flex;
-        align-items: baseline;
+  &__wrapper {
+    display: flex;
+    align-items: baseline;
 
-        margin-bottom: 30px;
-    }
+    margin-bottom: 30px;
+  }
+
+  @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        to right,
+        $background-filter-header,
+        $background-filter-header
+      ),
+      url('/images/header/rectangle_@2x_mob.jpg');
+  }
+
+  @media screen and (min-width: $tablet) {
+    background-image: linear-gradient(
+        to right,
+        $background-filter-header,
+        $background-filter-header
+      ),
+      url('/images/header/rectangle_@1x_tab.jpg');
+
+    padding: 41px 0 59px;
 
     @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
-        background-image: linear-gradient(to right, 
-        $background-filter-header, $background-filter-header), url('/images/header/rectangle_@2x_mob.jpg');
-      }
-
-    @media screen and (min-width: $tablet){
-        background-image: linear-gradient(to right, 
-        $background-filter-header, $background-filter-header), url('/images/header/rectangle_@1x_tab.jpg');
-
-        padding: 41px 0 59px;
-
-        @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
-            background-image: linear-gradient(to right, 
-            $background-filter-header, $background-filter-header), url('/images/header/rectangle_@2x_tab.jpg');
-          }
+      background-image: linear-gradient(
+          to right,
+          $background-filter-header,
+          $background-filter-header
+        ),
+        url('/images/header/rectangle_@2x_tab.jpg');
     }
+  }
 
-    @media screen and (min-width: $desktop){
-        background-image: linear-gradient(to right, 
-        $background-filter-header, $background-filter-header), url('/images/header/rectangle_@1x.jpg');
+  @media screen and (min-width: $desktop) {
+    background-image: linear-gradient(
+        to right,
+        $background-filter-header,
+        $background-filter-header
+      ),
+      url('/images/header/rectangle_@1x.jpg');
 
-        @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
-            background-image: linear-gradient(to right, 
-            $background-filter-header, $background-filter-header), url('/images/header/rectangle_@2x.jpg');
-          }
+    @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          $background-filter-header,
+          $background-filter-header
+        ),
+        url('/images/header/rectangle_@2x.jpg');
     }
+  }
 }
 
 .header.authorized {
-    background-image: linear-gradient(to right, 
-    $background-filter-header, $background-filter-header), url('/images/header/rectangle2_@1x_mob.jpg');
+  background-image: linear-gradient(to right, $background-filter-header, $background-filter-header),
+    url('/images/header/rectangle2_@1x_mob.jpg');
+
+  @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+    background-image: linear-gradient(
+        to right,
+        $background-filter-header,
+        $background-filter-header
+      ),
+      url('/images/header/rectangle2_@2x_mob.jpg');
+  }
+
+  @media screen and (min-width: $tablet) {
+    background-image: linear-gradient(
+        to right,
+        $background-filter-header,
+        $background-filter-header
+      ),
+      url('/images/header/rectangle2_@1x_tab.jpg');
 
     @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
-        background-image: linear-gradient(to right, 
-        $background-filter-header, $background-filter-header), url('/images/header/rectangle2_@2x_mob.jpg');
-      }
-
-    @media screen and (min-width: $tablet){
-        background-image: linear-gradient(to right, 
-        $background-filter-header, $background-filter-header), url('/images/header/rectangle2_@1x_tab.jpg');
-
-        @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
-            background-image: linear-gradient(to right, 
-            $background-filter-header, $background-filter-header), url('/images/header/rectangle2_@2x_tab.jpg');
-          }
+      background-image: linear-gradient(
+          to right,
+          $background-filter-header,
+          $background-filter-header
+        ),
+        url('/images/header/rectangle2_@2x_tab.jpg');
     }
+  }
 
-    @media screen and (min-width: $desktop){
-        background-image: linear-gradient(to right, 
-        $background-filter-header, $background-filter-header), url('/images/header/rectangle2_@1x.jpg');
+  @media screen and (min-width: $desktop) {
+    background-image: linear-gradient(
+        to right,
+        $background-filter-header,
+        $background-filter-header
+      ),
+      url('/images/header/rectangle2_@1x.jpg');
 
-        @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
-            background-image: linear-gradient(to right, 
-            $background-filter-header, $background-filter-header), url('/images/header/rectangle2_@2x.jpg');
-          }
+    @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
+      background-image: linear-gradient(
+          to right,
+          $background-filter-header,
+          $background-filter-header
+        ),
+        url('/images/header/rectangle2_@2x.jpg');
     }
+  }
 }
 
 .logo {
-    display: flex;
-    align-items: baseline;
-    cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  cursor: pointer;
 
-    padding: 8px 0;
+  padding: 8px 0;
 
+  &__icon {
+    transition: transform $time-main $timing-function-main;
 
-    &__icon {
-        transition: transform $time-main $timing-function-main;
-
-        @media screen and (min-width: $tablet){
-            margin-right: 10px;
-        }
+    @media screen and (min-width: $tablet) {
+      margin-right: 10px;
     }
+  }
 
-    &__link {
-        font-size: 30px;
-        font-weight: 500;
-        font-family: $font-family-main;
-        color: $color-light-main;
+  &__link {
+    font-size: 30px;
+    font-weight: 500;
+    font-family: $font-family-main;
+    color: $color-light-main;
 
-        display: none;
-        transition: $time-main $timing-function-main;
+    display: none;
+    transition: $time-main $timing-function-main;
 
-        @media screen and (min-width: $tablet){
-            display: inline-block;
-        }
+    @media screen and (min-width: $tablet) {
+      display: inline-block;
     }
+  }
 
-    &:hover .logo__link,
-    &:focus .logo__link {
-        color: $color-text-secondary;
-    }
+  &:hover .logo__link,
+  &:focus .logo__link {
+    color: $color-text-secondary;
+  }
 
-    &:hover .logo__icon,
-    &:focus .logo__icon {
-        transform: scale(1.15);
-    }
+  &:hover .logo__icon,
+  &:focus .logo__icon {
+    transform: scale(1.15);
+  }
 }
 
 .navigation {
-    margin-left: auto;
-    margin-right: 0;
+  margin-left: auto;
+  margin-right: 0;
 
-    &__list {
-        display: flex;
-    }
+  &__list {
+    display: flex;
+  }
 
-    &__item:not(:last-child) {
-        margin-right: 39px;
-    }
+  &__item:not(:last-child) {
+    margin-right: 39px;
+  }
 
-    &__link {
-        text-transform: uppercase;
-        display: flex;
-        flex-direction: column;
+  &__link {
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
 
-        color: $color-light-main;
+    color: $color-light-main;
 
-        font-family: $font-family-main;
-        font-weight: 500;
-        font-size: 12px;
+    font-family: $font-family-main;
+    font-weight: 500;
+    font-size: 12px;
 
-        padding: 8px 0;
+    padding: 8px 0;
 
-        transition: $time-main $timing-function-main;
-    }
+    transition: $time-main $timing-function-main;
+  }
 
-    &__link--current::after {
-        content: '';
+  &__link--current::after {
+    content: '';
 
-        width: 100%;
-        height: 3px;
+    width: 100%;
+    height: 3px;
 
-        background-color: $color-accent;
-    }
+    background-color: $color-accent;
+  }
 
-    &__link:hover,
-    &__link:focus {
-        color: $color-text-secondary;
-    }
+  &__link:hover,
+  &__link:focus {
+    color: $color-text-secondary;
+  }
 }
 
-
 .search {
-    &__wrapper {
-        margin: 0 auto 22px;
-        position: relative;
+  &__wrapper {
+    margin: 0 auto;
+    position: relative;
 
-        width: 280px;
+    width: 280px;
 
-        @media screen and (min-width: $tablet){
-            width: 336px;
-        }
+    @media screen and (min-width: $tablet) {
+      width: 336px;
     }
+  }
 
-    &__input {
-        width: 100%;
-        height: 20px;
+  &__input {
+    width: 100%;
+    height: 20px;
 
-        padding: 4px 0;
+    padding: 4px 0;
 
-        display: flex;
-        flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-        border: 0;
+    border: 0;
 
-        border-bottom: 1px solid $color-light-main;
+    border-bottom: 1px solid $color-light-main;
 
-        background-color: transparent;
-        color: $color-light-main;
+    background-color: transparent;
+    color: $color-light-main;
 
-        font-size: 14px;
-        font-weight: 400;
-    }
+    font-size: 14px;
+    font-weight: 400;
+  }
 
-    &__input::placeholder {
-        color: $color-light-main;
-    }
+  &__input::placeholder {
+    color: $color-light-main;
+  }
 
-    &__button {
-        position: absolute;
-        top: 50%;
-        right: 0;
+  &__button {
+    position: absolute;
+    top: 50%;
+    right: 0;
 
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0;
+    width: 12px;
+    height: 12px;
 
-        transform: translateY(-50%);
-        transition: $time-main $timing-function-main;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
 
-        cursor: pointer;
-        border: 0;
-        background-color: transparent;
-    }
+    transform: translateY(-50%);
+    transition: $time-main $timing-function-main;
 
-    &__button:hover,
-    &__button:focus {
-       transform: translateY(-50%) scale(1.15);
-    }
+    cursor: pointer;
+    border: 0;
+    background-color: transparent;
+  }
 
-    &__icon {
-        color: $color-light-main;
-    }
+  &__button:hover,
+  &__button:focus {
+    transform: translateY(-50%) scale(1.15);
+  }
+
+  &__icon {
+    width: 12px;
+    height: 12px;
+    color: $color-light-main;
+  }
 }
 
 .result {
-    &__message {
-        font-family: $font-family-main;
-        font-size: 14px;
-        font-weight: 400;
-        color: $color-error;
-        text-align: left;
+    margin-top: 22px;
+
+  &__message {
+    font-family: $font-family-main;
+    font-size: 14px;
+    font-weight: 400;
+    color: $color-error;
+    text-align: left;
+
+    @media screen and (min-width: $tablet) {
+      text-align: center;
+    }
+  }
+}
+
+.control {
+    &__wrapper {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__button {
+        padding: 14px 36px;
+
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 500;
+        text-transform: uppercase;
+
+        color: $color-light-main;
+        background-color: $color-accent;
+
+        border: 1px solid $color-accent;
+        border-radius: 5px;
+
+        transition: $time-main $timing-function-main;
 
         @media screen and (min-width: $tablet) {
-            text-align: center;
+            padding: 14px 38px;
         }
     }
+
+    &__button:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    &__botton:hover,
+    &__button:focus {
+        color: $color-text-secondary;
+    }
+
+    &__button--active {
+        border: 1px solid $color-light-main;
+        background-color: transparent;
+    }
 }
+
+.non-displayed {
+    display: none;
+  }
