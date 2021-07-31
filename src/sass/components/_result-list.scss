@@ -25,3 +25,33 @@
     flex-basis: calc(100% / 3 - 30px);
   }
 }
+
+.card__load-more {
+  display: none;
+
+  @media screen and(min-width: $desktop) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 280px;
+    height: 398px;
+    background-color: $color-accent-secondary;
+    font-size: 40px;
+    color: $color-accent;
+    border-radius: 5px;
+  }
+}
+
+.card-load-more__symbol {
+  font-size: 120px;
+  color: $color-accent;
+}
+
+.button-load-more {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0;
+  background-color: transparent;
+}

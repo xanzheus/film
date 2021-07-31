@@ -1,6 +1,8 @@
-.pagination {
-  padding-top: 40px;
-  padding-bottom: 40px;
+div.tui-pagination {
+  margin: 0;
+  padding-top: 38px;
+  padding-bottom: 38px;
+  height: auto;
 
   @media screen and (min-width: $tablet) {
     padding-top: 50px;
@@ -10,4 +12,72 @@
   @media screen and (min-width: $desktop) {
     padding-top: 46px;
   }
+}
+
+span.tui-first.tui-page-btn,
+a.tui-page-btn.tui-last,
+a.tui-page-btn.tui-first{
+  display: none;
+}
+
+.tui-pagination a.tui-first-child.tui-page-btn,
+.tui-pagination a.tui-page-btn {
+  border-left: none;
+  color: $color-dark-main;
+  width: 38px;
+  height: 38px;
+  padding: 13px;
+  line-height: 1.333;
+  border-radius: 5px;
+  margin-right: 2px;
+  border: none;
+  background-color: transparent  
+}
+
+.tui-pagination strong.tui-first-child.tui-page-btn,
+.tui-pagination strong.tui-page-btn {
+  border-left: none;
+  color: $color-light-main;
+  width: 38px;
+  height: 38px;
+  padding: 13px;
+  line-height: 1.333;
+  border-radius: 5px;
+  margin-right: 2px;
+  border: none;
+  background-color: $color-accent;  
+}
+
+.tui-pagination strong.tui-page-btn:hover,
+.tui-pagination strong.tui-page-btn:focus {
+background-color: $color-accent;
+}
+
+.tui-page-btn.tui-is-disabled.tui-prev,
+.tui-page-btn.tui-is-disabled.tui-prev
+ {
+  color: $color-dark-main;
+  width: 38px;
+  height: 38px;
+  padding: 13px;
+  line-height: 1.333;
+  border-radius: 5px;
+  margin-right: 2px;
+  border: none;
+  background-color: $color-accent-secondary;
+}
+
+.tui-pagination a.tui-page-btn.tui-prev-is-ellip.tui-first-child,
+.tui-pagination a.tui-page-btn.tui-next-is-ellip.tui-last-child
+ {
+  display: none;
+}
+
+.tui-pagination a.tui-next {
+margin-left: 0;
+background-color: $color-accent-secondary;
+}
+
+.tui-page-btn a.tui-prev-is-ellip .tui-first-child {
+  display: none;
 }

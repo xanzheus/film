@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
-const API__KEY = 'api_key=16092738eabd8acc3b7b5db91d1d6d26';
+export const API__KEY = 'api_key=16092738eabd8acc3b7b5db91d1d6d26';
 
 // You can find examples of how functions work in the file "test-mosalov.js"
 export default class RequestService {
@@ -12,25 +12,12 @@ export default class RequestService {
     this.movieById = 'movie';
     this.geners = 'genre/movie/list';
     this.searchQuery = '';
+    this.page = 1;
+    this.language = 'en';
   }
-// This function await callback to output an error in hendler
+  // This function await callback to output an error in hendler
   async getTrendingMovies(callback) {
-    const url = `${this.trendingMovies}?${API__KEY}`;
-    try {
-      const response = await axios.get(url);
-      return response?.data?.results;
-    } catch (error) {
-      console.log(error.message);
-      callback();
-    }
-  }
-// This function await callback to output an error in hendler
-  async getSearchMovies(callback) {
-    const searchParams = new URLSearchParams({
-      query: this.searchQuery,
-      language: 'en-US',
-    });
-    const url = `${this.searchMovies}?${API__KEY}&${searchParams}`;
+    const url = `${this.trendingMovies}?${API__KEY}&page=${this.page}&language=${this.language}`;
     try {
       const response = await axios.get(url);
       return response?.data;
@@ -39,7 +26,22 @@ export default class RequestService {
       callback();
     }
   }
-// This function await callback to output an error in hendler
+  // This function await callback to output an error in hendler
+  async getSearchMovies(callback) {
+    const searchParams = new URLSearchParams({
+      query: this.searchQuery,
+      language: this.language,
+    });
+    const url = `${this.searchMovies}?${API__KEY}&${searchParams}&page=${this.page}`;
+    try {
+      const response = await axios.get(url);
+      return response?.data;
+    } catch (error) {
+      console.log(error.message);
+      callback();
+    }
+  }
+  // This function await callback to output an error in hendler
   async getDescriptionMovie(movieId, callback) {
     const url = `${this.movieById}/${movieId}?${API__KEY}`;
     try {
@@ -52,7 +54,7 @@ export default class RequestService {
   }
 
   async getGenresMovies() {
-    const url = `genre/movie/list?${API__KEY}`;/////было так const url = ` ${this.geners}?${API__KEY}`;
+    const url = `${this.geners}?${API__KEY}`;
     try {
       const response = await axios.get(url);
       const genresArray = await response.data.genres;
@@ -64,6 +66,10 @@ export default class RequestService {
 
   getPrefixUrlImg(url) {
     return `${this.IMG__URL}${url}`;
+  }
+
+  page(currentPage) {
+    this.page = currentPage;
   }
 
   get query() {
