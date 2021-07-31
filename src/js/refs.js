@@ -10,4 +10,11 @@ export default {
   paginationAnchorRef: document.getElementById('tui-pagination-container'),
   searchInput: document.getElementById('search-input'),
   inputButton: document.querySelector('.search__button'),
+  homeLink: document.querySelector('#home-link'),
+  libraryLink: document.querySelector('#library-link'),
+  header: document.querySelector('header'),
+  watchedButton: document.querySelector('#watched-button'),
+  queueButton: document.querySelector('#queue-button'),
+  controlWrapper: document.querySelector('.button-box__wrapper'),
+  searchWrapper: document.querySelector('.search__wrapper'),
 };
