@@ -1,5 +1,6 @@
 import './sass/main.scss';
 
+import './js/modal-team';
 import './js/modal-details-film';
 import './js/result';
 import './js/_back_to_top';
