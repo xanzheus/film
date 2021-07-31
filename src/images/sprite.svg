@@ -20,5 +20,11 @@
 <path  style="fill: var(--color2, #ff6b08)" d="M16 30.583l-2.24-2.24c-8.32-7.36-13.76-12.32-13.76-18.4 0-4.96 3.84-8.8 8.8-8.8 2.72 0 5.44 1.28 7.2 3.36 1.76-2.080 4.48-3.36 7.2-3.36 4.96 0 8.8 3.84 8.8 8.8 0 6.080-5.44 11.040-13.76 18.4l-2.24 2.24z"></path>
 </symbol>
 <symbol id="icon-close" viewBox="0 0 32 32"><path d="M32 3.223L28.777 0 16 12.777 3.223 0 0 3.223 12.777 16 0 28.777 3.223 32 16 19.223 28.777 32 32 28.777 19.223 16 32 3.223z"/></symbol>
+
+<symbol id="icon-search" viewBox="0 0 32 32">
+<path d="M5.5 9.5C7.70914 9.5 9.5 7.70914 9.5 5.5C9.5 3.29086 7.70914 1.5 5.5 1.5C3.29086 1.5 1.5 3.29086 1.5 5.5C1.5 7.70914 3.29086 9.5 5.5 9.5Z" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.5 10.5002L8.32495 8.3252" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+</symbol>
+
 </defs>
 </svg>
