@@ -43,7 +43,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -350%);
-  transition: transform 12000ms linear;
+  transition: transform 8000ms linear;
 
   @media screen and(min-width: $tablet) {
     width: 700px;
@@ -54,7 +54,7 @@
   }
 
   .modal-backdrop.is-hidden & {
-    transform: translate(-50%, 100%);
+    transform: translate(-50%, 50%);
   }
 
   &__title {

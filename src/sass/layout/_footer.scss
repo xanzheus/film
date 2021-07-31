@@ -19,13 +19,13 @@
 .footer__copyright-text {
   position: relative;
   margin-right: 10px;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.171;
   font-weight: 400;
   color: $color-dark-secondary;
 
   @media screen and(min-width: $tablet) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   &::after {
@@ -55,13 +55,13 @@
 
 .footer__developed-text {
   color: $color-dark-secondary;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.171;
   font-weight: 400;
   display: flex;
 
   @media screen and(min-width:$tablet) {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
