@@ -1,4 +1,4 @@
-<section class="header authorized">
+<section class="header">
     <div class="container">
         <div class="header__wrapper">
             <div class="logo">
@@ -20,12 +20,20 @@
             </nav>
         </div>
 
-        <div class="search__wrapper">
+        <div class="search__wrapper visually-hidden">
             <input type="text" class="search__input" placeholder="Поиск фильмов">
             <button type="button" class="search__button">
                 <svg class="search__icon" width="12" height="12" aria-label="Logotype">
                     <use href="/images/sprite.svg#icon-search"></use>
                   </svg>
+            </button>
+        </div>
+        <div class="control__wrapper">
+            <button type="button" class="control__button">
+                Watched
+            </button>
+            <button type="button" class="control__button">
+                Queue
             </button>
         </div>
         <div class="result__wrapper">
