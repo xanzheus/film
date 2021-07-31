@@ -8,4 +8,6 @@ export default {
   modalDetailsFilmButtonClose: '',
   modalBackdrop: '',
   paginationAnchorRef: document.getElementById('tui-pagination-container'),
+  searchInput: document.getElementById('search-input'),
+  inputButton: document.querySelector('.search__button'),
 };

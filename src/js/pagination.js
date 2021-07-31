@@ -2,7 +2,7 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 
 import RequestService from './request.service';
-const requestServise = new RequestService();
+const requestService = new RequestService();
 
 import {
   clearCardsList,
@@ -28,11 +28,11 @@ export function renderPaginationTrandingMovie(totalItems) {
 
   pagination.on('afterMove', event => {
     const currentPage = event.page;
-    requestServise.page = currentPage;
+    requestService.page = currentPage;
 
     clearCardsList();
 
-    requestServise
+    requestService
       .getTrendingMovies()
       .then(setResults)
       .then(makefilterObjects)
@@ -60,13 +60,13 @@ export function renderPaginationSearchMovie(query, totalItems) {
 
   pagination.on('afterMove', event => {
     const currentPage = event.page;
-    requestServise.page = currentPage;
+    requestService.page = currentPage;
 
-    requestServise.query = pagination.query;
+    requestService.query = pagination.query;
 
     clearCardsList();
 
-    requestServise
+    requestService
       .getSearchMovies()
       .then(setResults)
       .then(makefilterObjects)

@@ -23,7 +23,8 @@ const addPaginationTranding = data => {
 
 const addPaginationSearch = data => {
   if (data.total_pages > 1) {
-    renderPaginationSearchMovie(requestServise.query, data.total_pages);
+    const searchQuery = refs.searchInput.value;
+    renderPaginationSearchMovie(searchQuery, data.total_pages);
   }
   return data;
 };
@@ -148,7 +149,7 @@ const renderingLibraryCardsList = () => {
 };
 
 const renderingSearchCardsList = searchQuery => {
-  requestServise.query = searchQuery;
+  requestService.query = searchQuery;
   clearCardsList();
   requestService
     .getSearchMovies()
