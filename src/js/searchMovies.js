@@ -1,9 +1,6 @@
 import refs from './refs';
-import { clearCardsList, renderingSearchCardsList } from './result';
-import RequestService from './request.service';
+import { renderingSearchCardsList } from './result';
 import { trim } from 'jquery';
-
-const requestService = new RequestService();
 
 const searchMoviesHandler = () => {
   const searchQuery = trim(refs.searchInput.value);

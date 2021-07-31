@@ -13,7 +13,6 @@ import {
   makeValidatesGenreName,
   makeMarkupTrandingCardsList,
   makeMarkupCardMoreLoad,
-  renderingSearchCardsList,
 } from './result';
 
 // refs correct
