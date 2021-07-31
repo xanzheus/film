@@ -17,16 +17,24 @@
 }
 
 .footer__copyright-text {
-  display: flex;
-  color: $color-dark-secondary;
+  position: relative;
+  margin-right: 10px;
   font-size: 16px;
   line-height: 1.171;
   font-weight: 400;
+  color: $color-dark-secondary;
+
+  @media screen and(min-width: $tablet) {
+    font-size: 14px;
+  }
 
   &::after {
+    position: absolute;
+    top: 0;
+    right: -10px;
     display: block;
     width: 1px;
-    height: auto;
+    height: 100%;
     margin-left: 5px;
     margin-right: 5px;
     content: '';
@@ -37,6 +45,7 @@
 
 .footer__link {
   text-decoration: underline;
+  width: 10px;
 }
 
 .footer__developed-parth {
@@ -49,4 +58,16 @@
   font-size: 16px;
   line-height: 1.171;
   font-weight: 400;
+  display: flex;
+
+  @media screen and(min-width:$tablet) {
+    font-size: 14px;
+  }
+}
+
+.material-icons {
+  color: $color-accent;
+  font-size: 16px;
+  margin-left: 5px;
+  margin-right: 5px;
 }

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Nataliia Valko",
+    "position": "team-lead",
+    "meta": "all"
+  },
+  {
+    "name": "Nikolay Mosalov",
+    "position": "scrum-master",
+    "meta": "all"
+  },
+  {
+    "name": "Hennadiy Mariev",
+    "position": "developer",
+    "meta": "header"
+  },
+  {
+    "name": "Volodimir Marchuk",
+    "position": "developer",
+    "meta": "all"
+  },
+  {
+    "name": "Alexei Voloshin",
+    "position": "developer",
+    "meta": "functional"
+  },
+  {
+    "name": "Mykola Kolesnyk",
+    "position": "developer",
+    "meta": "modal window "
+  },
+  {
+    "name": "Vitaliy Vovk",
+    "position": "developer",
+    "meta": "footer"
+  }
+]

@@ -1,0 +1,171 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+
+  &.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.button-close {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 15px;
+  right: 15px;
+  border: 0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid $color-accent-secondary;
+}
+.button-close > .material-icons {
+  font-size: 24px;
+  color: $color-accent-secondary;
+}
+
+.modal-team {
+  background-color: transparent;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 100%;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -350%);
+  transition: transform 12000ms linear;
+
+  @media screen and(min-width: $tablet) {
+    width: 700px;
+  }
+
+  @media (min-width: $desktop) {
+    width: 840px;
+  }
+
+  .modal-backdrop.is-hidden & {
+    transform: translate(-50%, 100%);
+  }
+
+  &__title {
+    text-align: center;
+    color: $color-accent-secondary;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.147;
+    letter-spacing: 0.04em;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+
+    @media (min-width: $tablet) {
+      font-size: 34px;
+      margin-bottom: 16px;
+    }
+    @media (min-width: $desktop) {
+      font-size: 58px;
+    }
+  }
+
+  &__appeal {
+    text-align: center;
+    color: $color-accent-secondary;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.166;
+    letter-spacing: 0em;
+
+    margin-bottom: 6px;
+
+    @media (min-width: $tablet) {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    @media (min-width: $desktop) {
+      font-size: 30px;
+      margin-bottom: 12px;
+    }
+  }
+
+  &__name {
+    text-align: center;
+    color: $color-accent-secondary;
+
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.166;
+    letter-spacing: 0em;
+    margin-bottom: 15px;
+
+    @media (min-width: $tablet) {
+      font-size: 34px;
+      margin-bottom: 20px;
+    }
+    @media (min-width: $desktop) {
+      font-size: 58px;
+      margin-bottom: 25px;
+    }
+  }
+
+  &__list {
+    padding: 0 10px;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 20px;
+    @media (min-width: $desktop) {
+      margin-bottom: 28px;
+    }
+    @media (min-width: $desktop) {
+      margin-bottom: 38px;
+    }
+  }
+
+  &__position {
+    margin-bottom: 0;
+    color: $color-accent-secondary;
+    font-size: 20px;
+
+    @media (min-width: $tablet) {
+      font-size: 26px;
+    }
+    @media (min-width: $desktop) {
+      font-size: 44px;
+    }
+  }
+}
+
+.modal-team__meta {
+  color: $color-accent-secondary;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.166;
+  letter-spacing: 0em;
+
+  text-align: center;
+
+  @media (min-width: $tablet) {
+    font-size: 18px;
+  }
+  @media (min-width: $desktop) {
+    font-size: 30px;
+  }
+}
