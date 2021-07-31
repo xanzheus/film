@@ -1,25 +1,6 @@
 import RequestService from './request.service';
 const requestService = new RequestService();
 
-// ****ДЛЯ ТЕСТА - ПОСЛЕ ПРОВЕРКИ УДАЛИТЬ ****
-// добавил тестово кнопки и див (типа карточки)
-// все данные в функцию из кнопок и карточки
-document
-  .querySelector('.result')
-  .insertAdjacentHTML(
-    'beforebegin',
-    "<div class  = 'modal-buttons' data-id='638449'> <button class = 'modal-button' data-value = 'watch'> add to Watched</button>    <button class = 'modal-button' data-value = 'queue'>add to queue</button></div>",
-  );
-const modalButtonsDiv = document.querySelector('.modal-buttons');
-
-modalButtonsDiv.addEventListener('click', e => {
-  console.log(e.target.dataset.value);
-  buttonValue = e.target.dataset.value;
-  cardId = e.currentTarget.dataset.id;
-  addDataToLocalStorage();
-});
-// *************КОНЕЦ ТЕСТА*************************************************
-
 // Library of values (watch or queue)
 const localStorageLibrary = {
   watch: [],
