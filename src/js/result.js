@@ -7,8 +7,15 @@ import { getCardsMarkup } from './hover-responsive';
 import { cardMoreLoad } from './cardLoadNextTpl.js';
 import { setLibraryToLocalStorage } from './local-storage';
 import { renderPaginationTrandingMovie, renderPaginationSearchMovie } from './pagination';
+import { showLoader } from './_loader';
+import { changeCursor } from './_magicMouse';
 
 const requestService = new RequestService();
+
+changeCursor();
+const addClass = (ref, newClass) => {
+  ref.classList.add(newClass);
+}
 
 const onErrorMessage = (error) => {
   console.log(error)
@@ -78,7 +85,6 @@ let genresList;
 
 const setGenresList = array => {
   genresList = [...array];
-  renderingTrendingCardsList();
 };
 
 const makeValidatesGenreName = array => {
@@ -127,8 +133,9 @@ const clearCardsList = () => {
 };
 
 const renderingTrendingCardsList = () => {
-  clearCardsList();
-  requestService
+  // clearCardsList();
+  // showLoader();
+ requestService
     .getTrendingMovies()
     .then(addPaginationTranding)
     .then(setResults)
@@ -138,7 +145,8 @@ const renderingTrendingCardsList = () => {
     .then(makeValidatesGenreName)
     .then(makeMarkupTrandingCardsList)
     .then(makeMarkupCardMoreLoad)
-    .catch(onErrorMessage)
+    .then(addClass(refs.loader, 'is-hidden'))
+    .catch(onErrorMessage);
 };
 
 const renderingLibraryCardsList = () => {
@@ -164,7 +172,16 @@ const renderingSearchCardsList = searchQuery => {
     .catch(onErrorMessage)
 };
 
-makeGenresList();
+const homePageLoad = () => {
+  makeGenresList();
+  clearCardsList();
+  showLoader();
+  setTimeout(renderingTrendingCardsList, 300);
+
+}
+
+// makeGenresList();
+homePageLoad();
 
 export {
   setResults,
