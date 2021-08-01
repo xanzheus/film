@@ -1,4 +1,5 @@
 import refs from './refs';
+import { addClassToElement, removeClassFromElement } from './actions-functions';
 
 const {homeLink, libraryLink, header, watchedButton, queueButton, controlWrapper, searchWrapper} = refs;
 
@@ -10,45 +11,42 @@ const CONTROL_ACTIVE_CLASS = 'button-box__button--active';
 const addAndRemoveClassesFromHeaderOnHomeLinkClickMentorFavoriteFunction = (event) => {
     event.preventDefault();
 
-    libraryLink.classList.remove(NAVIGATION_CURRENT_CLASS);
-    homeLink.classList.add(NAVIGATION_CURRENT_CLASS);
-    header.classList.remove(AUTHORIZED_CLASS);
+    removeClassFromElement(libraryLink, NAVIGATION_CURRENT_CLASS);
+    addClassToElement(homeLink, NAVIGATION_CURRENT_CLASS);
+    removeClassFromElement(header, AUTHORIZED_CLASS);
 
-    controlWrapper.classList.add(NON_DISPLAYED_CLASS);
-    searchWrapper.classList.remove(NON_DISPLAYED_CLASS);
+    addClassToElement(controlWrapper, NON_DISPLAYED_CLASS);
+    removeClassFromElement(searchWrapper, NON_DISPLAYED_CLASS);
 
-    watchedButton.classList.remove(CONTROL_ACTIVE_CLASS);
-    queueButton.classList.remove(CONTROL_ACTIVE_CLASS);
+    removeClassFromElement(watchedButton, CONTROL_ACTIVE_CLASS);
+    removeClassFromElement(queueButton, CONTROL_ACTIVE_CLASS);
 };
 
 const addAndRemoveClassesFromHeaderOnLibraryLinkClick = (event) => {
     event.preventDefault();
 
-    libraryLink.classList.add(NAVIGATION_CURRENT_CLASS);
-    homeLink.classList.remove(NAVIGATION_CURRENT_CLASS);
-    header.classList.add(AUTHORIZED_CLASS);
+    addClassToElement(libraryLink, NAVIGATION_CURRENT_CLASS);
+    removeClassFromElement(homeLink, NAVIGATION_CURRENT_CLASS);
 
-    controlWrapper.classList.remove(NON_DISPLAYED_CLASS);
-    searchWrapper.classList.add(NON_DISPLAYED_CLASS);
+    addClassToElement(header, AUTHORIZED_CLASS);
+
+    removeClassFromElement(controlWrapper, NON_DISPLAYED_CLASS);
+    addClassToElement(searchWrapper, NON_DISPLAYED_CLASS);
 };
 
 const addAndRemoveClassesFromHeaderOnWatchedLinkClick = (event) => {
     event.preventDefault();
 
-    watchedButton.classList.add(CONTROL_ACTIVE_CLASS);
-    queueButton.classList.remove(CONTROL_ACTIVE_CLASS);
+    addClassToElement(watchedButton, CONTROL_ACTIVE_CLASS);
+    removeClassFromElement(queueButton, CONTROL_ACTIVE_CLASS);
 };
 
 const addAndRemoveClassesFromHeaderOnQueueLinkClick = (event) => {
     event.preventDefault();
 
-    queueButton.classList.add(CONTROL_ACTIVE_CLASS);
-    watchedButton.classList.remove(CONTROL_ACTIVE_CLASS);
+    addClassToElement(queueButton, CONTROL_ACTIVE_CLASS);
+    removeClassFromElement(watchedButton, CONTROL_ACTIVE_CLASS);
 };
-
-console.log(homeLink);
-console.log(libraryLink);
-
 
 homeLink.addEventListener('click', addAndRemoveClassesFromHeaderOnHomeLinkClickMentorFavoriteFunction);
 libraryLink.addEventListener('click', addAndRemoveClassesFromHeaderOnLibraryLinkClick);
