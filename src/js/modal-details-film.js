@@ -84,16 +84,16 @@ const doActionsShowModal = function (markup) {
 
   // console.log(refs.currentCardId);
 
-  // const chekWatchButtonValue = function(){
-  //     const watch = getDataFromLocalStorage('watch');
-  //     const matchedElement  = watch.find(el=>{return el.id ===Number(refs.currentCardId)})
-  //         if(matchedElement){
-  //     refs.buttonWatch.innerText = 'REMOVE FROM WATCHED';
-  //     }
+  const chekWatchButtonValue = function(){
+      const watch = getDataFromLocalStorage('watch');
+      const matchedElement  = watch.find(el=>{return el.id ===Number(refs.currentCardId)})
+          if(matchedElement){
+      refs.buttonWatch.innerText = 'REMOVE FROM WATCHED';
+      }
 
-  // }
+  }
 
-  // chekWatchButtonValue();
+  chekWatchButtonValue();
 
   refs.modalBox.addEventListener('click', e => {
     const buttonLabel = e.target.innerText; //Текст на кнопке
