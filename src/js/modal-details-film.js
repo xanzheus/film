@@ -66,17 +66,16 @@ const doActionsShowModal = function (markup) {
     console.log(refs.currentCardId);
 
 
-    const chekButtonValue = function(){
+    const chekWatchButtonValue = function(){
         const watch = getDataFromLocalStorage('watch');
         const matchedElement  = watch.find(el=>{return el.id ===Number(refs.currentCardId)})
-        console.log(matchedElement);
-        if(matchedElement){
+            if(matchedElement){
         refs.buttonWatch.innerText = 'REMOVE FROM WATCHED';
         }
 
     }
 
-    chekButtonValue();
+    chekWatchButtonValue();
 
     
     refs.modalBox.addEventListener('click', e=>{
