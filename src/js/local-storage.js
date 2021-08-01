@@ -7,8 +7,8 @@ const localStorageLibrary = {
   queue: [],
 };
 
-let buttonValue = 'queue';
-let cardId;
+let buttonValue = 'watch';
+
 
 // ** FUNCTION: GET DATA FROM LOCAL STORAGE  **//
 const getDataFromLocalStorage = function (value) {
@@ -16,10 +16,7 @@ const getDataFromLocalStorage = function (value) {
 };
 
 /// ** FUNCTION: ADD DATA TO LOCAL STORAGE  **//
-const addDataToLocalStorage = function (currentCardId = 617502) {
-  // *for test  currentCardId = cardId;
-  currentCardId = cardId;
-
+const addDataToLocalStorage = function (currentCardId) {
   requestService
     .getDescriptionMovie(currentCardId)
     .then(createShortlibraryOfValues)
@@ -55,6 +52,18 @@ const setLibraryToLocalStorage = function (library) {
   return localStorage;
 };
 
+
+// **Remove film from localStorage for button(remove from...)
+const removeFromLibrary = function (val, curId){
+  const libraryFromLocalStorage = JSON.parse(localStorage.getItem(val));
+  const newAr = libraryFromLocalStorage.filter(n=>{
+    return n.id !==Number(curId);
+  });
+  localStorage.setItem(val, JSON.stringify(newAr));
+}
+
+
+
 // ** просто ПРОВЕРКи **//
 // addDataToLocalStorage();
 // addDataToLocalStorage(379686);
@@ -66,4 +75,4 @@ const setLibraryToLocalStorage = function (library) {
 // console.log(getDataFromLocalStorage('watch'));
 // console.log(getDataFromLocalStorage('queue'));
 
-export {addDataToTheLibrary, setLibraryToLocalStorage}
+export {addDataToLocalStorage,  getDataFromLocalStorage, removeFromLibrary}

@@ -5,8 +5,14 @@ import requestService from './request.service';
 import { makeMarkup } from './modal-details-film-tpl';
 import { ShowTrailer } from './_trailer_to_film';
 
-const getMoreDetailfilm = function ({title, poster_path, vote_average, vote_count, popularity, original_title, overview,genres}) {
+// *alex
+import  {addDataToLocalStorage, removeFromLibrary, getDataFromLocalStorage }  from './local-storage';
+
+//*end
+
+const getMoreDetailfilm = function ({id, title, poster_path, vote_average, vote_count, popularity, original_title, overview,genres}) {
     const descriptionFilm = {}
+    descriptionFilm.id = id;
     descriptionFilm.title = title;
     descriptionFilm.poster_path = poster_path;
     descriptionFilm.vote_average = vote_average.toFixed(1);
@@ -50,6 +56,57 @@ const doActionsShowModal = function (markup) {
     refs.modalDetailsFilmButtonClose = refs.modalDetailsFilm.querySelector('.modal .btn__close');
 
     refs.modalDetailsFilmButtonClose.addEventListener('click', closeModalDetails);
+
+// *alex start
+    refs.modalBox = document.querySelector('.modal__box');
+    refs.currentCardId = refs.modalBox.getAttribute('data-id');
+    refs.buttonWatch = document.querySelector('[data-anchor="watch"]');
+    refs.buttonQueue = document.querySelector('[data-anchor="queue"]');
+    
+    console.log(refs.currentCardId);
+
+
+    const chekButtonValue = function(){
+        const watch = getDataFromLocalStorage('watch');
+        const matchedElement  = watch.find(el=>{return el.id ===Number(refs.currentCardId)})
+        console.log(matchedElement);
+        if(matchedElement){
+        refs.buttonWatch.innerText = 'REMOVE FROM WATCHED';
+        }
+
+    }
+
+    chekButtonValue();
+
+    
+    refs.modalBox.addEventListener('click', e=>{
+
+        const buttonLabel = e.target.innerText; //Текст на кнопке
+        const currentCardId = e.currentTarget.getAttribute('data-id') //id текущей краты
+        const btnValue = e.target.getAttribute('data-anchor'); //значение data-anchor
+
+        if(buttonLabel === 'ADD TO WATCHED' ){
+             e.target.innerText = 'REMOVE FROM WATCHED'
+              addDataToLocalStorage(currentCardId)
+        }
+         
+        if (buttonLabel === 'REMOVE FROM WATCHED' ){
+             e.target.innerText = 'ADD TO WATCHED'
+             removeFromLibrary(btnValue, currentCardId)
+        }
+
+        if(buttonLabel === 'ADD TO QUEUE'){
+             e.target.innerText = 'REMOVE FROM QUEUE'
+             addDataToLocalStorage(currentCardId, currentCardId)
+        }
+
+        if(buttonLabel === 'REMOVE FROM QUEUE' ){
+             e.target.innerText = 'ADD TO QUEUE'
+        }
+})
+
+//* end alex
+    
 }
 
 const getModalId = function (e) {

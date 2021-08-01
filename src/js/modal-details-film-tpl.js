@@ -47,7 +47,7 @@
 
                      <ul class="buttons__list list">
             <li class="buttons__item">
-                <button class="buttons__modal buttons__modal--accent" data-anchor="watched">
+                <button class="buttons__modal buttons__modal--accent" data-anchor="watch">
                     Add to watched
                 </button>
             </li>        
