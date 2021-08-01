@@ -76,6 +76,7 @@ a.tui-page-btn.tui-first {
   background-color: $color-accent-secondary;
 }
 
-.tui-page-btn a.tui-prev-is-ellip .tui-first-child {
+.tui-page-btn a.tui-prev-is-ellip .tui-first-child,
+.tui-pagination.hidden {
   display: none;
 }
