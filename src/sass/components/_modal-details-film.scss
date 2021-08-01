@@ -1,23 +1,30 @@
+// BACKDROP
+
+.basicLightbox.basicLightbox--visible {
+overflow-y: auto;
+display: block;
+}
 // MODAL
 
 .modal{
-  position: relative;
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  transform: translate(-50%, 0);
   width: 280px;
-  height: 95vh;
-  background-color: #fff;
-  overflow-y: auto;
+  background-color: $color-light-main;
   padding: 48px 20px 41px;
 
   @media screen and (min-width: $tablet) {
     width: 618px;
     padding: 42px 30px 40px 28px;
-  
+    top: 80px; 
   }
 
   @media screen and (min-width: $desktop) {
     width: 882px;
     padding: 50px 30px 41px;
-    
+
   }
 }
 
@@ -94,9 +101,11 @@
   display: flex;  
   justify-content: center;
   align-items: center;
-  width: 36px;
+  min-width: 36px;
   height: 16px;
   border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 .description__bg--accent {
