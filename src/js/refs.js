@@ -1,5 +1,6 @@
 export default {
   resultAnchor: document.querySelector('[data-anchor="result"]'),
+  loader: document.querySelector('.whirly-loader__wrapper'),
   ftBtnEl: document.querySelector('.button-close'),
   ftBackdropEl: document.querySelector('.modal-backdrop'),
   ftLinkEl: document.querySelector('.footer__link'),
@@ -8,4 +9,13 @@ export default {
   modalDetailsFilmButtonClose: '',
   modalBackdrop: '',
   paginationAnchorRef: document.getElementById('tui-pagination-container'),
+  searchInput: document.getElementById('search-input'),
+  inputButton: document.querySelector('.search__button'),
+  homeLink: document.querySelector('#home-link'),
+  libraryLink: document.querySelector('#library-link'),
+  header: document.querySelector('header'),
+  watchedButton: document.querySelector('#watched-button'),
+  queueButton: document.querySelector('#queue-button'),
+  controlWrapper: document.querySelector('.button-box__wrapper'),
+  searchWrapper: document.querySelector('.search__wrapper'),
 };
