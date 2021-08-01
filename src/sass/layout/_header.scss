@@ -190,6 +190,16 @@
     height: 3px;
 
     background-color: $color-accent;
+    animation: accent-link-animation $time-main $timing-function-main;
+  }
+
+  @keyframes accent-link-animation {
+    0% {
+      transform: translateY(0) scaleX(0.1);
+    }
+    100% {
+      transform: scaleX(1);
+    }
   }
 
   &__link:hover,
