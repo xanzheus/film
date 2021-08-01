@@ -1,0 +1,22 @@
+.btn-shine {
+  background: linear-gradient(90deg, #000, #fff, #000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-repeat: no-repeat;
+  background-size: 95%;
+  animation: shine 2s linear infinite alternate;
+  // animation-direction: alternate;
+  position: relative;
+}
+
+@keyframes shine {
+  0% {
+    background-position-x: -700%;
+
+  }
+
+  100% {
+    background-position-x: 700%;
+  }
+}
