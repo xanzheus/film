@@ -45,6 +45,12 @@ export function renderPaginationTrandingMovie(totalItems) {
 }
 
 export function renderPaginationSearchMovie(query, totalItems) {
+  if (totalItems === 1) {
+    refs.paginationAnchorRef.classList.add('hidden');
+  } else {
+    refs.paginationAnchorRef.classList.remove('hidden');
+  }
+
   if (query === '') {
     console.log('Error: Empty searchQuery');
     return;

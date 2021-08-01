@@ -16,11 +16,11 @@ const requestService = new RequestService();
 changeCursor();
 const addClass = (ref, newClass) => {
   ref.classList.add(newClass);
-}
+};
 
-const onErrorMessage = (error) => {
-  console.log(error)
-}
+const onErrorMessage = error => {
+  console.log(error);
+};
 
 const addPaginationTranding = data => {
   if (data.total_pages > 1) {
@@ -30,10 +30,8 @@ const addPaginationTranding = data => {
 };
 
 const addPaginationSearch = data => {
-  if (data.total_pages > 1) {
-    const searchQuery = refs.searchInput.value;
-    renderPaginationSearchMovie(searchQuery, data.total_pages);
-  }
+  const searchQuery = refs.searchInput.value;
+  renderPaginationSearchMovie(searchQuery, data.total_pages);
   return data;
 };
 
@@ -67,14 +65,14 @@ const makefilterObject = ({
   release_date,
   vote_average,
 }) => {
-    const newObject = {};
-    newObject.poster_path = poster_path;
-    newObject.genre_ids = genre_ids;
-    newObject.id = id;
-    newObject.original_title = original_title;
-    newObject.release_date = release_date;
-    newObject.vote_average = vote_average.toFixed(1);
-    return newObject;
+  const newObject = {};
+  newObject.poster_path = poster_path;
+  newObject.genre_ids = genre_ids;
+  newObject.id = id;
+  newObject.original_title = original_title;
+  newObject.release_date = release_date;
+  newObject.vote_average = vote_average.toFixed(1);
+  return newObject;
 };
 
 const makefilterObjects = array => {
@@ -90,15 +88,17 @@ const setGenresList = array => {
 
 const makeValidatesGenreName = array => {
   array.forEach(object => {
-    if(object.genre_ids) {
+    if (object.genre_ids) {
       object.genre_ids.forEach((idGenre, indexGenre) => {
-      genresList.forEach(objectNames => {
-        if (objectNames.id === idGenre) {
-          object.genre_ids.splice(indexGenre, 1, objectNames['name']);
-        }
+        genresList.forEach(objectNames => {
+          if (objectNames.id === idGenre) {
+            object.genre_ids.splice(indexGenre, 1, objectNames['name']);
+          }
+        });
       });
-    })} else {
-      object.genre_ids = ''}
+    } else {
+      object.genre_ids = '';
+    }
   });
 
   return array;
@@ -109,22 +109,19 @@ const makeGenresList = () => {
 };
 
 const setValidatesPosterPath = array => {
-
-    array.forEach(object => {
-      object.poster_path = object.poster_path
+  array.forEach(object => {
+    object.poster_path = object.poster_path
       ? requestService.getPrefixUrlImg(object.poster_path)
-      // : "https://more-show.ru/upload/not-a/vailable.png"
-      :'https://live.staticflickr.com/65535/51349451747_f6d7898f2c_n.jpg';
-    });
-    // console.log(array)
-    return array;
+      : // : "https://more-show.ru/upload/not-a/vailable.png"
+        'https://live.staticflickr.com/65535/51349451747_f6d7898f2c_n.jpg';
+  });
+  // console.log(array)
+  return array;
 };
 
 const setValidatesReleaseDate = array => {
   array.forEach(object => {
-    object.release_date = object.release_date
-    ? makeValidatesReleaseDate(object.release_date)
-    : '';
+    object.release_date = object.release_date ? makeValidatesReleaseDate(object.release_date) : '';
   });
 
   return array;
@@ -137,7 +134,7 @@ const clearCardsList = () => {
 const renderingTrendingCardsList = () => {
   // clearCardsList();
   // showLoader();
- requestService
+  requestService
     .getTrendingMovies()
     .then(addPaginationTranding)
     .then(setResults)
@@ -172,7 +169,7 @@ const renderingSearchCardsList = searchQuery => {
     .then(makeMarkupLibraryCardsList)
     .then(makeMarkupCardMoreLoad)
     .then(clearSearchInput)
-    .catch(onErrorMessage)
+    .catch(onErrorMessage);
 };
 
 const homePageLoad = () => {
@@ -180,8 +177,7 @@ const homePageLoad = () => {
   clearCardsList();
   showLoader();
   setTimeout(renderingTrendingCardsList, 400);
-
-}
+};
 
 // makeGenresList();
 homePageLoad();
