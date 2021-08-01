@@ -7,27 +7,29 @@ const localStorageLibrary = {
   queue: [],
 };
 
-// let btnValue = 'watch';
+let btnValue;
 
+const getBtnValue = value => {
+  btnValue = value;
+};
 
 // ** FUNCTION: GET DATA FROM LOCAL STORAGE  **//
 const getDataFromLocalStorage = function (value) {
   return JSON.parse(localStorage.getItem(value));
 };
 
+const setLibraryToLocalStorage = function (film) {
+  localStorage.setItem(btnValue, JSON.stringify(film));
+  return localStorage;
+};
+
 /// ** FUNCTION: ADD DATA TO LOCAL STORAGE  **//
-const addDataToLocalStorage = function (currentCardId, btnVal) {
-  // const btnValue = btnVal;
+const addDataToLocalStorage = function (currentCardId) {
   requestService
     .getDescriptionMovie(currentCardId)
     .then(createShortlibraryOfValues)
-    .then(res =>{addDataToTheLibrary(res, btnVal)})
-    .then(res =>{
-      console.log(res);
-      setLibraryToLocalStorage(res, btnVal)
-      
-      });
-    // console.log(btnVal);
+    .then(addDataToTheLibrary)
+    .then(setLibraryToLocalStorage);
 };
 
 const createShortlibraryOfValues = function (film) {
@@ -39,7 +41,7 @@ const createShortlibraryOfValues = function (film) {
   return libraryOfValues;
 };
 
-const addDataToTheLibrary = function (film, btnValue) {
+const addDataToTheLibrary = function (film) {
   console.log(film);
   localStorageLibrary[btnValue].push(film);
 
@@ -54,22 +56,14 @@ const addDataToTheLibrary = function (film, btnValue) {
   return uniqueArr;
 };
 
-const setLibraryToLocalStorage = function (library, btnValue) {
-  localStorage.setItem(btnValue, JSON.stringify(library));
-  return localStorage;
-};
-
-
 // **Remove film from localStorage for button(remove from...)
-const removeFromLibrary = function (val, curId){
+const removeFromLibrary = function (val, curId) {
   const libraryFromLocalStorage = JSON.parse(localStorage.getItem(val));
-  const newAr = libraryFromLocalStorage.filter(n=>{
-    return n.id !==Number(curId);
+  const newAr = libraryFromLocalStorage.filter(n => {
+    return n.id !== Number(curId);
   });
   localStorage.setItem(val, JSON.stringify(newAr));
-}
-
-
+};
 
 // ** просто ПРОВЕРКи **//
 // addDataToLocalStorage();
@@ -82,4 +76,4 @@ const removeFromLibrary = function (val, curId){
 // console.log(getDataFromLocalStorage('watch'));
 // console.log(getDataFromLocalStorage('queue'));
 
-export {addDataToLocalStorage,  getDataFromLocalStorage, removeFromLibrary}
+export { addDataToLocalStorage, getDataFromLocalStorage, removeFromLibrary, getBtnValue };
