@@ -18,4 +18,5 @@ export default {
   queueButton: document.querySelector('#queue-button'),
   controlWrapper: document.querySelector('.button-box__wrapper'),
   searchWrapper: document.querySelector('.search__wrapper'),
+  errorWrapper: document.querySelector('.error-box__wrapper'),
 };
