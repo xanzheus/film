@@ -54,6 +54,7 @@
     margin-bottom: 21px;
 
   @media screen and(min-width:$tablet) {
+    margin-bottom: 0px;
         display: flex;
         justify-content: space-around;
       }
