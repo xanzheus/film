@@ -4,7 +4,7 @@ const options = {
   max: 15,
   speed: 200,
   glare: true,
-  'max-glare': 0.8,
+  'max-glare': 0.4,
   gyroscope: true,
 };
 
