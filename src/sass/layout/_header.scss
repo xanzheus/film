@@ -226,8 +226,16 @@
     background-color: transparent;
     color: $color-light-main;
 
+    transition: $time-main $timing-function-main;
+
     font-size: 14px;
     font-weight: 400;
+  }
+
+  &__input:focus,
+  &__input:hover {
+    outline: none;
+    border-bottom: 2px solid $color-accent;
   }
 
   &__input::placeholder {
@@ -247,7 +255,7 @@
     justify-content: center;
     padding: 0;
 
-    transform: translateY(-50%);
+    transform: translateY(-50%) !important;
     transition: $time-main $timing-function-main;
 
     cursor: pointer;
@@ -257,7 +265,7 @@
 
   &__button:hover,
   &__button:focus {
-    transform: translateY(-50%) scale(1.15);
+    transform: translateY(-50%) scale(1.15) !important;
   }
 
   &__icon {
