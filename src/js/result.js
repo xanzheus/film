@@ -9,6 +9,7 @@ import { setLibraryToLocalStorage } from './local-storage';
 import { renderPaginationTrandingMovie, renderPaginationSearchMovie } from './pagination';
 import { showLoader } from './_loader';
 import { changeCursor } from './_magicMouse';
+import { clearSearchInput } from './clear-search-input';
 
 const requestService = new RequestService();
 
@@ -112,9 +113,10 @@ const setValidatesPosterPath = array => {
     array.forEach(object => {
       object.poster_path = object.poster_path
       ? requestService.getPrefixUrlImg(object.poster_path)
-      : "https://more-show.ru/upload/not-available.png"
+      // : "https://more-show.ru/upload/not-a/vailable.png"
+      :'https://live.staticflickr.com/65535/51349451747_f6d7898f2c_n.jpg';
     });
-    console.log(array)
+    // console.log(array)
     return array;
 };
 
@@ -169,6 +171,7 @@ const renderingSearchCardsList = searchQuery => {
     .then(makeValidatesGenreName)
     .then(makeMarkupLibraryCardsList)
     .then(makeMarkupCardMoreLoad)
+    .then(clearSearchInput)
     .catch(onErrorMessage)
 };
 
@@ -176,7 +179,7 @@ const homePageLoad = () => {
   makeGenresList();
   clearCardsList();
   showLoader();
-  setTimeout(renderingTrendingCardsList, 300);
+  setTimeout(renderingTrendingCardsList, 400);
 
 }
 

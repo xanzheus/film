@@ -14,7 +14,7 @@
     display: flex;
     align-items: baseline;
 
-    margin-bottom: 30px;
+    margin-bottom: 26px;
   }
 
   @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
@@ -120,13 +120,11 @@
   align-items: baseline;
   cursor: pointer;
 
-  padding: 8px 0;
-
   &__icon {
     transition: transform $time-main $timing-function-main;
 
     @media screen and (min-width: $tablet) {
-      margin-right: 10px;
+      margin-right: 2px;
     }
   }
 
@@ -136,6 +134,8 @@
     font-family: $font-family-main;
     color: $color-light-main;
 
+    padding: 8px;
+
     display: none;
     transition: $time-main $timing-function-main;
 
@@ -144,10 +144,10 @@
     }
   }
 
-  &:hover .logo__link,
-  &:focus .logo__link {
-    color: $color-text-secondary;
-  }
+  // &:hover .logo__link,
+  // &:focus .logo__link {
+  //   transform: scale(1.15);
+  // }
 
   &:hover .logo__icon,
   &:focus .logo__icon {
@@ -164,7 +164,7 @@
   }
 
   &__item:not(:last-child) {
-    margin-right: 39px;
+    margin-right: 23px;
   }
 
   &__link {
@@ -178,7 +178,7 @@
     font-weight: 500;
     font-size: 12px;
 
-    padding: 8px 0;
+    padding: 8px;
 
     transition: $time-main $timing-function-main;
   }
@@ -194,7 +194,7 @@
 
   &__link:hover,
   &__link:focus {
-    color: $color-text-secondary;
+    text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
   }
 }
 
@@ -214,9 +214,11 @@
     width: 100%;
     height: 20px;
 
-    padding: 4px 0;
+    position: relative;
 
-    display: flex;
+    padding: 4px 4px 4px 2px;
+
+    display: block;
     flex-direction: column;
 
     border: 0;
@@ -226,8 +228,30 @@
     background-color: transparent;
     color: $color-light-main;
 
+    transition: $time-main $timing-function-main;
+
     font-size: 14px;
     font-weight: 400;
+  }
+
+  // &__input::after {
+  //   content: '';
+  //   position: absolute;
+
+  //   top: 0;
+  //   left: 0;
+
+  //   width: 100%;
+  //   height: 2px;
+  //   background-color: $color-light-main;
+  //   border: 1px solid $color-light-main;
+  //   color: $color-light-main;
+  // }
+
+  &__input:focus,
+  &__input:hover {
+    outline: none;
+    border-bottom: 1px solid $color-accent;
   }
 
   &__input::placeholder {
@@ -237,17 +261,17 @@
   &__button {
     position: absolute;
     top: 50%;
-    right: 0;
+    right: -5px;
 
-    width: 12px;
-    height: 12px;
+    width: 22px;
+    height: 22px;
 
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0;
 
-    transform: translateY(-50%);
+    transform: translateY(-50%) !important;
     transition: $time-main $timing-function-main;
 
     cursor: pointer;
@@ -257,7 +281,7 @@
 
   &__button:hover,
   &__button:focus {
-    transform: translateY(-50%) scale(1.15);
+    transform: translateY(-50%) scale(1.25) !important;
   }
 
   &__icon {
@@ -268,7 +292,9 @@
 }
 
 .error-box {
+  &__wrapper {
     margin-top: 22px;
+  }
 
   &__message {
     font-family: $font-family-main;
@@ -284,52 +310,52 @@
 }
 
 .button-box {
-    &__wrapper {
-        display: flex;
-        justify-content: center;
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button {
+    width: 136px;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 14px 0;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    color: $color-light-main;
+    background-color: $color-accent;
+
+    border: 1px solid $color-accent;
+    border-radius: 5px;
+
+    transition: $time-main $timing-function-main;
+
+    @media screen and (min-width: $tablet) {
+      padding: 14px 38px;
     }
+  }
 
-    &__button {
-        width: 136px;
+  &__button:not(:last-child) {
+    margin-right: 20px;
+  }
 
-        display: flex;
-        justify-content: center;
+  &__button:hover,
+  &__button:focus {
+    text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
+  }
 
-        padding: 14px 0;
-
-        font-family: inherit;
-        font-size: 12px;
-        font-weight: 500;
-        text-transform: uppercase;
-
-        color: $color-light-main;
-        background-color: $color-accent;
-
-        border: 1px solid $color-accent;
-        border-radius: 5px;
-
-        transition: $time-main $timing-function-main;
-
-        @media screen and (min-width: $tablet) {
-            padding: 14px 38px;
-        }
-    }
-
-    &__button:not(:last-child) {
-        margin-right: 20px;
-    }
-
-    &__botton:hover,
-    &__button:focus {
-        color: $color-text-secondary;
-    }
-
-    &__button--active {
-        border: 1px solid $color-light-main;
-        background-color: transparent;
-    }
+  &__button--active {
+    border: 1px solid $color-light-main;
+    background-color: transparent;
+  }
 }
 
 .non-displayed {
-    display: none;
-  }
+  display: none;
+}

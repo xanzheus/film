@@ -44,6 +44,23 @@ const getMoreDetailfilm = function ({
 };
 
 let target = '';
+
+const getMoreDetailfilm = function ({id, title, poster_path, vote_average, vote_count, popularity, original_title, overview,genres}) {
+    const descriptionFilm = {}
+    descriptionFilm.id = id;
+    descriptionFilm.title = title;
+    descriptionFilm.poster_path = poster_path;
+    descriptionFilm.vote_average = vote_average.toFixed(1);
+    descriptionFilm.vote_count = vote_count.toFixed(1);
+    descriptionFilm.popularity = popularity.toFixed(1);
+    descriptionFilm.original_title = original_title;
+    descriptionFilm.overview = overview;
+    descriptionFilm.genres = genres.reduce((acc, genre) => { return `${acc}${genre.name}, ` }, '').slice(0, -2);
+    return descriptionFilm
+}
+
+
+
 const showTrailer = new ShowTrailer();
 const request = new requestService();
 
