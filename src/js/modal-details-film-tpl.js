@@ -5,7 +5,7 @@
         <i class="material-icons"> close </i>
     </button>
     
-    <div class="modal__box">
+    <div class="modal__box" data-id="${obj.id}">
         <div class="modal__box-img">
             <img class="modal__poster" src="${obj.poster_path}" alt="${obj.title}">
         </div>
