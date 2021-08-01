@@ -63,30 +63,34 @@ const doActionsShowModal = function (markup) {
     refs.buttonWatch = document.querySelector('[data-anchor="watch"]');
     refs.buttonQueue = document.querySelector('[data-anchor="queue"]');
     
-    console.log(refs.currentCardId);
+    // console.log(refs.currentCardId);
 
 
-    const chekWatchButtonValue = function(){
-        const watch = getDataFromLocalStorage('watch');
-        const matchedElement  = watch.find(el=>{return el.id ===Number(refs.currentCardId)})
-            if(matchedElement){
-        refs.buttonWatch.innerText = 'REMOVE FROM WATCHED';
-        }
+    // const chekWatchButtonValue = function(){
+    //     const watch = getDataFromLocalStorage('watch');
+    //     const matchedElement  = watch.find(el=>{return el.id ===Number(refs.currentCardId)})
+    //         if(matchedElement){
+    //     refs.buttonWatch.innerText = 'REMOVE FROM WATCHED';
+    //     }
 
-    }
+    // }
 
-    chekWatchButtonValue();
+    // chekWatchButtonValue();
 
     
+
+
     refs.modalBox.addEventListener('click', e=>{
 
         const buttonLabel = e.target.innerText; //Текст на кнопке
         const currentCardId = e.currentTarget.getAttribute('data-id') //id текущей краты
         const btnValue = e.target.getAttribute('data-anchor'); //значение data-anchor
 
+console.log(btnValue);
+
         if(buttonLabel === 'ADD TO WATCHED' ){
              e.target.innerText = 'REMOVE FROM WATCHED'
-              addDataToLocalStorage(currentCardId)
+              addDataToLocalStorage(currentCardId, btnValue)
         }
          
         if (buttonLabel === 'REMOVE FROM WATCHED' ){
@@ -96,12 +100,13 @@ const doActionsShowModal = function (markup) {
 
         if(buttonLabel === 'ADD TO QUEUE'){
              e.target.innerText = 'REMOVE FROM QUEUE'
-             addDataToLocalStorage(currentCardId, currentCardId)
+             addDataToLocalStorage(currentCardId, btnValue)
         }
 
         if(buttonLabel === 'REMOVE FROM QUEUE' ){
              e.target.innerText = 'ADD TO QUEUE'
-        }
+             removeFromLibrary(btnValue, currentCardId)
+    }
 })
 
 //* end alex

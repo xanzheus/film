@@ -7,7 +7,7 @@ const localStorageLibrary = {
   queue: [],
 };
 
-let buttonValue = 'watch';
+// let btnValue = 'watch';
 
 
 // ** FUNCTION: GET DATA FROM LOCAL STORAGE  **//
@@ -16,12 +16,18 @@ const getDataFromLocalStorage = function (value) {
 };
 
 /// ** FUNCTION: ADD DATA TO LOCAL STORAGE  **//
-const addDataToLocalStorage = function (currentCardId) {
+const addDataToLocalStorage = function (currentCardId, btnVal) {
+  // const btnValue = btnVal;
   requestService
     .getDescriptionMovie(currentCardId)
     .then(createShortlibraryOfValues)
-    .then(addDataToTheLibrary)
-    .then(setLibraryToLocalStorage);
+    .then(res =>{addDataToTheLibrary(res, btnVal)})
+    .then(res =>{
+      console.log(res);
+      setLibraryToLocalStorage(res, btnVal)
+      
+      });
+    // console.log(btnVal);
 };
 
 const createShortlibraryOfValues = function (film) {
@@ -33,10 +39,11 @@ const createShortlibraryOfValues = function (film) {
   return libraryOfValues;
 };
 
-const addDataToTheLibrary = function (film) {
-  localStorageLibrary[buttonValue].push(film);
+const addDataToTheLibrary = function (film, btnValue) {
+  console.log(film);
+  localStorageLibrary[btnValue].push(film);
 
-  const arr = localStorageLibrary[buttonValue];
+  const arr = localStorageLibrary[btnValue];
   let uniqueArr = arr.reduce((unique, current) => {
     if (!unique.some(obj => obj.id === current.id)) {
       unique.push(current);
@@ -47,8 +54,8 @@ const addDataToTheLibrary = function (film) {
   return uniqueArr;
 };
 
-const setLibraryToLocalStorage = function (library) {
-  localStorage.setItem(buttonValue, JSON.stringify(library));
+const setLibraryToLocalStorage = function (library, btnValue) {
+  localStorage.setItem(btnValue, JSON.stringify(library));
   return localStorage;
 };
 
