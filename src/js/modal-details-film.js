@@ -5,8 +5,9 @@ import requestService from './request.service';
 import { makeMarkup } from './modal-details-film-tpl';
 import { ShowTrailer } from './_trailer_to_film';
 
-const getMoreDetailfilm = function ({title, poster_path, vote_average, vote_count, popularity, original_title, overview,genres}) {
+const getMoreDetailfilm = function ({id, title, poster_path, vote_average, vote_count, popularity, original_title, overview,genres}) {
     const descriptionFilm = {}
+    descriptionFilm.id = id;
     descriptionFilm.title = title;
     descriptionFilm.poster_path = poster_path;
     descriptionFilm.vote_average = vote_average.toFixed(1);
