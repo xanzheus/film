@@ -47,12 +47,12 @@
 
                      <ul class="buttons__list list">
             <li class="buttons__item">
-                <button class="buttons__modal buttons__modal--accent data-anchor="watched"">
+                <button class="buttons__modal buttons__modal--accent" data-anchor="watched">
                     Add to watched
                 </button>
             </li>        
             <li class="buttons__item">
-                <button class="buttons__modal buttons__modal--secondary data-anchor="queue"">
+                <button class="buttons__modal buttons__modal--secondary" data-anchor="queue">
                     Add to queue
                 </button>
             </li>        
