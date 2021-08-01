@@ -1,43 +1,43 @@
 <header class="header">
-    <div class="container">
-        <div class="header__wrapper">
-            <div class="logo">
-                <svg class="logo__icon" width="24" height="24" aria-label="Logotype">
-                    <use href="/images/sprite.svg#icon-logo"></use>
-                  </svg>
-                  <a class="logo__link link" href="#">Filmoteka</a>
-            </div>
-    
-            <nav class="navigation">
-                <ul class="navigation__list list">
-                    <li class="navigation__item">
-                        <a href="#" class="navigation__link link navigation__link--current" id="home-link">Home</a>
-                    </li>
-                    <li class="navigation__item">
-                        <a href="#" class="navigation__link link" id="library-link">My library</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+  <div class="container">
+    <div class="header__wrapper">
+      <div class="logo">
+        <svg class="logo__icon" width="24" height="24" aria-label="Logotype">
+          <use href="/images/sprite.svg#icon-logo"></use>
+        </svg>
+        <a class="logo__link link btn-shine" href="#">Filmoteka</a>
+      </div>
 
-        <div class="search__wrapper">
-            <input type="text" class="search__input" placeholder="Поиск фильмов" id="search-input">
-            <button type="button" class="search__button">
-                <svg class="search__icon" width="12" height="12" aria-label="Logotype">
-                    <use href="/images/sprite.svg#icon-search"></use>
-                  </svg>
-            </button>
-        </div>
-        <div class="control__wrapper non-displayed">
-            <a href="#" class="control__button link" id="watched-button">
-                Watched
-            </a>
-            <a href="#" class="control__button link" id="queue-button">
-                Queue
-            </a>
-        </div>
-        <div class="result__wrapper non-displayed">
-            <p class="result__message">Search result not successful. Enter the correct movie name and try again.</p>
-        </div>
+      <nav class="navigation">
+        <ul class="navigation__list list">
+          <li class="navigation__item">
+            <a href="#" class="navigation__link link navigation__link--current" id="home-link"
+              >Home</a
+            >
+          </li>
+          <li class="navigation__item">
+            <a href="#" class="navigation__link link" id="library-link">My library</a>
+          </li>
+        </ul>
+      </nav>
     </div>
+
+    <div class="search__wrapper">
+      <input type="text" class="search__input" placeholder="Поиск фильмов" id="search-input" />
+      <button type="button" class="search__button">
+        <svg class="search__icon" width="12" height="12" aria-label="Logotype">
+          <use href="/images/sprite.svg#icon-search"></use>
+        </svg>
+      </button>
+    </div>
+    <div class="control__wrapper non-displayed">
+      <a href="#" class="control__button link" id="watched-button"> Watched </a>
+      <a href="#" class="control__button link" id="queue-button"> Queue </a>
+    </div>
+    <div class="result__wrapper non-displayed">
+      <p class="result__message">
+        Search result not successful. Enter the correct movie name and try again.
+      </p>
+    </div>
+  </div>
 </header>
