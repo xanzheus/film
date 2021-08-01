@@ -9,6 +9,7 @@ import { setLibraryToLocalStorage } from './local-storage';
 import { renderPaginationTrandingMovie, renderPaginationSearchMovie } from './pagination';
 import { showLoader } from './_loader';
 import { changeCursor } from './_magicMouse';
+import { clearSearchInput } from './clear-search-input';
 
 const requestService = new RequestService();
 
@@ -167,6 +168,7 @@ const renderingSearchCardsList = searchQuery => {
     .then(makeValidatesGenreName)
     .then(makeMarkupLibraryCardsList)
     .then(makeMarkupCardMoreLoad)
+    .then(clearSearchInput)
     .catch(onErrorMessage);
 };
 
