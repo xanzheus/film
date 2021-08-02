@@ -148,11 +148,16 @@ const doActionsShowModal = function (markup) {
 };
 
 const getModalId = function (e) {
-  const id = e.target.dataset.id;
-  showTrailer.id = id;
-  getActiveInfo(id);
-  document.body.classList.add('no__scroll');
-};
+    const parentCard = e.target.closest('.card')
+    if (!parentCard) {
+        return
+    }
+    const id = parentCard.dataset.id
+    showTrailer.id = id
+    getActiveInfo(id)
+    document.body.classList.add('no__scroll');
+       
+}
 
 const showModal = function (markup) {
   target = basicLightbox.create(markup);

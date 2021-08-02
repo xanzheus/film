@@ -1,16 +1,17 @@
 import refs from './refs';
-import { renderingSearchCardsList } from './result';
-import { trim } from 'jquery';
+import { loadSearchPage } from './result';
+// import { trim } from 'jquery';
 
-const searchMoviesHandler = () => {
-  const searchQuery = trim(refs.searchInput.value);
+const searchMoviesHandler = (e) => {
+  e.preventDefault()
+  // const searchQuery = trim(refs.searchInput.value);
 
-  if (!searchQuery) {
-    console.log('Empty request. Please enter what you want to find');
-    return;
-  }
+  // if (!searchQuery) {
+  //   console.log('Empty request. Please enter what you want to find');
+  //   return;
+  // }
 
-  renderingSearchCardsList(searchQuery);
+  loadSearchPage();
 };
 
 refs.inputButton.addEventListener('click', searchMoviesHandler);
