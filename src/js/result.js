@@ -50,8 +50,8 @@ const setResults = response => {
 };
 
 const makeMarkupCardMoreLoad = () => {
-  console.log(totalItems)
-  console.log(currentPage)
+  // console.log(totalItems)
+  // console.log(currentPage)
   if(!currentPage && totalItems !== 1 || totalItems !== 1 && currentPage < totalItems) {
   refs.resultAnchor.insertAdjacentHTML('beforeend', cardMoreLoad());}
 };
@@ -169,7 +169,7 @@ const renderingLibraryCardsList = () => {
 
 const renderingSearchCardsList = () => {
   const searchQuery = trim(refs.searchInput.value);
-
+  console.log(searchQuery)
   if (!searchQuery) {
     loadHomePage();
     console.log('Empty request. Please enter what you want to find');
