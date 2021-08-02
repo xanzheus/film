@@ -11,7 +11,7 @@ import { showLoader } from './_loader';
 import { changeCursor } from './_magicMouse';
 import { clearSearchInput } from './clear-search-input';
 import { trim } from 'jquery';
-import {errorStartLoad} from './error-load-page'
+import {addErrorStartLoad, removeErrorStartLoad} from './error-load-page'
 
 const requestService = new RequestService();
 let genresList;
@@ -199,6 +199,7 @@ const loadHomePage = () => {
   clearCardsList();
   removeClassFromElement(refs.loader, 'is-hidden');
   showLoader();
+  removeErrorStartLoad()
   setTimeout(renderingTrendingCardsList, 400);
 };
 
@@ -208,6 +209,7 @@ const loadSearchPage = () => {
   makeGenresList();
   clearCardsList();
   showLoader();
+  removeErrorStartLoad()
   setTimeout(renderingSearchCardsList, 1000);////////
 }
 
