@@ -19,7 +19,6 @@ const addAndRemoveClassesFromHeaderOnHomeLinkClickMentorFavoriteFunction = (even
     addClassToElement(controlWrapper, NON_DISPLAYED_CLASS);
     removeClassFromElement(searchWrapper, NON_DISPLAYED_CLASS);
 
-    removeClassFromElement(watchedButton, CONTROL_ACTIVE_CLASS);
     removeClassFromElement(queueButton, CONTROL_ACTIVE_CLASS);
 };
 
@@ -30,6 +29,7 @@ const addAndRemoveClassesFromHeaderOnLibraryLinkClick = (event) => {
     removeClassFromElement(homeLink, NAVIGATION_CURRENT_CLASS);
 
     addClassToElement(header, AUTHORIZED_CLASS);
+    addClassToElement(watchedButton, CONTROL_ACTIVE_CLASS);
 
     removeClassFromElement(controlWrapper, NON_DISPLAYED_CLASS);
     addClassToElement(searchWrapper, NON_DISPLAYED_CLASS);
