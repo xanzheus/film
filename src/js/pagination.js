@@ -3,6 +3,7 @@ import 'tui-pagination/dist/tui-pagination.css';
 import { addClassToElement, removeClassFromElement } from './actions-functions';
 
 import RequestService from './request.service';
+import {errorStartLoad} from './error-load-page'
 const requestService = new RequestService();
 
 import {
@@ -24,9 +25,10 @@ import {
 import refs from './refs';
 
 export function renderPaginationTrandingMovie(totalItems) {
-
-
-  if (totalItems === 1) {
+if(totalItems === 0) {
+  errorStartLoad()
+}
+  if (totalItems <= 1) {
     addClassToElement(refs.paginationAnchorRef,'hidden');
   } else {
     removeClassFromElement(refs.paginationAnchorRef, 'hidden');
@@ -68,9 +70,14 @@ export function renderPaginationTrandingMovie(totalItems) {
 }
 
 export function renderPaginationSearchMovie(query, totalItems) {
+  if(totalItems === 0) {
+    errorStartLoad()
+  }
+  
   setTotalItems(totalItems)
+  
 
-  if (totalItems === 1) {
+  if (totalItems <= 1) {
     addClassToElement(refs.paginationAnchorRef,'hidden');
   } else {
     removeClassFromElement(refs.paginationAnchorRef, 'hidden');

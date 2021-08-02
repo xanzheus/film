@@ -4,6 +4,7 @@ import refs from './refs';
 import requestService from './request.service';
 import { makeMarkup } from './modal-details-film-tpl';
 import { ShowTrailer } from './_trailer_to_film';
+import { changeCursor } from './_magicMouse';
 
 import { addClassToElement, removeClassFromElement } from './actions-functions';
 import {
@@ -143,7 +144,7 @@ const doActionsShowModal = function (markup) {
     }
     // console.log(e.target);
   });
-
+  changeCursor();
   //* end alex
 };
 

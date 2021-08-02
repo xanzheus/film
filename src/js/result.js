@@ -11,6 +11,7 @@ import { showLoader } from './_loader';
 import { changeCursor } from './_magicMouse';
 import { clearSearchInput } from './clear-search-input';
 import { trim } from 'jquery';
+import {errorStartLoad} from './error-load-page'
 
 const requestService = new RequestService();
 let genresList;
@@ -30,8 +31,6 @@ const onErrorMessage = error => {
 };
 
 const addPaginationTranding = data => {
-  // totalPage = data.total_pages;
-
   if (data.total_pages > 1) {
     renderPaginationTrandingMovie(data.total_pages);
   }
@@ -50,10 +49,10 @@ const setResults = response => {
 };
 
 const makeMarkupCardMoreLoad = () => {
-  // console.log(totalItems)
-  // console.log(currentPage)
-  if(!currentPage && totalItems !== 1 || totalItems !== 1 && currentPage < totalItems) {
-  refs.resultAnchor.insertAdjacentHTML('beforeend', cardMoreLoad());}
+  if(!currentPage && totalItems > 1 || totalItems !== 1 && currentPage < totalItems) {
+  refs.resultAnchor.insertAdjacentHTML('beforeend', cardMoreLoad());
+
+}
 };
 
 const makeMarkupTrandingCardsList = array => {
@@ -128,7 +127,6 @@ const setValidatesPosterPath = array => {
       : // : "https://more-show.ru/upload/not-a/vailable.png"
         'https://live.staticflickr.com/65535/51349451747_f6d7898f2c_n.jpg';
   });
-  // console.log(array)
   return array;
 };
 
@@ -157,6 +155,7 @@ const renderingTrendingCardsList = () => {
     .then(makeMarkupTrandingCardsList)
     .then(makeMarkupCardMoreLoad)
     .then(addClassToElement(refs.loader, 'is-hidden'))
+    .then(changeCursor)
     .catch(onErrorMessage);
 };
 
@@ -164,12 +163,13 @@ const renderingLibraryCardsList = () => {
   clearCardsList();
   setLibraryToLocalStorage() //////функция от Леши, с тотал пейджс и массивом обьектов
     .then(addPaginationTranding)
-    .then(makeMarkupLibraryCardsList);
+    .then(makeMarkupLibraryCardsList)
+    .then(changeCursor);
 };
 
 const renderingSearchCardsList = () => {
   const searchQuery = trim(refs.searchInput.value);
-  console.log(searchQuery)
+  // console.log(searchQuery)
   if (!searchQuery) {
     loadHomePage();
     console.log('Empty request. Please enter what you want to find');
@@ -190,6 +190,7 @@ const renderingSearchCardsList = () => {
     .then(makeMarkupCardMoreLoad)
     .then(clearSearchInput)
     .then(addClassToElement(refs.loader, 'is-hidden'))
+    .then(changeCursor)
     .catch(onErrorMessage);
 };
 
