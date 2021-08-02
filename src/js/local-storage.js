@@ -28,7 +28,7 @@ const addDataToLocalStorage = function (currentCardId) {
 };
 
 const createShortlibraryOfValues = function (film) {
-  console.log(film);
+  // console.log(film);
   const libraryOfValues = {};
   libraryOfValues.id = film.id;
   libraryOfValues.original_title = film.original_title;
