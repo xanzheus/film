@@ -2,7 +2,8 @@ import refs from './refs';
 import { loadSearchPage } from './result';
 // import { trim } from 'jquery';
 
-const searchMoviesHandler = () => {
+const searchMoviesHandler = (e) => {
+  e.preventDefault()
   // const searchQuery = trim(refs.searchInput.value);
 
   // if (!searchQuery) {
