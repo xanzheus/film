@@ -28,11 +28,15 @@ const addDataToLocalStorage = function (currentCardId) {
 };
 
 const createShortlibraryOfValues = function (film) {
+  console.log(film);
   const libraryOfValues = {};
   libraryOfValues.id = film.id;
   libraryOfValues.original_title = film.original_title;
+  libraryOfValues.genres = film.genres;
   libraryOfValues.release_date = film.release_date;
   libraryOfValues.vote_average = film.vote_average;
+  libraryOfValues.poster_path = film.poster_path;
+  libraryOfValues.backdrop_path = film.backdrop_path;
   return libraryOfValues;
 };
 
