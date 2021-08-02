@@ -5,7 +5,7 @@ import requestService from './request.service';
 import { makeMarkup } from './modal-details-film-tpl';
 import { ShowTrailer } from './_trailer_to_film';
 
-// *alex
+import { addClassToElement, removeClassFromElement } from './actions-functions';
 import {
   addDataToLocalStorage,
   removeFromLibrary,
@@ -13,7 +13,7 @@ import {
   getBtnValue,
 } from './local-storage';
 
-//*end
+let target = '';
 
 const getMoreDetailfilm = function ({
   id,
@@ -42,24 +42,6 @@ const getMoreDetailfilm = function ({
     .slice(0, -2);
   return descriptionFilm;
 };
-
-let target = '';
-
-const getMoreDetailfilm = function ({id, title, poster_path, vote_average, vote_count, popularity, original_title, overview,genres}) {
-    const descriptionFilm = {}
-    descriptionFilm.id = id;
-    descriptionFilm.title = title;
-    descriptionFilm.poster_path = poster_path;
-    descriptionFilm.vote_average = vote_average.toFixed(1);
-    descriptionFilm.vote_count = vote_count.toFixed(1);
-    descriptionFilm.popularity = popularity.toFixed(1);
-    descriptionFilm.original_title = original_title;
-    descriptionFilm.overview = overview;
-    descriptionFilm.genres = genres.reduce((acc, genre) => { return `${acc}${genre.name}, ` }, '').slice(0, -2);
-    return descriptionFilm
-}
-
-
 
 const showTrailer = new ShowTrailer();
 const request = new requestService();
@@ -101,16 +83,28 @@ const doActionsShowModal = function (markup) {
 
   // console.log(refs.currentCardId);
 
-  const chekWatchButtonValue = function(){
-      const watch = getDataFromLocalStorage('watch');
-      const matchedElement  = watch.find(el=>{return el.id ===Number(refs.currentCardId)})
-          if(matchedElement){
+  const chekWatchButtonValue = function () {
+    const watch = getDataFromLocalStorage('watch');
+    const matchedElement = watch.find(el => {
+      return el.id === Number(refs.currentCardId);
+    });
+    if (matchedElement) {
       refs.buttonWatch.innerText = 'REMOVE FROM WATCHED';
-      }
+    }
+  };
 
-  }
+  const chekQueueButtonValue = function () {
+    const queue = getDataFromLocalStorage('queue');
+    const matchedElement = queue.find(el => {
+      return el.id === Number(refs.currentCardId);
+    });
+    if (matchedElement) {
+      refs.buttonQueue.innerText = 'REMOVE FROM QUEUE';
+    }
+  };
 
   chekWatchButtonValue();
+  chekQueueButtonValue();
 
   refs.modalBox.addEventListener('click', e => {
     const buttonLabel = e.target.innerText; //Текст на кнопке
@@ -137,6 +131,9 @@ const doActionsShowModal = function (markup) {
       e.target.innerText = 'ADD TO QUEUE';
       removeFromLibrary(btnValue, currentCardId);
     }
+    console.log(e.target);
+
+    e.target.classList.add('buttons__modal--accent');
   });
 
   //* end alex
