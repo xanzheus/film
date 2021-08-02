@@ -12,7 +12,7 @@ import { changeCursor } from './_magicMouse';
 import { clearSearchInput } from './clear-search-input';
 import { trim } from 'jquery';
 import {addErrorStartLoad, removeErrorStartLoad} from './error-load-page'
-import {renderPaginationLibrary} from './pagination'
+// import {renderPaginationLibrary} from './pagination'
 
 const requestService = new RequestService();
 let genresList;
@@ -45,9 +45,9 @@ const addPaginationSearch = data => {
 };
 
 const addPaginationLibrary = array => {
-  if (array.length > 21) {
-    renderPaginationLibrary(array);
-  }
+  // if (array.length > 21) {
+  //   renderPaginationLibrary(array);
+  // }
 
   makeMarkupLibraryCardsList( array);
 };
@@ -172,8 +172,10 @@ const renderingTrendingCardsList = () => {
 };
 
 const renderingLibraryCardsList = () => {
-  const arrayForPagination =  getDataFromLocalStorage();
-  const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
+  const arrayFilms =  getDataFromLocalStorage();
+  // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
+  addClassToElement(refs.paginationAnchorRef,'hidden');
+  const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms)
   makeMarkupLibraryCardsList(arrayForMarkup)
   addClassToElement(refs.loader, 'is-hidden')
   changeCursor()
@@ -254,5 +256,6 @@ export {
   setCurrentPage,
   setTotalItems,
   makeValidatesReleaseDate,
-  makePosterPatch
+  makePosterPatch,
+  makeMarkupLibraryCardsList
 };
