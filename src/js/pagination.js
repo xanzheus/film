@@ -30,11 +30,9 @@ if(totalItems === 0) {
 }
   if (totalItems <= 1) {
     addClassToElement(refs.paginationAnchorRef,'hidden');
-    // removeErrorStartLoad()
   } else {
     removeClassFromElement(refs.paginationAnchorRef, 'hidden');
     setTotalItems(totalItems)
-    // removeErrorStartLoad()
   }
 
   const options = {
@@ -71,19 +69,66 @@ if(totalItems === 0) {
   });
 }
 
+export function renderPaginationLibrary(array) {
+  if(array.length === 0) {
+    addErrorStartLoad()
+    addClassToElement(refs.paginationAnchorRef,'hidden');
+  }
+    if (array.length === 1) {
+      addClassToElement(refs.paginationAnchorRef,'hidden');
+    } else {
+      removeClassFromElement(refs.paginationAnchorRef, 'hidden');
+      setTotalItems(array.length)
+    }
+  
+    const options = {///////////////////////////
+      totalItems: 21,//////////////////////////
+      itemsPerPage: 1,//////////////////////////////
+      visiblePages: 5,//////////////////////////////
+    };////////////////////////////////////////
+    const pagination = new Pagination(refs.paginationAnchorRef, options);
+  
+    const renderListLibrary = (e) => { 
+
+        const currentPage = e.page;
+        // console.log(currentPage)
+        setCurrentPage(currentPage)
+        // requestService.page = currentPage;
+        // requestService.query = pagination.query;
+        // clearCardsList();
+        // removeClassFromElement(refs.loader, 'is-hidden');
+        // showLoader()
+        // const renderingPage = () => {
+        // requestService
+        //   .getSearchMovies()
+        //   .then(setResults)
+        //   .then(setfilterObjects)
+        //   .then(setValidatesPosterPath)
+        //   .then(setValidatesReleaseDate)
+        //   .then(makeValidatesGenreName)
+        //   .then(makeMarkupTrandingCardsList)
+        //   .then(makeMarkupCardMoreLoad)
+        //   .then(addClassToElement(refs.loader, 'is-hidden'))
+        //   .catch(onErrorMessage);
+        // }
+        // setTimeout(renderingPage, 400);   
+
+      }
+
+    pagination.on('afterMove', renderListLibrary);
+  }
+
 export function renderPaginationSearchMovie(query, totalItems) {
   setTotalItems(totalItems)
   if(totalItems === 0) {
     addErrorStartLoad()
     addClassToElement(refs.paginationAnchorRef,'hidden');
-  } else {
-  if (totalItems === 1) {
-    addClassToElement(refs.paginationAnchorRef,'hidden');
-    // removeErrorStartLoad()
-  } else {
-    removeClassFromElement(refs.paginationAnchorRef, 'hidden');
-    // removeErrorStartLoad()
-  }
+    } else {
+      if (totalItems === 1) {
+       addClassToElement(refs.paginationAnchorRef,'hidden');
+        } else {
+          removeClassFromElement(refs.paginationAnchorRef, 'hidden');
+      }
   }
 
   if (query === '') {
@@ -103,14 +148,10 @@ export function renderPaginationSearchMovie(query, totalItems) {
     const currentPage = event.page;
     setCurrentPage(currentPage)
     requestService.page = currentPage;
-
     requestService.query = pagination.query;
-
     clearCardsList();
-    // removeErrorStartLoad()
     removeClassFromElement(refs.loader, 'is-hidden');
     showLoader()
-    
     const renderingPage = () => {
     requestService
       .getSearchMovies()
