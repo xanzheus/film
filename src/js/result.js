@@ -3,20 +3,17 @@ import RequestService from './request.service';
 import markupCarTrandingTpl from '../templates/cardFilmTrandingTpl.hbs';
 import markupCarLibraryTpl from '../templates/cardFilmLibraryTpl.hbs';
 import { getCardsMarkup } from './hover-responsive';
-
 import { cardMoreLoad } from './cardLoadNextTpl.js';
 import { setLibraryToLocalStorage } from './local-storage';
 import { renderPaginationTrandingMovie, renderPaginationSearchMovie } from './pagination';
+import { addClassToElement, removeClassFromElement } from './actions-functions';
 import { showLoader } from './_loader';
 import { changeCursor } from './_magicMouse';
 import { clearSearchInput } from './clear-search-input';
+import { trim } from 'jquery';
 
 const requestService = new RequestService();
-
-changeCursor();
-const addClass = (ref, newClass) => {
-  ref.classList.add(newClass);
-};
+let genresList;
 
 const onErrorMessage = error => {
   console.log(error);
@@ -34,6 +31,7 @@ const addPaginationSearch = data => {
   renderPaginationSearchMovie(searchQuery, data.total_pages);
   return data;
 };
+
 
 const setResults = response => {
   return response?.results;
@@ -75,12 +73,12 @@ const makefilterObject = ({
   return newObject;
 };
 
-const makefilterObjects = array => {
+
+
+const setfilterObjects = array => {
   const shortArray = array.map(makefilterObject);
   return shortArray;
 };
-
-let genresList;
 
 const setGenresList = array => {
   genresList = [...array];
@@ -132,19 +130,18 @@ const clearCardsList = () => {
 };
 
 const renderingTrendingCardsList = () => {
-  // clearCardsList();
-  // showLoader();
+  
   requestService
     .getTrendingMovies()
     .then(addPaginationTranding)
     .then(setResults)
-    .then(makefilterObjects)
+    .then(setfilterObjects)
     .then(setValidatesPosterPath)
     .then(setValidatesReleaseDate)
     .then(makeValidatesGenreName)
     .then(makeMarkupTrandingCardsList)
     .then(makeMarkupCardMoreLoad)
-    .then(addClass(refs.loader, 'is-hidden'))
+    .then(addClassToElement(refs.loader, 'is-hidden'))
     .catch(onErrorMessage);
 };
 
@@ -155,43 +152,73 @@ const renderingLibraryCardsList = () => {
     .then(makeMarkupLibraryCardsList);
 };
 
-const renderingSearchCardsList = searchQuery => {
+const renderingSearchCardsList = () => {
+  const searchQuery = trim(refs.searchInput.value);
+
+  if (!searchQuery) {
+    console.log('Empty request. Please enter what you want to find');
+    return;
+  }
+
   requestService.query = searchQuery;
   clearCardsList();
   requestService
     .getSearchMovies()
     .then(addPaginationSearch)
     .then(setResults)
-    .then(makefilterObjects)
+    .then(setfilterObjects)
     .then(setValidatesPosterPath)
     .then(setValidatesReleaseDate)
     .then(makeValidatesGenreName)
     .then(makeMarkupLibraryCardsList)
     .then(makeMarkupCardMoreLoad)
     .then(clearSearchInput)
+    .then(addClassToElement(refs.loader, 'is-hidden'))
     .catch(onErrorMessage);
 };
 
-const homePageLoad = () => {
+const loadHomePage = () => {
   makeGenresList();
   clearCardsList();
+  removeClassFromElement(refs.loader, 'is-hidden');
   showLoader();
   setTimeout(renderingTrendingCardsList, 400);
 };
 
-// makeGenresList();
-homePageLoad();
+//=====================function for load page with SEARCHING RESULT============
+const loadSearchPage = () => {
+  removeClassFromElement(refs.loader, 'is-hidden');
+  makeGenresList();
+  clearCardsList();
+  showLoader();
+  setTimeout(renderingSearchCardsList, 1000);////////
+}
+
+//==================== function for load LIBRARY page =======================
+const loadLibraryPage = () => {//////////////////////////////////////
+  removeClassFromElement(refs.loader, 'is-hidden');
+  clearCardsList();
+  showLoader();
+  setTimeout(renderingTrendingCardsList, 400);///////////////////////
+};
+
+changeCursor();
+loadHomePage();
 
 export {
   setResults,
-  makefilterObjects,
+  setfilterObjects,
   setValidatesPosterPath,
   setValidatesReleaseDate,
   makeValidatesGenreName,
   makeMarkupTrandingCardsList,
   makeMarkupCardMoreLoad,
   clearCardsList,
+  showLoader,
   renderingTrendingCardsList,
   renderingLibraryCardsList,
   renderingSearchCardsList,
+  loadSearchPage,
+  loadLibraryPage,
+  onErrorMessage
 };
