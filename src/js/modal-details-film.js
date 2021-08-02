@@ -84,22 +84,32 @@ const doActionsShowModal = function (markup) {
   // console.log(refs.currentCardId);
 
   const chekWatchButtonValue = function () {
-    const watch = getDataFromLocalStorage('watch');
-    const matchedElement = watch.find(el => {
-      return el.id === Number(refs.currentCardId);
-    });
-    if (matchedElement) {
-      refs.buttonWatch.innerText = 'REMOVE FROM WATCHED';
+    const localStorageWatchKey = localStorage.getItem('watch');
+    if (localStorageWatchKey === null || localStorageWatchKey.length === 0) {
+      return;
+    } else {
+      const watch = getDataFromLocalStorage('watch');
+      const matchedElement = watch.find(el => {
+        return el.id === Number(refs.currentCardId);
+      });
+      if (matchedElement) {
+        refs.buttonWatch.innerText = 'REMOVE FROM WATCHED';
+      }
     }
   };
 
   const chekQueueButtonValue = function () {
-    const queue = getDataFromLocalStorage('queue');
-    const matchedElement = queue.find(el => {
-      return el.id === Number(refs.currentCardId);
-    });
-    if (matchedElement) {
-      refs.buttonQueue.innerText = 'REMOVE FROM QUEUE';
+    const localStorageQueueKey = localStorage.getItem('queue');
+    if (localStorageQueueKey === null || localStorageQueueKey.length === 0) {
+      return;
+    } else {
+      const queue = getDataFromLocalStorage('queue');
+      const matchedElement = queue.find(el => {
+        return el.id === Number(refs.currentCardId);
+      });
+      if (matchedElement) {
+        refs.buttonQueue.innerText = 'REMOVE FROM WATCHED';
+      }
     }
   };
 
@@ -131,9 +141,7 @@ const doActionsShowModal = function (markup) {
       e.target.innerText = 'ADD TO QUEUE';
       removeFromLibrary(btnValue, currentCardId);
     }
-    console.log(e.target);
-
-    e.target.classList.add('buttons__modal--accent');
+    // console.log(e.target);
   });
 
   //* end alex
