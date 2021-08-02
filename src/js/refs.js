@@ -1,4 +1,5 @@
 export default {
+  main: document.querySelector('main'),
   resultAnchor: document.querySelector('[data-anchor="result"]'),
   loader: document.querySelector('.whirly-loader__wrapper'),
   btnLoadMore: document.querySelector('.button-load-more'),
