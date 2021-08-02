@@ -1,6 +1,7 @@
 export default {
   resultAnchor: document.querySelector('[data-anchor="result"]'),
   loader: document.querySelector('.whirly-loader__wrapper'),
+  btnLoadMore: document.querySelector('.button-load-more'),
   ftBtnEl: document.querySelector('.button-close'),
   ftBackdropEl: document.querySelector('.modal-backdrop'),
   ftLinkEl: document.querySelector('.footer__link'),

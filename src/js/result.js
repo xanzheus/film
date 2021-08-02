@@ -14,12 +14,24 @@ import { trim } from 'jquery';
 
 const requestService = new RequestService();
 let genresList;
+let currentPage;
+let totalItems;
+
+const setCurrentPage = (number) => {
+  currentPage= number
+}
+
+const setTotalItems = (total) => {
+  totalItems = total
+}
 
 const onErrorMessage = error => {
   console.log(error);
 };
 
 const addPaginationTranding = data => {
+  // totalPage = data.total_pages;
+
   if (data.total_pages > 1) {
     renderPaginationTrandingMovie(data.total_pages);
   }
@@ -38,7 +50,10 @@ const setResults = response => {
 };
 
 const makeMarkupCardMoreLoad = () => {
-  refs.resultAnchor.insertAdjacentHTML('beforeend', cardMoreLoad());
+  console.log(totalItems)
+  console.log(currentPage)
+  if(!currentPage && totalItems !== 1 || totalItems !== 1 && currentPage < totalItems) {
+  refs.resultAnchor.insertAdjacentHTML('beforeend', cardMoreLoad());}
 };
 
 const makeMarkupTrandingCardsList = array => {
@@ -156,6 +171,7 @@ const renderingSearchCardsList = () => {
   const searchQuery = trim(refs.searchInput.value);
 
   if (!searchQuery) {
+    loadHomePage();
     console.log('Empty request. Please enter what you want to find');
     return;
   }
@@ -220,5 +236,7 @@ export {
   renderingSearchCardsList,
   loadSearchPage,
   loadLibraryPage,
-  onErrorMessage
+  onErrorMessage,
+  setCurrentPage,
+  setTotalItems
 };
