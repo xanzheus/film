@@ -15,17 +15,22 @@ import {
   makeMarkupTrandingCardsList,
   makeMarkupCardMoreLoad,
   showLoader,
-  onErrorMessage
+  onErrorMessage,
+  setCurrentPage,
+  setTotalItems
 } from './result';
 
 // refs correct
 import refs from './refs';
 
 export function renderPaginationTrandingMovie(totalItems) {
+
+
   if (totalItems === 1) {
     addClassToElement(refs.paginationAnchorRef,'hidden');
   } else {
     removeClassFromElement(refs.paginationAnchorRef, 'hidden');
+    setTotalItems(totalItems)
   }
 
   const options = {
@@ -37,6 +42,7 @@ export function renderPaginationTrandingMovie(totalItems) {
 
   pagination.on('afterMove', event => {
     const currentPage = event.page;
+    setCurrentPage(currentPage);
     requestService.page = currentPage;
 
     showLoader()
@@ -62,6 +68,8 @@ export function renderPaginationTrandingMovie(totalItems) {
 }
 
 export function renderPaginationSearchMovie(query, totalItems) {
+  setTotalItems(totalItems)
+
   if (totalItems === 1) {
     addClassToElement(refs.paginationAnchorRef,'hidden');
   } else {
@@ -72,7 +80,7 @@ export function renderPaginationSearchMovie(query, totalItems) {
     console.log('Error: Empty searchQuery');
     return;
   }
-
+  
   const options = {
     totalItems,
     itemsPerPage: 1,
@@ -83,6 +91,7 @@ export function renderPaginationSearchMovie(query, totalItems) {
 
   pagination.on('afterMove', event => {
     const currentPage = event.page;
+    setCurrentPage(currentPage)
     requestService.page = currentPage;
 
     requestService.query = pagination.query;
