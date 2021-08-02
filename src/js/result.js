@@ -1,10 +1,10 @@
 import refs from './refs';
 import RequestService from './request.service';
 import markupCarTrandingTpl from '../templates/cardFilmTrandingTpl.hbs';
-import markupCarLibraryTpl from '../templates/cardFilmLibraryTpl.hbs';
+import markupCardLibraryTpl from '../templates/cardFilmLibraryTpl.hbs';
 import { getCardsMarkup } from './hover-responsive';
 import { cardMoreLoad } from './cardLoadNextTpl.js';
-import { setLibraryToLocalStorage } from './local-storage';
+import { getDataFromLocalStorage } from './local-storage';
 import { renderPaginationTrandingMovie, renderPaginationSearchMovie } from './pagination';
 import { addClassToElement, removeClassFromElement } from './actions-functions';
 import { showLoader } from './_loader';
@@ -12,6 +12,7 @@ import { changeCursor } from './_magicMouse';
 import { clearSearchInput } from './clear-search-input';
 import { trim } from 'jquery';
 import {addErrorStartLoad, removeErrorStartLoad} from './error-load-page'
+import {renderPaginationLibrary} from './pagination'
 
 const requestService = new RequestService();
 let genresList;
@@ -43,6 +44,14 @@ const addPaginationSearch = data => {
   return data;
 };
 
+const addPaginationLibrary = array => {
+  if (array.length > 21) {
+    renderPaginationLibrary(array);
+  }
+
+  makeMarkupLibraryCardsList( array);
+};
+
 
 const setResults = response => {
   return response?.results;
@@ -61,7 +70,7 @@ const makeMarkupTrandingCardsList = array => {
 };
 
 const makeMarkupLibraryCardsList = array => {
-  refs.resultAnchor.insertAdjacentHTML('beforeend', markupCarLibraryTpl(array));
+  refs.resultAnchor.insertAdjacentHTML('beforeend', markupCardLibraryTpl(array));
   getCardsMarkup();
 };
 
@@ -120,20 +129,23 @@ const makeGenresList = () => {
   requestService.getGenresMovies().then(setGenresList);
 };
 
-const setValidatesPosterPath = array => {
-  array.forEach(object => {
-    object.poster_path = object.poster_path
+const makePosterPatch = (object) => {
+  return object.poster_path = object.poster_path
       ? requestService.getPrefixUrlImg(object.poster_path)
-      : // : "https://more-show.ru/upload/not-a/vailable.png"
-        'https://live.staticflickr.com/65535/51349451747_f6d7898f2c_n.jpg';
-  });
+      // : // : "https://more-show.ru/upload/not-a/vailable.png"
+      :'https://live.staticflickr.com/65535/51349451747_f6d7898f2c_n.jpg';
+}
+
+const setValidatesPosterPath = array => {
+  array.forEach(makePosterPatch);
   return array;
 };
+const makeShortReleaseDate = (object) => {
+  object.release_date = object.release_date ? makeValidatesReleaseDate(object.release_date) : '';
+}
 
 const setValidatesReleaseDate = array => {
-  array.forEach(object => {
-    object.release_date = object.release_date ? makeValidatesReleaseDate(object.release_date) : '';
-  });
+  array.forEach(makeShortReleaseDate);
 
   return array;
 };
@@ -160,16 +172,15 @@ const renderingTrendingCardsList = () => {
 };
 
 const renderingLibraryCardsList = () => {
-  clearCardsList();
-  setLibraryToLocalStorage() //////функция от Леши, с тотал пейджс и массивом обьектов
-    .then(addPaginationTranding)
-    .then(makeMarkupLibraryCardsList)
-    .then(changeCursor);
+  const arrayForPagination =  getDataFromLocalStorage();
+  const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
+  makeMarkupLibraryCardsList(arrayForMarkup)
+  addClassToElement(refs.loader, 'is-hidden')
+  changeCursor()
 };
 
 const renderingSearchCardsList = () => {
   const searchQuery = trim(refs.searchInput.value);
-  // console.log(searchQuery)
   if (!searchQuery) {
     loadHomePage();
     console.log('Empty request. Please enter what you want to find');
@@ -218,7 +229,7 @@ const loadLibraryPage = () => {//////////////////////////////////////
   removeClassFromElement(refs.loader, 'is-hidden');
   clearCardsList();
   showLoader();
-  setTimeout(renderingTrendingCardsList, 400);///////////////////////
+  setTimeout(renderingLibraryCardsList, 400);///////////////////////
 };
 
 changeCursor();
@@ -241,5 +252,7 @@ export {
   loadLibraryPage,
   onErrorMessage,
   setCurrentPage,
-  setTotalItems
+  setTotalItems,
+  makeValidatesReleaseDate,
+  makePosterPatch
 };
