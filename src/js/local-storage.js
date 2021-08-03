@@ -15,6 +15,7 @@ const getBtnValue = value => {
 };
 
 // ** FUNCTION: GET DATA FROM LOCAL STORAGE  **//
+
 const getDataFromLocalStorage = function (nameLibrary = 'watch') {
   return JSON.parse(localStorage.getItem(nameLibrary));
 };
