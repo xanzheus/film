@@ -253,6 +253,7 @@ const loadSearchPage = () => {
 
 //==================== function for load LIBRARY page =======================
 const loadLibraryPage = () => {
+  removeErrorStartLoad();
   //////////////////////////////////////
   removeClassFromElement(refs.loader, 'is-hidden');
   clearCardsList();
