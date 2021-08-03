@@ -18,18 +18,17 @@ export default class RequestService {
     this.language = 'en';
   }
   // This function await callback to output an error in hendler
-  async getTrendingMovies(callback) {
+  async getTrendingMovies() {
     const url = `${this.trendingMovies}?${API__KEY}&page=${this.page}&language=${this.language}`;
     try {
       const response = await axios.get(url);
       return response?.data;
-    } catch (error) {
-      toastr.error(error.message);
-      callback();
+    } catch {
+      toastr.info('Sorry: server trending error please try again later');
     }
   }
   // This function await callback to output an error in hendler
-  async getSearchMovies(callback) {
+  async getSearchMovies() {
     const searchParams = new URLSearchParams({
       query: this.searchQuery,
       language: this.language,
@@ -38,20 +37,18 @@ export default class RequestService {
     try {
       const response = await axios.get(url);
       return response?.data;
-    } catch (error) {
-      toastr.error(error.message);
-      callback();
+    } catch {
+      toastr.info('Sorry: server searc error please try again later');
     }
   }
   // This function await callback to output an error in hendler
-  async getDescriptionMovie(movieId, callback) {
+  async getDescriptionMovie(movieId) {
     const url = `${this.movieById}/${movieId}?${API__KEY}`;
     try {
       const response = await axios.get(url);
       return response?.data;
-    } catch (error) {
-      toastr.error(error.message);
-      callback();
+    } catch {
+      toastr.error('Sorry: server error please try again later');
     }
   }
 
@@ -61,8 +58,8 @@ export default class RequestService {
       const response = await axios.get(url);
       const genresArray = await response.data.genres;
       return genresArray;
-    } catch (error) {
-      toastr.error(error.message);
+    } catch {
+      toastr.error('Sorry: server error please try again later');
     }
   }
 
