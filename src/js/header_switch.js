@@ -1,6 +1,6 @@
 import refs from './refs';
 import { addClassToElement, removeClassFromElement } from './actions-functions';
-import { loadLibraryPage } from './result';
+import {loadLibraryPage, loadHomePage, renderingLibrary} from './result';
 
 const { homeLink, libraryLink, header, watchedButton, queueButton, controlWrapper, searchWrapper } =
   refs;
@@ -64,4 +64,8 @@ watchedButton.addEventListener('click', addAndRemoveClassesFromHeaderOnWatchedLi
 queueButton.addEventListener('click', addAndRemoveClassesFromHeaderOnQueueLinkClick);
 
 homeLink.addEventListener('click', onHomeLinkClick);
+
+homeLink.addEventListener('click', loadHomePage);
 libraryLink.addEventListener('click', loadLibraryPage);
+queueButton.addEventListener('click', renderingLibrary);
+watchedButton.addEventListener('click', renderingLibrary);
