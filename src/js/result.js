@@ -14,6 +14,8 @@ import { trim } from 'jquery';
 import { addErrorStartLoad, removeErrorStartLoad } from './error-load-page';
 import { getMarkupForLoadeMoreBtn } from './loadMoreBtn';
 // import {renderPaginationLibrary} from './pagination'
+import toastr from 'toastr';
+import tosrtOption from './toastr';
 
 const requestService = new RequestService();
 let genresList;
@@ -29,7 +31,7 @@ const setTotalItems = total => {
 };
 
 const onErrorMessage = error => {
-  console.log(error);
+  toastr.error(error);
 };
 
 const addPaginationTranding = data => {
@@ -182,7 +184,7 @@ const renderingSearchCardsList = () => {
   const searchQuery = trim(refs.searchInput.value);
   if (!searchQuery) {
     loadHomePage();
-    console.log('Empty request. Please enter what you want to find');
+    toastr.warning('Empty request. Please enter what you want to find');
     return;
   }
 

@@ -1,4 +1,6 @@
 import axios from 'axios';
+import toastr from 'toastr';
+import tosrtOption from './toastr';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
 export const API__KEY = 'api_key=16092738eabd8acc3b7b5db91d1d6d26';
@@ -22,7 +24,7 @@ export default class RequestService {
       const response = await axios.get(url);
       return response?.data;
     } catch (error) {
-      console.log(error.message);
+      toastr.error(error.message);
       callback();
     }
   }
@@ -37,7 +39,7 @@ export default class RequestService {
       const response = await axios.get(url);
       return response?.data;
     } catch (error) {
-      console.log(error.message);
+      toastr.error(error.message);
       callback();
     }
   }
@@ -48,7 +50,7 @@ export default class RequestService {
       const response = await axios.get(url);
       return response?.data;
     } catch (error) {
-      console.log(error.message);
+      toastr.error(error.message);
       callback();
     }
   }
@@ -60,7 +62,7 @@ export default class RequestService {
       const genresArray = await response.data.genres;
       return genresArray;
     } catch (error) {
-      console.log(error.message);
+      toastr.error(error.message);
     }
   }
 
