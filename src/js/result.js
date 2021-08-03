@@ -11,24 +11,26 @@ import { showLoader } from './_loader';
 import { changeCursor } from './_magicMouse';
 import { clearSearchInput } from './clear-search-input';
 import { trim } from 'jquery';
-import {addErrorStartLoad, removeErrorStartLoad} from './error-load-page'
+import { addErrorStartLoad, removeErrorStartLoad } from './error-load-page';
 // import {renderPaginationLibrary} from './pagination'
+import toastr from 'toastr';
+import tosrtOption from './toastr';
 
 const requestService = new RequestService();
 let genresList;
 let currentPage;
 let totalItems;
 
-const setCurrentPage = (number) => {
-  currentPage= number
-}
+const setCurrentPage = number => {
+  currentPage = number;
+};
 
-const setTotalItems = (total) => {
-  totalItems = total
-}
+const setTotalItems = total => {
+  totalItems = total;
+};
 
 const onErrorMessage = error => {
-  console.log(error);
+  toastr.error(error);
 };
 
 const addPaginationTranding = data => {
@@ -49,19 +51,17 @@ const addPaginationLibrary = array => {
   //   renderPaginationLibrary(array);
   // }
 
-  makeMarkupLibraryCardsList( array);
+  makeMarkupLibraryCardsList(array);
 };
-
 
 const setResults = response => {
   return response?.results;
 };
 
 const makeMarkupCardMoreLoad = () => {
-  if(!currentPage && totalItems > 1 || totalItems !== 1 && currentPage < totalItems) {
-  refs.resultAnchor.insertAdjacentHTML('beforeend', cardMoreLoad());
-
-}
+  if ((!currentPage && totalItems > 1) || (totalItems !== 1 && currentPage < totalItems)) {
+    refs.resultAnchor.insertAdjacentHTML('beforeend', cardMoreLoad());
+  }
 };
 
 const makeMarkupTrandingCardsList = array => {
@@ -96,8 +96,6 @@ const makefilterObject = ({
   return newObject;
 };
 
-
-
 const setfilterObjects = array => {
   const shortArray = array.map(makefilterObject);
   return shortArray;
@@ -129,20 +127,20 @@ const makeGenresList = () => {
   requestService.getGenresMovies().then(setGenresList);
 };
 
-const makePosterPatch = (object) => {
-  return object.poster_path = object.poster_path
-      ? requestService.getPrefixUrlImg(object.poster_path)
-      // : // : "https://more-show.ru/upload/not-a/vailable.png"
-      :'https://live.staticflickr.com/65535/51349451747_f6d7898f2c_n.jpg';
-}
+const makePosterPatch = object => {
+  return (object.poster_path = object.poster_path
+    ? requestService.getPrefixUrlImg(object.poster_path)
+    : // : // : "https://more-show.ru/upload/not-a/vailable.png"
+      'https://live.staticflickr.com/65535/51349451747_f6d7898f2c_n.jpg');
+};
 
 const setValidatesPosterPath = array => {
   array.forEach(makePosterPatch);
   return array;
 };
-const makeShortReleaseDate = (object) => {
+const makeShortReleaseDate = object => {
   object.release_date = object.release_date ? makeValidatesReleaseDate(object.release_date) : '';
-}
+};
 
 const setValidatesReleaseDate = array => {
   array.forEach(makeShortReleaseDate);
@@ -155,7 +153,6 @@ const clearCardsList = () => {
 };
 
 const renderingTrendingCardsList = () => {
-  
   requestService
     .getTrendingMovies()
     .then(addPaginationTranding)
@@ -172,20 +169,20 @@ const renderingTrendingCardsList = () => {
 };
 
 const renderingLibraryCardsList = () => {
-  const arrayFilms =  getDataFromLocalStorage();
+  const arrayFilms = getDataFromLocalStorage();
   // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
-  addClassToElement(refs.paginationAnchorRef,'hidden');
-  const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms)
-  makeMarkupLibraryCardsList(arrayForMarkup)
-  addClassToElement(refs.loader, 'is-hidden')
-  changeCursor()
+  addClassToElement(refs.paginationAnchorRef, 'hidden');
+  const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
+  makeMarkupLibraryCardsList(arrayForMarkup);
+  addClassToElement(refs.loader, 'is-hidden');
+  changeCursor();
 };
 
 const renderingSearchCardsList = () => {
   const searchQuery = trim(refs.searchInput.value);
   if (!searchQuery) {
     loadHomePage();
-    console.log('Empty request. Please enter what you want to find');
+    toastr.warning('Empty request. Please enter what you want to find');
     return;
   }
 
@@ -212,7 +209,7 @@ const loadHomePage = () => {
   clearCardsList();
   removeClassFromElement(refs.loader, 'is-hidden');
   showLoader();
-  removeErrorStartLoad()
+  removeErrorStartLoad();
   setTimeout(renderingTrendingCardsList, 400);
 };
 
@@ -222,16 +219,17 @@ const loadSearchPage = () => {
   makeGenresList();
   clearCardsList();
   showLoader();
-  removeErrorStartLoad()
-  setTimeout(renderingSearchCardsList, 1000);////////
-}
+  removeErrorStartLoad();
+  setTimeout(renderingSearchCardsList, 1000); ////////
+};
 
 //==================== function for load LIBRARY page =======================
-const loadLibraryPage = () => {//////////////////////////////////////
+const loadLibraryPage = () => {
+  //////////////////////////////////////
   removeClassFromElement(refs.loader, 'is-hidden');
   clearCardsList();
   showLoader();
-  setTimeout(renderingLibraryCardsList, 400);///////////////////////
+  setTimeout(renderingLibraryCardsList, 400); ///////////////////////
 };
 
 changeCursor();
@@ -257,5 +255,5 @@ export {
   setTotalItems,
   makeValidatesReleaseDate,
   makePosterPatch,
-  makeMarkupLibraryCardsList
+  makeMarkupLibraryCardsList,
 };
