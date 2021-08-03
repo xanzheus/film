@@ -12,6 +12,7 @@ import { changeCursor } from './_magicMouse';
 import { clearSearchInput } from './clear-search-input';
 import { trim } from 'jquery';
 import { addErrorStartLoad, removeErrorStartLoad } from './error-load-page';
+import { getMarkupForLoadeMoreBtn } from './loadMoreBtn';
 // import {renderPaginationLibrary} from './pagination'
 import toastr from 'toastr';
 import tosrtOption from './toastr';
@@ -61,6 +62,7 @@ const setResults = response => {
 const makeMarkupCardMoreLoad = () => {
   if ((!currentPage && totalItems > 1) || (totalItems !== 1 && currentPage < totalItems)) {
     refs.resultAnchor.insertAdjacentHTML('beforeend', cardMoreLoad());
+    getMarkupForLoadeMoreBtn();
   }
 };
 

@@ -1,7 +1,6 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { addClassToElement, removeClassFromElement } from './actions-functions';
-import { getDataFromLocalStorage } from './local-storage';
 import RequestService from './request.service';
 import { addErrorStartLoad, removeErrorStartLoad } from './error-load-page';
 import toastr from 'toastr';
