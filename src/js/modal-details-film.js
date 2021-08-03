@@ -141,23 +141,20 @@ const doActionsShowModal = function (markup) {
       e.target.innerText = 'ADD TO QUEUE';
       removeFromLibrary(btnValue, currentCardId);
     }
-    // console.log(e.target);
   });
-  changeCursor();
   //* end alex
 };
 
 const getModalId = function (e) {
-    const parentCard = e.target.closest('.card')
-    if (!parentCard) {
-        return
-    }
-    const id = parentCard.dataset.id
-    showTrailer.id = id
-    getActiveInfo(id)
-    document.body.classList.add('no__scroll');
-       
-}
+  const parentCard = e.target.closest('.card');
+  if (!parentCard) {
+    return;
+  }
+  const id = parentCard.dataset.id;
+  showTrailer.id = id;
+  getActiveInfo(id);
+  document.body.classList.add('no__scroll');
+};
 
 const showModal = function (markup) {
   target = basicLightbox.create(markup);
