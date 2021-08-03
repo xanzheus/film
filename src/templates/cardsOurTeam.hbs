@@ -11,9 +11,12 @@
 
 {{#each this}}
   <li class='modal-team__item'>
-    <img class='modal-team__image' src='{{photo}}' alt='Photo of employee {{name}}' />
+    <div class="modal-team__box">
+      <img class='modal-team__image' src='{{photo}}' alt='Photo of employee {{name}}' />
+    </div>
     <div class='modal-team__info'>
       <p class='modal-team__name'>{{name}}</p>
+      <p class='modal-team__position'>{{position}}</p>
     </div>
   </li>
 {{/each}}
