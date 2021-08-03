@@ -3,8 +3,7 @@ import 'basiclightbox/src/styles/main.scss';
 import refs from './refs';
 import requestService from './request.service';
 import { makeMarkup } from './modal-details-film-tpl';
-import { ShowTrailer } from './_trailer_to_film';
-import { changeCursor } from './_magicMouse';
+import { ShowTrailer } from './trailer_to_film';
 
 import { addClassToElement, removeClassFromElement } from './actions-functions';
 import {

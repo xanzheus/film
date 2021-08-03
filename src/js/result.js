@@ -7,8 +7,7 @@ import { cardMoreLoad } from './cardLoadNextTpl.js';
 import { getDataFromLocalStorage } from './local-storage';
 import { renderPaginationTrandingMovie, renderPaginationSearchMovie } from './pagination';
 import { addClassToElement, removeClassFromElement } from './actions-functions';
-import { showLoader } from './_loader';
-import { changeCursor } from './_magicMouse';
+import { showLoader } from './loader';
 import { clearSearchInput } from './clear-search-input';
 import { trim } from 'jquery';
 import { addErrorStartLoad, removeErrorStartLoad } from './error-load-page';
@@ -166,7 +165,7 @@ const renderingTrendingCardsList = () => {
     .then(makeMarkupTrandingCardsList)
     .then(makeMarkupCardMoreLoad)
     .then(addClassToElement(refs.loader, 'is-hidden'))
-    .then(changeCursor)
+    // .then(changeCursor)
     .catch(onErrorMessage);
 };
 
@@ -177,8 +176,34 @@ const renderingLibraryCardsList = () => {
   const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
   makeMarkupLibraryCardsList(arrayForMarkup);
   addClassToElement(refs.loader, 'is-hidden');
-  changeCursor();
+  // changeCursor();
 };
+
+const renderingLibrary = (e) => {
+  clearCardsList();
+  // console.log()
+  const nameLibrary = e.target.getAttribute('id') === 'watch' || e.target.getAttribute('id') === 'queue'
+    ? e.target.getAttribute('id')
+    : ''
+
+    console.log(e.target.getAttribute('id'))
+    const arrayFilms = getDataFromLocalStorage(nameLibrary);
+  // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
+  addClassToElement(refs.paginationAnchorRef, 'hidden');
+  const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
+  makeMarkupLibraryCardsList(arrayForMarkup);
+  addClassToElement(refs.loader, 'is-hidden');
+  }
+
+
+
+
+
+
+
+
+
+
 
 const renderingSearchCardsList = () => {
   const searchQuery = trim(refs.searchInput.value);
@@ -202,11 +227,12 @@ const renderingSearchCardsList = () => {
     .then(makeMarkupCardMoreLoad)
     .then(clearSearchInput)
     .then(addClassToElement(refs.loader, 'is-hidden'))
-    .then(changeCursor)
+    // .then(changeCursor)
     .catch(onErrorMessage);
 };
 
 const loadHomePage = () => {
+  // console.log('start')
   makeGenresList();
   clearCardsList();
   removeClassFromElement(refs.loader, 'is-hidden');
@@ -231,10 +257,10 @@ const loadLibraryPage = () => {
   removeClassFromElement(refs.loader, 'is-hidden');
   clearCardsList();
   showLoader();
-  setTimeout(renderingLibraryCardsList, 400); ///////////////////////
+  setTimeout((renderingLibraryCardsList), 400); ///////////////////////
 };
 
-changeCursor();
+// changeCursor();
 loadHomePage();
 
 export {
@@ -258,4 +284,6 @@ export {
   makeValidatesReleaseDate,
   makePosterPatch,
   makeMarkupLibraryCardsList,
+  loadHomePage,
+  renderingLibrary
 };
