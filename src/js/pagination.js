@@ -129,7 +129,10 @@ export function renderPaginationSearchMovie(query, totalItems) {
   }
 
   if (query === '') {
-    toastr.error('Error: Empty searchQuery');
+    let warningStr = lang === 'en' 
+        ? 'Error: Empty searchQuery'
+        : 'Ошибка! Пустой запрос. Введите что-нибудь.';
+    toastr.error(warningStr);
     return;
   }
 
