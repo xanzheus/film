@@ -11,13 +11,13 @@
   min-height: 230px;
   width: 100%;
 
-  padding: 46px 0 43px;
+  padding: 36px 0 43px;
 
   &__wrapper {
     display: flex;
     align-items: center;
 
-    margin-bottom: 26px;
+    margin-bottom: 20px;
   }
 
   @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
@@ -37,7 +37,7 @@
       ),
       url('/images/header/rectangle_@1x_tab.jpg');
 
-    padding: 41px 0 59px;
+    padding: 31px 0 59px;
 
     @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
       background-image: linear-gradient(
@@ -211,8 +211,7 @@
     }
   }
 
-  &__link:hover,
-  &__link:focus {
+  &__link:hover {
     text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
   }
 }
@@ -365,8 +364,7 @@
     margin-right: 20px;
   }
 
-  &__button:hover,
-  &__button:focus {
+  &__button:hover {
     text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
   }
 
@@ -378,4 +376,87 @@
 
 .non-displayed {
   display: none;
+}
+
+
+.localization {
+  width: 60px;
+  margin-left: auto;
+  margin-right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__label {
+    width: 18px;
+    height: 10px;
+    display:block;
+    background-color: $color-text-secondary;
+    // border: 1px solid $color-accent;
+    border-radius: 100px;
+    position: relative;
+    cursor: pointer;
+    transition: $time-main;
+
+    padding: 2px 0;
+  }
+
+  &__label::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    background-color: $color-light-main;
+    position: absolute;
+    border-radius: 70px;
+    top: 50%;
+    left: 2px;
+    transition: 0.5s;
+
+    transform: translateY(-50%);
+  }
+
+  &__text {
+    color: white;
+    font-size: 8px;
+  }
+
+  &__label,
+  &__text:not(:last-child) {
+    margin-right: 4px;
+  }
+
+  &__checkbox {
+      clip: rect(0 0 0 0);
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      outline: none;
+  }
+}
+
+.localization__checkbox:focus + .localization__label {
+    outline: 1px solid $color-accent;
+}
+
+.localization__checkbox:checked + .localization__label {
+  background-color: $color-light-main;
+}
+
+
+.localization__checkbox:checked + .localization__label:after {
+  transform: translateX(130%) translateY(-50%);
+  background-color: $color-accent;
+}
+
+.localization__label:active:after {
+  width: 6px;
+}
+
+[lang=ru] {
+  display: none;
+}
+
+[lang=en] {
+  display: unset;
 }

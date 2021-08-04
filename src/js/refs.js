@@ -23,4 +23,6 @@ export default {
   controlWrapper: document.querySelector('.button-box__wrapper'),
   searchWrapper: document.querySelector('.search__wrapper'),
   errorWrapper: document.querySelector('.error-box__wrapper'),
+  langSwitch: document.querySelector('#lang-switch'),
+  htmlDoc: document.querySelector('html'),
 };
