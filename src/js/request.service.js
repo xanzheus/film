@@ -24,9 +24,10 @@ export default class RequestService {
       const response = await axios.get(url);
       return response?.data;
     } catch {
-      let warningStr = lang === 'en' 
-            ? 'Sorry: server trending error, please try again later'
-            : 'Извините, ошибка сервера. Пожалуйста, повторите запрос позже.';
+      let warningStr =
+        lang === 'en'
+          ? 'Sorry: server trending error, please try again later'
+          : 'Извините, ошибка сервера. Пожалуйста, повторите запрос позже.';
       toastr.info(warningStr);
     }
   }
@@ -41,9 +42,10 @@ export default class RequestService {
       const response = await axios.get(url);
       return response?.data;
     } catch {
-      let warningStr = lang === 'en' 
-            ? 'Sorry: server search error, please try again later'
-            : 'Извините, ошибка поиска на сервере. Пожалуйста, повторите запрос позже.';
+      let warningStr =
+        lang === 'en'
+          ? 'Sorry: server search error, please try again later'
+          : 'Извините, ошибка поиска на сервере. Пожалуйста, повторите запрос позже.';
       toastr.info(warningStr);
     }
   }
@@ -54,9 +56,10 @@ export default class RequestService {
       const response = await axios.get(url);
       return response?.data;
     } catch {
-      let warningStr = lang === 'en' 
-        ? 'Sorry: server error, please try again later'
-        : 'Извините, ошибка на сервере. Пожалуйста, повторите запрос позже.';
+      let warningStr =
+        lang === 'en'
+          ? 'Sorry: server error, please try again later'
+          : 'Извините, ошибка на сервере. Пожалуйста, повторите запрос позже.';
       toastr.error(warningStr);
     }
   }
@@ -68,9 +71,10 @@ export default class RequestService {
       const genresArray = await response.data.genres;
       return genresArray;
     } catch {
-      let warningStr = lang === 'en' 
-        ? 'Sorry: server error, please try again later'
-        : 'Извините, ошибка на сервере. Пожалуйста, повторите запрос позже.';
+      let warningStr =
+        lang === 'en'
+          ? 'Sorry: server error, please try again later'
+          : 'Извините, ошибка на сервере. Пожалуйста, повторите запрос позже.';
       toastr.error(warningStr);
     }
   }
