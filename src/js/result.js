@@ -170,40 +170,74 @@ const renderingTrendingCardsList = () => {
 };
 
 const renderingLibraryCardsList = () => {
+  
   const arrayFilms = getDataFromLocalStorage();
   // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
   addClassToElement(refs.paginationAnchorRef, 'hidden');
   const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
   makeMarkupLibraryCardsList(arrayForMarkup);
   addClassToElement(refs.loader, 'is-hidden');
-  // changeCursor();
 };
 
 const renderingLibrary = (e) => {
   clearCardsList();
-  // console.log()
-  const nameLibrary = e.target.getAttribute('id') === 'watch' || e.target.getAttribute('id') === 'queue'
-    ? e.target.getAttribute('id')
+  removeClassFromElement(refs.loader, 'is-hidden');
+  showLoader();
+
+ 
+  const attrValueId = e.target.closest('[id]').getAttribute('id');
+  const nameLibrary = attrValueId === 'watch' || attrValueId === 'queue'
+    ? attrValueId
     : ''
 
-    console.log(e.target.getAttribute('id'))
     const arrayFilms = getDataFromLocalStorage(nameLibrary);
-  // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
-  addClassToElement(refs.paginationAnchorRef, 'hidden');
-  const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
-  makeMarkupLibraryCardsList(arrayForMarkup);
-  addClassToElement(refs.loader, 'is-hidden');
+  // // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
+  // addClassToElement(refs.paginationAnchorRef, 'hidden');
+  // const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
+  const startRendering = () => {makeMarkupLibraryCardsList(arrayFilms)};
+  
+  const onLoaderHidden = () => {
+    addClassToElement(refs.loader, 'is-hidden');
   }
 
+  setTimeout(startRendering, 400);
+  setTimeout(onLoaderHidden, 400);
 
+  // addClassToElement(refs.loader, 'is-hidden');
+  }
 
+  // const refreshLibrary = (e) => {
 
-
-
-
-
-
-
+  //   if(!refs.controlWrapper.classList.contains('non-displayed')) {
+  //     return
+  //   }
+    
+  //   clearCardsList();
+  //   removeClassFromElement(refs.loader, 'is-hidden');
+  //   showLoader();
+  
+   
+  //   const attrValueId = e.target.closest('.modal__box').dataset.anchor;
+  //   console.log(attrValueId)
+  //   const nameLibrary = attrValueId === 'watch' || attrValueId === 'queue'
+  //     ? attrValueId
+  //     : ''
+  
+  //     const arrayFilms = getDataFromLocalStorage(nameLibrary);
+  //   // // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
+  //   // addClassToElement(refs.paginationAnchorRef, 'hidden');
+  //   // const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
+  //   const startRendering = () => {makeMarkupLibraryCardsList(arrayFilms)};
+    
+  //   const onLoaderHidden = () => {
+  //     addClassToElement(refs.loader, 'is-hidden');
+  //   }
+  // 
+    // setTimeout(startRendering, 400);
+    // setTimeout(onLoaderHidden, 400);
+  
+    // // addClassToElement(refs.loader, 'is-hidden');
+    // }
 
 const renderingSearchCardsList = () => {
   const searchQuery = trim(refs.searchInput.value);
@@ -253,6 +287,7 @@ const loadSearchPage = () => {
 
 //==================== function for load LIBRARY page =======================
 const loadLibraryPage = () => {
+  removeErrorStartLoad();
   //////////////////////////////////////
   removeClassFromElement(refs.loader, 'is-hidden');
   clearCardsList();
@@ -285,5 +320,6 @@ export {
   makePosterPatch,
   makeMarkupLibraryCardsList,
   loadHomePage,
-  renderingLibrary
+  renderingLibrary,
+  // refreshLibrary
 };

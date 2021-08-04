@@ -1,6 +1,7 @@
 {{#each this}}
   <li class='result__item'>
-    <div class='card' data-id={{id}}>
+    <a href="#" class="result__link link" data-id={{id}}>
+      <div class='card' data-id={{id}}>
       <div class='card__image-box'>
         <img class='card__image' src='{{poster_path}}' alt='{{original_title}}' />
       </div>
@@ -23,5 +24,6 @@
         </div>
       </div>
     </div>
+    </a>
   </li>
 {{/each}}

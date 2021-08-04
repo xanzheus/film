@@ -1,20 +1,23 @@
 .header {
+  background-color: $color-dark-main;
   background-image: linear-gradient(to right, $background-filter-header, $background-filter-header),
     url('/images/header/rectangle_@1x_mob.jpg');
   background-repeat: no-repeat;
-  background-position: top center;
+  background-position: center;
+  background-size: cover;
   overflow: hidden;
 
+  min-width: $mobile;
+  min-height: 230px;
   width: 100%;
-  height: 230px;
 
-  padding: 46px 0 43px;
+  padding: 32px 0 43px;
 
   &__wrapper {
     display: flex;
-    align-items: baseline;
+    align-items: center;
 
-    margin-bottom: 26px;
+    margin-bottom: 20px;
   }
 
   @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
@@ -26,7 +29,7 @@
       url('/images/header/rectangle_@2x_mob.jpg');
   }
 
-  @media screen and (min-width: $tablet) {
+  @media screen and (min-width: $mobile + 1px) {
     background-image: linear-gradient(
         to right,
         $background-filter-header,
@@ -34,7 +37,7 @@
       ),
       url('/images/header/rectangle_@1x_tab.jpg');
 
-    padding: 41px 0 59px;
+    padding: 27px 0 59px;
 
     @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
       background-image: linear-gradient(
@@ -46,7 +49,7 @@
     }
   }
 
-  @media screen and (min-width: $desktop) {
+  @media screen and (min-width: $tablet + 1px) {
     background-image: linear-gradient(
         to right,
         $background-filter-header,
@@ -63,6 +66,10 @@
         url('/images/header/rectangle_@2x.jpg');
     }
   }
+
+  @media screen and (min-width: $desktop + 1px) {
+    background-size: contain;
+  }
 }
 
 .header.authorized {
@@ -78,7 +85,7 @@
       url('/images/header/rectangle2_@2x_mob.jpg');
   }
 
-  @media screen and (min-width: $tablet) {
+  @media screen and (min-width: $mobile + 1px) {
     background-image: linear-gradient(
         to right,
         $background-filter-header,
@@ -96,7 +103,7 @@
     }
   }
 
-  @media screen and (min-width: $desktop) {
+  @media screen and (min-width: $tablet + 1px) {
     background-image: linear-gradient(
         to right,
         $background-filter-header,
@@ -136,14 +143,16 @@
 
     padding: 8px;
 
-    display: none;
     transition: $time-main $timing-function-main;
+  }
+  
+  &__text {
+    display: none;
 
     @media screen and (min-width: $tablet) {
       display: inline-block;
     }
   }
-
   // &:hover .logo__link,
   // &:focus .logo__link {
   //   transform: scale(1.15);
@@ -202,8 +211,7 @@
     }
   }
 
-  &__link:hover,
-  &__link:focus {
+  &__link:hover {
     text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
   }
 }
@@ -222,11 +230,11 @@
 
   &__input {
     width: 100%;
-    height: 26px;
+    height: 20px;
 
     position: relative;
 
-    padding: 8px 8px 8px 4px;
+    padding: 2px;
 
     display: block;
     flex-direction: column;
@@ -260,7 +268,6 @@
 
   &__input:focus,
   &__input:hover {
-    outline: none;
     border-bottom: 1px solid $color-accent;
   }
 
@@ -271,7 +278,7 @@
   &__button {
     position: absolute;
     top: 50%;
-    right: -5px;
+    right: -8px;
 
     width: 30px;
     height: 30px;
@@ -356,8 +363,7 @@
     margin-right: 20px;
   }
 
-  &__button:hover,
-  &__button:focus {
+  &__button:hover {
     text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
   }
 
@@ -371,56 +377,87 @@
   display: none;
 }
 
-.header {
-  &__lang {
-    width: 100px;
-    margin-left: auto;
-    margin-right: 0;
-  }
 
-  &__lang-checkbox {
-    --active: #275EFE;
-    --active-inner: #fff;
-    --focus: 2px rgba(39, 94, 254, .3);
-    --border: #BBC1E1;
-    --border-hover: #275EFE;
-    --background: #fff;
-    --disabled: #F6F8FF;
-    --disabled-inner: #E1E6F9;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    height: 13px;
-    outline: none;
-    display: inline-block;
-    vertical-align: top;
+.localization {
+  width: 90px;
+  margin-left: auto;
+  margin-right: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__label {
+    width: 26px;
+    height: 14px;
+    display: block;
+    background-color: $color-text-secondary;
+    // border: 1px solid $color-accent;
+    border-radius: 70px;
     position: relative;
-    margin: 0;
     cursor: pointer;
-    border: 1px solid $color-light-main;
-    background: $color-light-main;
-    transition: $time-main $timing-function-main;
+    transition: $time-main;
 
-
-      width: 28px;
-      border-radius: 11px;
-      &::after {
-        left: 2px;
-        top: 2px;
-        border-radius: 50%;
-        width: 15px;
-        height: 15px;
-        background: $color-accent;
-        // transform: translateX(var(--x, 0));
-      }
-
-    // &:after {
-    //   content: '';
-    //   display: block;
-    //   left: 0;
-    //   top: 0;
-    //   position: absolute;
-    //   transition: transform $time-main $timing-function-main,
-    //               opacity $time-main $timing-function-main;
-    // }
+    padding: 2px 0;
   }
+
+  &__label::after {
+    content: "";
+    width: 9px;
+    height: 9px;
+    background-color: $color-light-main;
+    position: absolute;
+    border-radius: 50%;
+    top: 50%;
+    left: 3px;
+    transition: 0.5s;
+
+    transform: translateY(-50%);
+  }
+
+  &__flag {
+    display: block;
+  }
+
+  &__label {
+    margin-right: 7px;
+  }
+
+  &__flag:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  &__checkbox {
+      clip: rect(0 0 0 0);
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      outline: none;
+  }
+}
+
+.localization__checkbox:focus + .localization__label {
+    outline: 1px solid $color-accent;
+}
+
+.localization__checkbox:checked + .localization__label {
+  background-color: $color-light-main;
+}
+
+
+.localization__checkbox:checked + .localization__label:after {
+  transform: translateX(130%) translateY(-50%);
+  background-color: $color-accent;
+}
+
+.localization__label:active:after {
+  width: 9px;
+}
+
+[lang=ru] {
+  display: none;
+}
+
+[lang=en] {
+  display: unset;
 }

@@ -1,52 +1,39 @@
 <header class="header">
   <div class="container">
-    <div class="header__lang">
-      <label for="s2" class="header__lang">EN
-      <input id="s2" type="checkbox" class="header__lang-checkbox" checked>
-      RU</label>
+    <div class="localization">
+      <img src="./images/header/uk_flag.jpg" alt="United Kingdom flag"  class="localization__flag" width="18" height="12" />
+      <input class="localization__checkbox" type="checkbox" name="lang-switch" id="lang-switch" aria-label="Language switch">
+      <label class="localization__label" for="lang-switch"></label>
+      <img class="localization__flag" alt="United Kingdom flag" src="./images/header/rus_flag.jpg" width="18" height="12"/>
     </div>
     <div class="header__wrapper">
       <div class="logo">
-        <svg class="logo__icon" width="24" height="24" aria-label="Logotype">
-          <use href="/images/sprite.svg#icon-logo"></use>
-        </svg>
-        <a class="logo__link link btn-shine" href="./index.html">Filmoteka</a>
+        <a class="logo__link link btn-shine" href="./index.html">
+            <svg class="logo__icon" width="24" height="24" aria-label="Logotype">
+                <use href="/images/sprite.svg#icon-logo"></use>
+              </svg>
+              <span class="logo__text">
+                <span lang="en">Filmoteka</span><span lang="ru">Фильмотека</span>
+              </span></a>
       </div>
       <nav class="navigation">
         <ul class="navigation__list list">
           <li class="navigation__item">
             <a href="#" class="navigation__link link navigation__link--current" id="home-link"
-              >Home</a
+              ><span lang="en">Home</span><span lang="ru">Домой</span></a
             >
           </li>
           <li class="navigation__item">
-            <a href="#" class="navigation__link link" id="library-link">My library</a>
+            <a href="#" class="navigation__link link" id="library-link">
+              <span lang="en">My library</span><span lang="ru">Мои фильмы</span></a>
           </li>
         </ul>
       </nav>
-      <!-- <div class="search__wrapper">
-            <input type="text" class="search__input" placeholder="Поиск фильмов" id="search-input">
-            <button type="button" class="search__button">
-                <svg class="search__icon" width="12" height="12" aria-label="Logotype">
-                    <use href="/images/sprite.svg#icon-search"></use>
-                  </svg>
-            </button>
-        </div> -->
-      <!-- <div class="button-box__wrapper non-displayed">
-            <a href="#" class="button-box__button link" id="watched-button">
-                Watched
-            </a>
-            <a href="#" class="button-box__button link" id="queue-button">
-                Queue
-            </a>
-        </div>
-        <div class="error-box__wrapper non-displayed">
-            <p class="error-box__message">Search result not successful. Enter the correct movie name and try again.</p>
-        </div> -->
     </div>
     <div class="search__wrapper">
       <form class="search__form">
-        <input type="text" class="search__input" placeholder="Поиск фильмов" id="search-input" />
+        <label for="search-input" class="search__label visually-hidden">Search films</label>
+        <input type="text" class="search__input" placeholder="Search films" id="search-input" aria-label="Search films input"/>
         <button type="submit" class="search__button">
           <svg class="search__icon" width="12" height="12" aria-label="Logotype">
             <use href="/images/sprite.svg#icon-search"></use>
@@ -56,13 +43,15 @@
     </div>
     <div class="button-box__wrapper non-displayed">
       <a href="#" class="button-box__button link button-box__button--active" id="watch">
-        Watched
+        <span lang="en">Watched</span><span lang="ru">Просмотренные</span>
       </a>
-      <a href="#" class="button-box__button link" id="queue"> Queue </a>
+      <a href="#" class="button-box__button link" id="queue">
+        <span lang="en">Queue</span><span lang="ru">Очередь</span></a>
     </div>
     <div class="error-box__wrapper non-displayed">
       <p class="error-box__message">
-        Search result not successful. Enter the correct movie name and try again.
+        <span lang="en">Search result not successful. Enter the correct movie name and try again.</span>
+        <span lang="ru">Невозможно найти фильмы. Введите корректное название фильма и повторите попытку.</span></a>
       </p>
     </div>
   </div>
