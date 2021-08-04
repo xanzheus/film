@@ -22,4 +22,6 @@ export default {
   controlWrapper: document.querySelector('.button-box__wrapper'),
   searchWrapper: document.querySelector('.search__wrapper'),
   errorWrapper: document.querySelector('.error-box__wrapper'),
+  checkBox: document.getElementById('theme__switch-toggle'),
+  body: document.querySelector('body'),
 };
