@@ -243,7 +243,11 @@ const renderingSearchCardsList = () => {
   const searchQuery = trim(refs.searchInput.value);
   if (!searchQuery) {
     loadHomePage();
-    toastr.warning('Empty request. Please enter what you want to find');
+    const lang = localStorage.getItem('language');
+    let warningStr = lang === 'en' 
+            ? 'Empty request. Please enter what you want to find.'
+            : 'Запрос пуст. Пожалуйста, введите что вы хотите найти.';
+    toastr.warning(warningStr);
     return;
   }
 

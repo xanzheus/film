@@ -11,7 +11,7 @@
   min-height: 230px;
   width: 100%;
 
-  padding: 32px 0 43px;
+  padding: 24px 0 43px;
 
   &__wrapper {
     display: flex;
@@ -37,7 +37,7 @@
       ),
       url('/images/header/rectangle_@1x_tab.jpg');
 
-    padding: 27px 0 59px;
+    padding: 21px 0 59px;
 
     @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
       background-image: linear-gradient(
@@ -379,7 +379,7 @@
 
 
 .localization {
-  width: 90px;
+  width: 115px;
   margin-left: auto;
   margin-right: 0;
 
@@ -388,8 +388,8 @@
   align-items: center;
 
   &__label {
-    width: 26px;
-    height: 14px;
+    width: 32px;
+    height: 16px;
     display: block;
     background-color: $color-text-secondary;
     // border: 1px solid $color-accent;
@@ -403,8 +403,8 @@
 
   &__label::after {
     content: "";
-    width: 9px;
-    height: 9px;
+    width: 11px;
+    height: 11px;
     background-color: $color-light-main;
     position: absolute;
     border-radius: 50%;
@@ -420,11 +420,11 @@
   }
 
   &__label {
-    margin-right: 7px;
+    margin-right: 10px;
   }
 
   &__flag:not(:last-child) {
-    margin-right: 8px;
+    margin-right: 10px;
   }
 
   &__checkbox {
@@ -440,14 +440,8 @@
     outline: 1px solid $color-accent;
 }
 
-.localization__checkbox:checked + .localization__label {
-  background-color: $color-light-main;
-}
-
-
 .localization__checkbox:checked + .localization__label:after {
-  transform: translateX(130%) translateY(-50%);
-  background-color: $color-accent;
+  transform: translateX(140%) translateY(-50%);
 }
 
 .localization__label:active:after {
