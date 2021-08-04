@@ -213,14 +213,15 @@ const getModalId = function (e) {
   showTrailer.id = id;
   getActiveInfo(id);
   document.body.classList.add('no__scroll');
-  const parentCard = e.target.closest('.result__link');
-  if (!parentCard) {
-    return;
-  }
-  const id = parentCard.dataset.id;
-  showTrailer.id = id;
-  getActiveInfo(id);
-  addClassToElement(refs.body, 'no__scroll');
+
+  // const parentCard = e.target.closest('.result__link');
+  // if (!parentCard) {
+  //   return;
+  // }
+  // const id = parentCard.dataset.id;
+  // showTrailer.id = id;
+  // getActiveInfo(id);
+  // addClassToElement(refs.body, 'no__scroll');
 };
 
 const showModal = function (markup) {
