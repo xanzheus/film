@@ -1,8 +1,8 @@
 import refs from './refs';
 
 const Theme = {
-  LIGHT: 'light-theme',
-  DARK: 'dark-theme',
+  LIGHT: 'light__theme',
+  DARK: 'dark__theme',
 };
 
 const STORAGE_KEY = 'theme';

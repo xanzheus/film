@@ -7,11 +7,11 @@ body {
   transition: color $time-main $timing-function-main,
     background-color $time-main $timing-function-main;
 
-  &.light-theme {
+  &.light__theme {
     background-color: $color-light-main;
   }
 
-  &.dark-theme {
+  &.dark__theme {
     background-color: $color-background;
     color: $color-light-main;
   }
