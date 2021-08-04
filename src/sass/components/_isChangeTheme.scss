@@ -1,0 +1,82 @@
+.toolbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px 24px;
+}
+
+/* THEME SWITCH */
+.theme__switch {
+  display: flex;
+  align-items: center;
+}
+
+.theme__switch-icon {
+  color: currentColor;
+  height: 24px;
+  width: 24px;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.theme__switch-control {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  width: 64px;
+  height: 32px;
+  border-radius: 50em;
+  padding: 3px 0;
+}
+
+.theme__switch-toggle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  pointer-events: none;
+}
+
+.theme__switch-track {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  user-select: none;
+  background-color: $color-background;
+  border-radius: inherit;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.theme__switch-marker {
+  position: relative;
+  background-color: $color-accent;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  transform: translateX(3px);
+  transition: transform $time-main $timing-function-main;
+}
+
+.theme__switch-toggle:checked + .theme__switch-track {
+  background-color: $color-light-main;
+}
+
+.theme__switch-toggle:checked ~ .theme__switch-marker {
+  transform: translateX(35px);
+}
+
+.theme__switch-toggle:focus + .theme__switch-track,
+.theme__switch-toggle:active + .theme__switch-track {
+  box-shadow: 0 0 0 3px $color-accent;
+}

@@ -1,12 +1,29 @@
 <header class="header">
   <div class="container">
+    <!-- switcher markup -->
+    <div class="toolbar">
+      <div class="theme__switch">
+        <div class="theme__switch-control">
+          <input
+            class="theme__switch-toggle"
+            type="checkbox"
+            name="theme"
+            id="theme__switch-toggle"
+            aria-label="Переключить между тёмной и светлой темой"
+          />
+          <label aria-hidden="true" class="theme__switch-track" for="theme__switch-toggle"> </label>
+          <div aria-hidden="true" class="theme__switch-marker"></div>
+        </div>
+      </div>
+    </div>
     <div class="header__wrapper">
       <div class="logo">
         <a class="logo__link link btn-shine" href="./index.html">
-            <svg class="logo__icon" width="24" height="24" aria-label="Logotype">
-                <use href="/images/sprite.svg#icon-logo"></use>
-              </svg>
-              <span class="logo__text">Filmoteka</span></a>
+          <svg class="logo__icon" width="24" height="24" aria-label="Logotype">
+            <use href="/images/sprite.svg#icon-logo"></use>
+          </svg>
+          <span class="logo__text">Filmoteka</span></a
+        >
       </div>
       <nav class="navigation">
         <ul class="navigation__list list">

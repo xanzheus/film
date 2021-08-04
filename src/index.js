@@ -8,3 +8,4 @@ import './js/local-storage';
 import './js/trailer_to_film';
 import './js/header_switch';
 import './js/searchMovies';
+import './js/isChangeTheme';

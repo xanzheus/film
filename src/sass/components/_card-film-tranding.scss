@@ -40,7 +40,6 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.167;
-  color: $color-dark-main;
 
   @media screen and (min-width: $tablet) {
     line-height: 1.333;
@@ -83,17 +82,16 @@
   margin-right: 10px;
 }
 
-  .genres__item:last-child::after {
-    content: '';
-    position: absolute;
-    bottom: 3px;
-    right: -5px;
-    display: block;
-    width: 1px;
-    height: 10px;
-    background-color: $color-accent;
-  }
-
+.genres__item:last-child::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  right: -5px;
+  display: block;
+  width: 1px;
+  height: 10px;
+  background-color: $color-accent;
+}
 
 .card__details {
   display: flex;

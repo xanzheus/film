@@ -28,7 +28,7 @@ a.tui-page-btn.tui-first {
 .tui-pagination a.tui-first-child.tui-page-btn,
 .tui-pagination a.tui-page-btn {
   border-left: none;
-  color: $color-dark-main;
+  color: inherit;
   width: 38px;
   height: 38px;
   padding: 13px;
@@ -60,7 +60,7 @@ a.tui-page-btn.tui-first {
 
 .tui-page-btn.tui-is-disabled.tui-prev,
 .tui-page-btn.tui-is-disabled.tui-prev {
-  color: $color-dark-main;
+  color: inherit;
   width: 38px;
   height: 38px;
   padding: 13px;
