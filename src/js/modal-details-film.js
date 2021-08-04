@@ -4,8 +4,8 @@ import refs from './refs';
 import requestService from './request.service';
 import { makeMarkup } from './modal-details-film-tpl';
 import { ShowTrailer } from './trailer_to_film';
-import { getModal } from './isChangeTheme';
 import { refreshLibrary } from './result';
+import { savedThemeOnReloadedModalCard } from './isChangeTheme';
 
 import { addClassToElement, removeClassFromElement } from './actions-functions';
 import {
@@ -83,7 +83,7 @@ const doActionsShowModal = function (markup) {
   refs.buttonQueue = document.querySelector('[data-anchor="queue"]');
   refs.trailer = document.querySelector('[data-anchor="trailer"]');
 
-  //
+  savedThemeOnReloadedModalCard();
 
   // console.log(refs.currentCardId);
   const localStorageLanguage = localStorage.getItem('language');
