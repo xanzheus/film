@@ -196,7 +196,7 @@ const doActionsShowModal = function (markup) {
     }
   };
 
-  console.log(e.target);
+  // console.log(e.target);
 
   refs.modalBox.addEventListener('click', addFilmToLibrary);
   refs.modalBox.addEventListener('click', refreshLibrary);
@@ -205,23 +205,23 @@ const doActionsShowModal = function (markup) {
 };
 
 const getModalId = function (e) {
-  const parentCard = e.target.closest('.card');
-  if (!parentCard) {
-    return;
-  }
-  const id = parentCard.dataset.id;
-  showTrailer.id = id;
-  getActiveInfo(id);
-  document.body.classList.add('no__scroll');
-
-  // const parentCard = e.target.closest('.result__link');
+  // const parentCard = e.target.closest('.card');
   // if (!parentCard) {
   //   return;
   // }
   // const id = parentCard.dataset.id;
   // showTrailer.id = id;
   // getActiveInfo(id);
-  // addClassToElement(refs.body, 'no__scroll');
+  // document.body.classList.add('no__scroll');
+
+  const parentCard = e.target.closest('.result__link');
+  if (!parentCard) {
+    return;
+  }
+  const id = parentCard.dataset.id;
+  showTrailer.id = id;
+  getActiveInfo(id);
+  addClassToElement(refs.body, 'no__scroll');
 };
 
 const showModal = function (markup) {
