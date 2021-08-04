@@ -2,7 +2,7 @@
   <div class="container">
     <div class="localization">
       <span class="localization__text">En</span>
-      <input class="localization__checkbox" type="checkbox" name="lang-switch" id="lang-switch">
+      <input class="localization__checkbox" type="checkbox" name="lang-switch" id="lang-switch" aria-label="Language switch">
       <label class="localization__label" for="lang-switch"></label>
       <span class="localization__text">Ru</span>
     </div>
@@ -32,7 +32,8 @@
     </div>
     <div class="search__wrapper">
       <form class="search__form">
-        <input type="text" class="search__input" placeholder="Search films" id="search-input" />
+        <label for="search-input" class="search__label visually-hidden">Search films</label>
+        <input type="text" class="search__input" placeholder="Search films" id="search-input" aria-label="Search films input"/>
         <button type="submit" class="search__button">
           <svg class="search__icon" width="12" height="12" aria-label="Logotype">
             <use href="/images/sprite.svg#icon-search"></use>
