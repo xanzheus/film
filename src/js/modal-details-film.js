@@ -148,7 +148,7 @@ const doActionsShowModal = function (markup) {
 };
 
 const getModalId = function (e) {
-    const parentCard = e.target.closest('.card')
+    const parentCard = e.target.closest('.result__link')
     if (!parentCard) {
         return
     }
