@@ -145,7 +145,7 @@
 
     transition: $time-main $timing-function-main;
   }
-  
+
   &__text {
     display: none;
 
@@ -213,7 +213,7 @@
 
   &__link:hover,
   &__link:focus {
-    text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
+    text-shadow: 0 -1px 4px #fff, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #f00;
   }
 }
 
@@ -367,7 +367,7 @@
 
   &__button:hover,
   &__button:focus {
-    text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
+    text-shadow: 0 -1px 4px #fff, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #f00;
   }
 
   &__button--active {
