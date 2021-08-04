@@ -53,6 +53,7 @@
 
   @media screen and(min-width: $desktop) {
     width: 882px;
+    padding-left: 27px;
     // position: absolute;
     // top: 80px;
     // left: 0;
@@ -120,8 +121,10 @@
   overflow: hidden;
 
   @media screen and(min-width: $desktop) {
-    width: 120px;
-    height: 120px;
+    width: 140px;
+    height: 140px;
+    margin-bottom: 0;
+    margin-left: -20px;
   }
 }
 
