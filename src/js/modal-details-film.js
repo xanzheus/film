@@ -87,11 +87,11 @@ const doActionsShowModal = function (markup) {
   const localStorageLanguage = localStorage.getItem('language');
 
   const buttonValues = {
-    addToWatchedRu: 'ДОБАВИТЬ В ПРОСМОТРЕННЫЕ',
+    addToWatchedRu: 'ЕЩЕ НЕ СМОТРЕЛ',
     addToWatchedEn: 'ADD TO WATCHED',
     addToQueueRu: 'ДОБАВИТЬ В ОЧЕРЕДЬ',
     addToQueueEn: 'ADD TO QUEUE',
-    removeFromWatchedRu: 'УДАЛИТЬ С ПРОСМОТРЕННЫХ',
+    removeFromWatchedRu: 'УЖЕ СМОТРЕЛ',
     removeFromWatchedEn: 'REMOVE FROM WATCHED',
     removeFromQueueEn: 'REMOVE FROM QUEUE',
     removeFromQueueRu: 'УДАЛИТЬ С ОЧЕРЕДИ',
