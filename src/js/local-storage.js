@@ -39,7 +39,7 @@ const createShortlibraryOfValues = function (film) {
   libraryOfValues.original_title = film.original_title;
   libraryOfValues.genres = listGenres(film.genres);
   libraryOfValues.release_date = makeValidatesReleaseDate(film.release_date);
-  libraryOfValues.vote_average = film.vote_average;
+  libraryOfValues.vote_average = film.vote_average.toFixed(1);
   libraryOfValues.poster_path = makePosterPatch(film);
   libraryOfValues.backdrop_path = film.backdrop_path;
   return libraryOfValues;

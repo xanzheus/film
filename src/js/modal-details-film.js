@@ -94,7 +94,7 @@ const doActionsShowModal = function (markup) {
     removeFromWatchedRu: 'УЖЕ СМОТРЕЛ',
     removeFromWatchedEn: 'REMOVE FROM WATCHED',
     removeFromQueueEn: 'REMOVE FROM QUEUE',
-    removeFromQueueRu: 'УДАЛИТЬ С ОЧЕРЕДИ',
+    removeFromQueueRu: 'УДАЛИТЬ ИЗ ОЧЕРЕДИ',
     trailerRu: 'ТРЕЙЛЕР',
   };
 
@@ -196,7 +196,7 @@ const addFilmToLibrary = e => {
 }
 
   refs.modalBox.addEventListener('click', addFilmToLibrary);
-  // refs.modalBox.addEventListener('click', refreshLibrary);
+  refs.modalBox.addEventListener('click', refreshLibrary);
   // changeCursor();
   //* end alex
 };
