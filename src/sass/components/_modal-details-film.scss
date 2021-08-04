@@ -237,20 +237,24 @@ display: block;
     padding: 0;
     border: none;
     color: #000;
+    // fill: currentColor;
+
+    background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 8l14 14M8 22L22 8' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E");
+
     fill: currentColor;
-}
+    }
 
 
 
-.btn__close .material-icons {
-  font-size: 20px;
-}
+// .btn__close .material-icons {
+//   font-size: 20px;
+// }
 
   .no__scroll{
   overflow: hidden;
 }
 
-.btn__close .material-icons {
-  font-size: 20px;
-}
+// .btn__close .material-icons {
+//   font-size: 20px;
+// }
 

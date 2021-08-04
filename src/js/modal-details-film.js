@@ -4,6 +4,7 @@ import refs from './refs';
 import requestService from './request.service';
 import { makeMarkup } from './modal-details-film-tpl';
 import { ShowTrailer } from './trailer_to_film';
+import {refreshLibrary} from './result';
 
 import { addClassToElement, removeClassFromElement } from './actions-functions';
 import {
@@ -130,6 +131,7 @@ const doActionsShowModal = function (markup) {
       const matchedElement = queue.find(el => {
         return el.id === Number(refs.currentCardId);
       });
+
       if (matchedElement && localStorageLanguage === 'en') {
         refs.buttonQueue.innerText = buttonValues.removeFromQueueEn;
       }
@@ -142,7 +144,7 @@ const doActionsShowModal = function (markup) {
   chekWatchButtonValue();
   chekQueueButtonValue();
 
-  refs.modalBox.addEventListener('click', e => {
+const addFilmToLibrary = e => { 
     const buttonLabel = e.target.innerText; //Текст на кнопке
     const currentCardId = e.currentTarget.getAttribute('data-id'); //id текущей краты
     const btnValue = e.target.getAttribute('data-anchor'); //значение data-anchor
@@ -156,6 +158,7 @@ const doActionsShowModal = function (markup) {
         ? (e.target.innerText = buttonValues.removeFromWatchedEn)
         : (e.target.innerText = buttonValues.removeFromWatchedRu);
       addDataToLocalStorage(currentCardId, btnValue);
+      return
     }
 
     if (
@@ -167,6 +170,7 @@ const doActionsShowModal = function (markup) {
         : (e.target.innerText = buttonValues.addToWatchedRu);
 
       removeFromLibrary(btnValue, currentCardId);
+      return
     }
 
     if (buttonLabel === buttonValues.addToQueueEn || buttonLabel === buttonValues.addToQueueRu) {
@@ -174,6 +178,7 @@ const doActionsShowModal = function (markup) {
         ? (e.target.innerText = buttonValues.removeFromQueueEn)
         : (e.target.innerText = buttonValues.removeFromQueueRu);
       addDataToLocalStorage(currentCardId, btnValue);
+      return
     }
 
     if (
@@ -185,20 +190,28 @@ const doActionsShowModal = function (markup) {
         : (e.target.innerText = buttonValues.addToQueueRu);
 
       removeFromLibrary(btnValue, currentCardId);
+      return
     }
-  });
+  console.log(e.target);
+}
+
+  refs.modalBox.addEventListener('click', addFilmToLibrary);
+  // refs.modalBox.addEventListener('click', refreshLibrary);
+  // changeCursor();
+  //* end alex
 };
 
 const getModalId = function (e) {
-  const parentCard = e.target.closest('.card');
-  if (!parentCard) {
-    return;
-  }
-  const id = parentCard.dataset.id;
-  showTrailer.id = id;
-  getActiveInfo(id);
-  addClassToElement(refs.body, 'no__scroll');
-};
+    const parentCard = e.target.closest('.result__link')
+    if (!parentCard) {
+        return
+    }
+    const id = parentCard.dataset.id
+    showTrailer.id = id
+    getActiveInfo(id)
+    addClassToElement(refs.body, 'no__scroll');
+       
+}
 
 const showModal = function (markup) {
   target = basicLightbox.create(markup);
