@@ -1,5 +1,6 @@
 import refs from './refs';
 import { loadHomePage } from './result';
+import { addClassToElement, removeClassFromElement } from './actions-functions';
 
 export const Theme = {
   LIGHT: 'light__theme',
@@ -12,21 +13,21 @@ function onCheckboxClick(evt) {
   let value = '';
   if (evt.currentTarget.checked) {
     value = Theme.DARK;
-    refs.body.classList.add(value);
-    refs.body.classList.remove(Theme.LIGHT);
-    refs.footer.classList.add(value);
-    refs.footer.classList.remove(Theme.LIGHT);
-    refs.modalTeam.classList.add(value);
-    refs.modalTeam.classList.remove(Theme.LIGHT);
+    addClassToElement(refs.body, value);
+    removeClassFromElement(refs.body, Theme.LIGHT);
+    addClassToElement(refs.footer, value);
+    removeClassFromElement(refs.footer, Theme.LIGHT);
+    addClassToElement(refs.modalTeam, value);
+    removeClassFromElement(refs.modalTeam, Theme.LIGHT);
     loadHomePage();
   } else {
     value = Theme.LIGHT;
-    refs.body.classList.remove(Theme.DARK);
-    refs.body.classList.add(value);
-    refs.footer.classList.remove(Theme.DARK);
-    refs.footer.classList.add(value);
-    refs.modalTeam.classList.remove(Theme.DARK);
-    refs.modalTeam.classList.add(value);
+    removeClassFromElement(refs.body, Theme.DARK);
+    addClassToElement(refs.body, value);
+    removeClassFromElement(refs.footer, Theme.DARK);
+    addClassToElement(refs.footer, value);
+    removeClassFromElement(refs.modalTeam, Theme.DARK);
+    addClassToElement(refs.modalTeam, value);
     loadHomePage();
   }
   localStorage.setItem(STORAGE_KEY, value);
@@ -36,13 +37,13 @@ function savedThemeOnReloaded() {
   const savedValue = localStorage.getItem(STORAGE_KEY);
 
   if (savedValue) {
-    refs.body.classList.add(savedValue);
-    refs.footer.classList.add(savedValue);
-    refs.modalTeam.classList.add(savedValue);
+    addClassToElement(refs.body, savedValue);
+    addClassToElement(refs.footer, savedValue);
+    addClassToElement(refs.modalTeam, savedValue);
   } else {
-    refs.body.classList.add(Theme.LIGHT);
-    refs.footer.classList.add(Theme.LIGHT);
-    refs.modalTeam.classList.add(Theme.LIGHT);
+    addClassToElement(refs.body, Theme.LIGHT);
+    addClassToElement(refs.footer, Theme.LIGHT);
+    addClassToElement(refs.modalTeam, Theme.LIGHT);
   }
 
   if (savedValue === Theme.DARK) {

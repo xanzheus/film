@@ -81,6 +81,8 @@ const doActionsShowModal = function (markup) {
   refs.buttonWatch = document.querySelector('[data-anchor="watch"]');
   refs.buttonQueue = document.querySelector('[data-anchor="queue"]');
 
+  //
+
   // console.log(refs.currentCardId);
 
   const chekWatchButtonValue = function () {
