@@ -3,6 +3,12 @@
   padding-top: 30px;
   padding-bottom: 30px;
   margin-top: auto;
+
+  &.dark__theme {
+    background-color: $color-dark-main;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
+    color: $color-light-main;
+  }
 }
 
 .footer__info {
@@ -24,7 +30,11 @@
   line-height: 1.171;
   font-weight: 400;
   color: $color-dark-secondary;
+  // color: inherit;
 
+  &.dark__theme {
+    color: $color-light-main;
+  }
   @media screen and(min-width: $tablet) {
     font-size: 14px;
   }
@@ -55,15 +65,19 @@
   justify-content: center;
 }
 
+.footer.dark__theme .footer__copyright-text,
+.footer.dark__theme .footer__developed-text {
+  color: $color-light-main;
+}
 .footer__developed-text {
   color: $color-dark-secondary;
+  // color: inherit;
   font-size: 16px;
   line-height: 1.171;
   font-weight: 400;
   display: flex;
   align-items: center;
   justify-content: center;
-
 
   @media screen and(min-width:$tablet) {
     font-size: 14px;

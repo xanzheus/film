@@ -170,7 +170,6 @@ const renderingTrendingCardsList = () => {
 };
 
 const renderingLibraryCardsList = () => {
-  
   const arrayFilms = getDataFromLocalStorage();
   // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
   addClassToElement(refs.paginationAnchorRef, 'hidden');
@@ -179,74 +178,74 @@ const renderingLibraryCardsList = () => {
   addClassToElement(refs.loader, 'is-hidden');
 };
 
-const renderingLibrary = (e) => {
+const renderingLibrary = e => {
   clearCardsList();
   removeClassFromElement(refs.loader, 'is-hidden');
   showLoader();
 
- 
   const attrValueId = e.target.closest('[id]').getAttribute('id');
-  const nameLibrary = attrValueId === 'watch' || attrValueId === 'queue'
-    ? attrValueId
-    : ''
+  const nameLibrary = attrValueId === 'watch' || attrValueId === 'queue' ? attrValueId : '';
 
-    const arrayFilms = getDataFromLocalStorage(nameLibrary);
+  const arrayFilms = getDataFromLocalStorage(nameLibrary);
   // // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
   // addClassToElement(refs.paginationAnchorRef, 'hidden');
   // const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
-  const startRendering = () => {makeMarkupLibraryCardsList(arrayFilms)};
-  
+  const startRendering = () => {
+    makeMarkupLibraryCardsList(arrayFilms);
+  };
+
   const onLoaderHidden = () => {
     addClassToElement(refs.loader, 'is-hidden');
-  }
+  };
 
   setTimeout(startRendering, 400);
   setTimeout(onLoaderHidden, 400);
 
   // addClassToElement(refs.loader, 'is-hidden');
+};
+
+const refreshLibrary = e => {
+  if (refs.controlWrapper.classList.contains('non-displayed')) {
+    console.log('exit');
+    return;
   }
 
-  const refreshLibrary = (e) => {
+  clearCardsList();
+  removeClassFromElement(refs.loader, 'is-hidden');
+  showLoader();
 
-    if(refs.controlWrapper.classList.contains('non-displayed')) {
-      console.log('exit')
-      return
-    }
-    
-    clearCardsList();
-    removeClassFromElement(refs.loader, 'is-hidden');
-    showLoader();
-  
-   
-    // const attrValueId = e.target.dataset.anchor;
-    // console.log(attrValueId)
-    // const nameLibrary = e.target.dataset.anchor;
-    const nameLibrary = document.querySelector('.button-box__button--active').getAttribute('id')
-    console.log(nameLibrary)
-      const arrayFilms = getDataFromLocalStorage(nameLibrary);
-    // // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
-    // addClassToElement(refs.paginationAnchorRef, 'hidden');
-    // const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
-    const startRendering = () => {makeMarkupLibraryCardsList(arrayFilms)};
-    
-    const onLoaderHidden = () => {
-      addClassToElement(refs.loader, 'is-hidden');
-    }
-  
-    setTimeout(startRendering, 400);
-    setTimeout(onLoaderHidden, 400);
-  
-    // addClassToElement(refs.loader, 'is-hidden');
-    }
+  // const attrValueId = e.target.dataset.anchor;
+  // console.log(attrValueId)
+  // const nameLibrary = e.target.dataset.anchor;
+  const nameLibrary = document.querySelector('.button-box__button--active').getAttribute('id');
+  console.log(nameLibrary);
+  const arrayFilms = getDataFromLocalStorage(nameLibrary);
+  // // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
+  // addClassToElement(refs.paginationAnchorRef, 'hidden');
+  // const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
+  const startRendering = () => {
+    makeMarkupLibraryCardsList(arrayFilms);
+  };
+
+  const onLoaderHidden = () => {
+    addClassToElement(refs.loader, 'is-hidden');
+  };
+
+  setTimeout(startRendering, 400);
+  setTimeout(onLoaderHidden, 400);
+
+  // addClassToElement(refs.loader, 'is-hidden');
+};
 
 const renderingSearchCardsList = () => {
   const searchQuery = trim(refs.searchInput.value);
   if (!searchQuery) {
     loadHomePage();
     const lang = localStorage.getItem('language');
-    let warningStr = lang === 'en' 
-            ? 'Empty request. Please enter what you want to find.'
-            : 'Запрос пуст. Пожалуйста, введите что вы хотите найти.';
+    let warningStr =
+      lang === 'en'
+        ? 'Empty request. Please enter what you want to find.'
+        : 'Запрос пуст. Пожалуйста, введите что вы хотите найти.';
     toastr.warning(warningStr);
     return;
   }
@@ -296,7 +295,7 @@ const loadLibraryPage = () => {
   removeClassFromElement(refs.loader, 'is-hidden');
   clearCardsList();
   showLoader();
-  setTimeout((renderingLibraryCardsList), 400); ///////////////////////
+  setTimeout(renderingLibraryCardsList, 400); ///////////////////////
 };
 
 // changeCursor();
@@ -325,5 +324,5 @@ export {
   makeMarkupLibraryCardsList,
   loadHomePage,
   renderingLibrary,
-  refreshLibrary
+  refreshLibrary,
 };

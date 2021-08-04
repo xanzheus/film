@@ -1,4 +1,5 @@
 import VanillaTilt from 'vanilla-tilt';
+import { Theme, STORAGE_KEY } from './isChangeTheme';
 
 const options = {
   max: 15,
@@ -10,5 +11,11 @@ const options = {
 
 export const getCardsMarkup = () => {
   const cards = document.querySelectorAll('.card');
+  const savedValue = localStorage.getItem(STORAGE_KEY);
+
+  if (savedValue === Theme.DARK) {
+    VanillaTilt.init(cards);
+  }
+
   VanillaTilt.init(cards, options);
 };

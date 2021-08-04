@@ -4,7 +4,8 @@ import refs from './refs';
 import requestService from './request.service';
 import { makeMarkup } from './modal-details-film-tpl';
 import { ShowTrailer } from './trailer_to_film';
-import {refreshLibrary} from './result';
+import { getModal } from './isChangeTheme';
+import { refreshLibrary } from './result';
 
 import { addClassToElement, removeClassFromElement } from './actions-functions';
 import {
@@ -73,7 +74,6 @@ const doActionsShowModal = function (markup) {
 
   refs.modalDetailsFilm = document.querySelector('.modal');
   refs.modalDetailsFilmButtonClose = refs.modalDetailsFilm.querySelector('.modal .btn__close');
-
   refs.modalDetailsFilmButtonClose.addEventListener('click', closeModalDetails);
 
   // *alex start
@@ -82,6 +82,8 @@ const doActionsShowModal = function (markup) {
   refs.buttonWatch = document.querySelector('[data-anchor="watch"]');
   refs.buttonQueue = document.querySelector('[data-anchor="queue"]');
   refs.trailer = document.querySelector('[data-anchor="trailer"]');
+
+  //
 
   // console.log(refs.currentCardId);
   const localStorageLanguage = localStorage.getItem('language');
@@ -144,7 +146,7 @@ const doActionsShowModal = function (markup) {
   chekWatchButtonValue();
   chekQueueButtonValue();
 
-const addFilmToLibrary = e => { 
+  const addFilmToLibrary = e => {
     const buttonLabel = e.target.innerText; //Текст на кнопке
     const currentCardId = e.currentTarget.getAttribute('data-id'); //id текущей краты
     const btnValue = e.target.getAttribute('data-anchor'); //значение data-anchor
@@ -158,7 +160,7 @@ const addFilmToLibrary = e => {
         ? (e.target.innerText = buttonValues.removeFromWatchedEn)
         : (e.target.innerText = buttonValues.removeFromWatchedRu);
       addDataToLocalStorage(currentCardId, btnValue);
-      return
+      return;
     }
 
     if (
@@ -170,7 +172,7 @@ const addFilmToLibrary = e => {
         : (e.target.innerText = buttonValues.addToWatchedRu);
 
       removeFromLibrary(btnValue, currentCardId);
-      return
+      return;
     }
 
     if (buttonLabel === buttonValues.addToQueueEn || buttonLabel === buttonValues.addToQueueRu) {
@@ -178,7 +180,7 @@ const addFilmToLibrary = e => {
         ? (e.target.innerText = buttonValues.removeFromQueueEn)
         : (e.target.innerText = buttonValues.removeFromQueueRu);
       addDataToLocalStorage(currentCardId, btnValue);
-      return
+      return;
     }
 
     if (
@@ -190,10 +192,11 @@ const addFilmToLibrary = e => {
         : (e.target.innerText = buttonValues.addToQueueRu);
 
       removeFromLibrary(btnValue, currentCardId);
-      return
+      return;
     }
-  console.log(e.target);
-}
+  };
+
+  // console.log(e.target);
 
   refs.modalBox.addEventListener('click', addFilmToLibrary);
   refs.modalBox.addEventListener('click', refreshLibrary);
@@ -202,16 +205,24 @@ const addFilmToLibrary = e => {
 };
 
 const getModalId = function (e) {
-    const parentCard = e.target.closest('.result__link')
-    if (!parentCard) {
-        return
-    }
-    const id = parentCard.dataset.id
-    showTrailer.id = id
-    getActiveInfo(id)
-    addClassToElement(refs.body, 'no__scroll');
-       
-}
+  // const parentCard = e.target.closest('.card');
+  // if (!parentCard) {
+  //   return;
+  // }
+  // const id = parentCard.dataset.id;
+  // showTrailer.id = id;
+  // getActiveInfo(id);
+  // document.body.classList.add('no__scroll');
+
+  const parentCard = e.target.closest('.result__link');
+  if (!parentCard) {
+    return;
+  }
+  const id = parentCard.dataset.id;
+  showTrailer.id = id;
+  getActiveInfo(id);
+  addClassToElement(refs.body, 'no__scroll');
+};
 
 const showModal = function (markup) {
   target = basicLightbox.create(markup);

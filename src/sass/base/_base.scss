@@ -4,6 +4,17 @@ body {
   font-size: 12px;
   line-height: 1.333;
   background-color: $color-light-main;
+  transition: color $time-main $timing-function-main,
+    background-color $time-main $timing-function-main;
+
+  &.light__theme {
+    background-color: $color-light-main;
+  }
+
+  &.dark__theme {
+    background-color: $color-background;
+    color: $color-light-main;
+  }
   min-height: 100vh;
   display: flex;
   flex-direction: column;
