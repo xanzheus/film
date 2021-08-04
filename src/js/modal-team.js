@@ -9,11 +9,14 @@ refs.ftLinkEl.addEventListener('click', onOpenModal);
 function onCloseModal(event) {
   // console.log('click');
   refs.ftBackdropEl.classList.add('is-hidden');
+  removeClassFromElement(refs.body, 'no__scroll')
+
 }
 
 function onOpenModal(event) {
   event.preventDefault();
   removeClassFromElement(refs.ftBackdropEl,'is-hidden');
+  addClassToElement(refs.body, 'no__scroll')
 
 }
 

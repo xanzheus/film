@@ -1,4 +1,5 @@
 export default {
+  body: document.querySelector('body'),
   main: document.querySelector('main'),
   resultSection: document.querySelector('.result .container'),
   resultAnchor: document.querySelector('[data-anchor="result"]'),
