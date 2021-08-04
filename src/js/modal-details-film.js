@@ -81,10 +81,29 @@ const doActionsShowModal = function (markup) {
   refs.currentCardId = refs.modalBox.getAttribute('data-id');
   refs.buttonWatch = document.querySelector('[data-anchor="watch"]');
   refs.buttonQueue = document.querySelector('[data-anchor="queue"]');
+  refs.trailer = document.querySelector('[data-anchor="trailer"]');
 
   // console.log(refs.currentCardId);
+  const localStorageLanguage = localStorage.getItem('language');
+
+  const buttonValues = {
+    addToWatchedRu: 'ДОБАВИТЬ В ПРОСМОТРЕННЫЕ',
+    addToWatchedEn: 'ADD TO WATCHED',
+    addToQueueRu: 'ДОБАВИТЬ В ОЧЕРЕДЬ',
+    addToQueueEn: 'ADD TO QUEUE',
+    removeFromWatchedRu: 'УДАЛИТЬ С ПРОСМОТРЕННЫХ',
+    removeFromWatchedEn: 'REMOVE FROM WATCHED',
+    removeFromQueueEn: 'REMOVE FROM QUEUE',
+    removeFromQueueRu: 'УДАЛИТЬ С ОЧЕРЕДИ',
+    trailerRu: 'ТРЕЙЛЕР',
+  };
 
   const chekWatchButtonValue = function () {
+    if (localStorageLanguage === 'ru') {
+      refs.buttonWatch.innerText = buttonValues.addToWatchedRu;
+      refs.buttonQueue.innerText = buttonValues.addToQueueRu;
+      refs.trailer.innerText = buttonValues.trailerRu;
+    }
     const localStorageWatchKey = localStorage.getItem('watch');
     if (localStorageWatchKey === null || localStorageWatchKey.length === 0) {
       return;
@@ -93,8 +112,12 @@ const doActionsShowModal = function (markup) {
       const matchedElement = watch.find(el => {
         return el.id === Number(refs.currentCardId);
       });
-      if (matchedElement) {
-        refs.buttonWatch.innerText = 'REMOVE FROM WATCHED';
+
+      if (matchedElement && localStorageLanguage === 'en') {
+        refs.buttonWatch.innerText = buttonValues.removeFromWatchedEn;
+      }
+      if (matchedElement && localStorageLanguage === 'ru') {
+        refs.buttonWatch.innerText = buttonValues.removeFromWatchedRu;
       }
     }
   };
@@ -108,8 +131,12 @@ const doActionsShowModal = function (markup) {
       const matchedElement = queue.find(el => {
         return el.id === Number(refs.currentCardId);
       });
-      if (matchedElement) {
-        refs.buttonQueue.innerText = 'REMOVE FROM QUEUE';
+
+      if (matchedElement && localStorageLanguage === 'en') {
+        refs.buttonQueue.innerText = buttonValues.removeFromQueueEn;
+      }
+      if (matchedElement && localStorageLanguage === 'ru') {
+        refs.buttonQueue.innerText = buttonValues.removeFromQueueRu;
       }
     }
   };
@@ -123,30 +150,49 @@ const addFilmToLibrary = e => {
     const btnValue = e.target.getAttribute('data-anchor'); //значение data-anchor
     getBtnValue(btnValue);
 
-    if (buttonLabel === 'ADD TO WATCHED') {
-      e.target.innerText = 'REMOVE FROM WATCHED';
+    if (
+      buttonLabel === buttonValues.addToWatchedEn ||
+      buttonLabel === buttonValues.addToWatchedRu
+    ) {
+      localStorageLanguage === 'en'
+        ? (e.target.innerText = buttonValues.removeFromWatchedEn)
+        : (e.target.innerText = buttonValues.removeFromWatchedRu);
       addDataToLocalStorage(currentCardId, btnValue);
       return
     }
 
-    if (buttonLabel === 'REMOVE FROM WATCHED') {
-      e.target.innerText = 'ADD TO WATCHED';
+    if (
+      buttonLabel === buttonValues.removeFromWatchedEn ||
+      buttonLabel === buttonValues.removeFromWatchedRu
+    ) {
+      localStorageLanguage === 'en'
+        ? (e.target.innerText = buttonValues.addToWatchedEn)
+        : (e.target.innerText = buttonValues.addToWatchedRu);
+
       removeFromLibrary(btnValue, currentCardId);
       return
     }
 
-    if (buttonLabel === 'ADD TO QUEUE') {
-      e.target.innerText = 'REMOVE FROM QUEUE';
+    if (buttonLabel === buttonValues.addToQueueEn || buttonLabel === buttonValues.addToQueueRu) {
+      localStorageLanguage === 'en'
+        ? (e.target.innerText = buttonValues.removeFromQueueEn)
+        : (e.target.innerText = buttonValues.removeFromQueueRu);
       addDataToLocalStorage(currentCardId, btnValue);
       return
     }
 
-    if (buttonLabel === 'REMOVE FROM QUEUE') {
-      e.target.innerText = 'ADD TO QUEUE';
+    if (
+      buttonLabel === buttonValues.removeFromQueueEn ||
+      buttonLabel === buttonValues.removeFromQueueRu
+    ) {
+      localStorageLanguage === 'en'
+        ? (e.target.innerText = buttonValues.addToQueueEn)
+        : (e.target.innerText = buttonValues.addToQueueRu);
+
       removeFromLibrary(btnValue, currentCardId);
       return
     }
-    console.log(e.target);
+  console.log(e.target);
 }
 
   refs.modalBox.addEventListener('click', addFilmToLibrary);
@@ -192,7 +238,7 @@ const onEscClose = e => {
 
 const onBackdropClose = e => {
   if (e.currentTarget === e.target) {
-    removeClassFromElement(refs.body,'no__scroll');
+    removeClassFromElement(refs.body, 'no__scroll');
     window.removeEventListener('keydown', onEscClose);
   }
 };
