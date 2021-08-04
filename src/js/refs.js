@@ -1,4 +1,5 @@
 export default {
+  body: document.querySelector('body'),
   main: document.querySelector('main'),
   resultSection: document.querySelector('.result .container'),
   resultAnchor: document.querySelector('[data-anchor="result"]'),
@@ -26,4 +27,6 @@ export default {
   body: document.querySelector('body'),
   footer: document.querySelector('.footer'),
   modalTeam: document.querySelector('.modal-team'),
+  langSwitch: document.querySelector('#lang-switch'),
+  htmlDoc: document.querySelector('html'),
 };

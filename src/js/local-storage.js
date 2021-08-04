@@ -1,5 +1,5 @@
 import RequestService from './request.service';
-import {makeValidatesReleaseDate, makePosterPatch} from './result'
+import { makeValidatesReleaseDate, makePosterPatch } from './result';
 const requestService = new RequestService();
 
 // Library of values (watch or queue)
@@ -30,8 +30,8 @@ const addDataToLocalStorage = function (currentCardId) {
 };
 
 const listGenres = array => {
-  return array.map(obj => obj.name)
-}
+  return array.map(obj => obj.name);
+};
 
 const createShortlibraryOfValues = function (film) {
   const libraryOfValues = {};
@@ -39,13 +39,19 @@ const createShortlibraryOfValues = function (film) {
   libraryOfValues.original_title = film.original_title;
   libraryOfValues.genres = listGenres(film.genres);
   libraryOfValues.release_date = makeValidatesReleaseDate(film.release_date);
-  libraryOfValues.vote_average = film.vote_average;
+  libraryOfValues.vote_average = film.vote_average.toFixed(1);
   libraryOfValues.poster_path = makePosterPatch(film);
   libraryOfValues.backdrop_path = film.backdrop_path;
   return libraryOfValues;
 };
 
 const addDataToTheLibrary = function (film) {
+  const existDataFromLocalStorage = getDataFromLocalStorage(btnValue);
+
+  if (existDataFromLocalStorage !== null) {
+    localStorageLibrary[btnValue] = [...existDataFromLocalStorage];
+  }
+
   localStorageLibrary[btnValue].push(film);
   const arr = localStorageLibrary[btnValue];
   let uniqueArr = arr.reduce((unique, current) => {

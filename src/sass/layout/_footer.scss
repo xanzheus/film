@@ -2,6 +2,7 @@
   background-color: $color-accent-secondary;
   padding-top: 30px;
   padding-bottom: 30px;
+  margin-top: auto;
 
   &.dark__theme {
     background-color: $color-dark-main;
@@ -75,13 +76,16 @@
   line-height: 1.171;
   font-weight: 400;
   display: flex;
+  align-items: center;
+  justify-content: center;
 
   @media screen and(min-width:$tablet) {
     font-size: 14px;
   }
 }
 
-.material-icons {
+.heart {
+  display: block;
   color: $color-accent;
   font-size: 16px;
   margin-left: 5px;

@@ -24,7 +24,10 @@ export default class RequestService {
       const response = await axios.get(url);
       return response?.data;
     } catch {
-      toastr.info('Sorry: server trending error please try again later');
+      let warningStr = lang === 'en' 
+            ? 'Sorry: server trending error, please try again later'
+            : 'Извините, ошибка сервера. Пожалуйста, повторите запрос позже.';
+      toastr.info(warningStr);
     }
   }
   // This function await callback to output an error in hendler
@@ -38,7 +41,10 @@ export default class RequestService {
       const response = await axios.get(url);
       return response?.data;
     } catch {
-      toastr.info('Sorry: server searc error please try again later');
+      let warningStr = lang === 'en' 
+            ? 'Sorry: server search error, please try again later'
+            : 'Извините, ошибка поиска на сервере. Пожалуйста, повторите запрос позже.';
+      toastr.info(warningStr);
     }
   }
   // This function await callback to output an error in hendler
@@ -48,7 +54,10 @@ export default class RequestService {
       const response = await axios.get(url);
       return response?.data;
     } catch {
-      toastr.error('Sorry: server error please try again later');
+      let warningStr = lang === 'en' 
+        ? 'Sorry: server error, please try again later'
+        : 'Извините, ошибка на сервере. Пожалуйста, повторите запрос позже.';
+      toastr.error(warningStr);
     }
   }
 
@@ -59,7 +68,10 @@ export default class RequestService {
       const genresArray = await response.data.genres;
       return genresArray;
     } catch {
-      toastr.error('Sorry: server error please try again later');
+      let warningStr = lang === 'en' 
+        ? 'Sorry: server error, please try again later'
+        : 'Извините, ошибка на сервере. Пожалуйста, повторите запрос позже.';
+      toastr.error(warningStr);
     }
   }
 

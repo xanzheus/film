@@ -176,31 +176,77 @@ const renderingLibraryCardsList = () => {
   const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
   makeMarkupLibraryCardsList(arrayForMarkup);
   addClassToElement(refs.loader, 'is-hidden');
-  // changeCursor();
 };
 
 const renderingLibrary = e => {
   clearCardsList();
-  // console.log()
-  const nameLibrary =
-    e.target.getAttribute('id') === 'watch' || e.target.getAttribute('id') === 'queue'
-      ? e.target.getAttribute('id')
-      : '';
+  removeClassFromElement(refs.loader, 'is-hidden');
+  showLoader();
 
-  console.log(e.target.getAttribute('id'));
+  const attrValueId = e.target.closest('[id]').getAttribute('id');
+  const nameLibrary = attrValueId === 'watch' || attrValueId === 'queue' ? attrValueId : '';
+
   const arrayFilms = getDataFromLocalStorage(nameLibrary);
-  // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
-  addClassToElement(refs.paginationAnchorRef, 'hidden');
-  const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
-  makeMarkupLibraryCardsList(arrayForMarkup);
-  addClassToElement(refs.loader, 'is-hidden');
+  // // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
+  // addClassToElement(refs.paginationAnchorRef, 'hidden');
+  // const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
+  const startRendering = () => {
+    makeMarkupLibraryCardsList(arrayFilms);
+  };
+
+  const onLoaderHidden = () => {
+    addClassToElement(refs.loader, 'is-hidden');
+  };
+
+  setTimeout(startRendering, 400);
+  setTimeout(onLoaderHidden, 400);
+
+  // addClassToElement(refs.loader, 'is-hidden');
+};
+
+const refreshLibrary = e => {
+  if (refs.controlWrapper.classList.contains('non-displayed')) {
+    console.log('exit');
+    return;
+  }
+
+  clearCardsList();
+  removeClassFromElement(refs.loader, 'is-hidden');
+  showLoader();
+
+  // const attrValueId = e.target.dataset.anchor;
+  // console.log(attrValueId)
+  // const nameLibrary = e.target.dataset.anchor;
+  const nameLibrary = document.querySelector('.button-box__button--active').getAttribute('id');
+  console.log(nameLibrary);
+  const arrayFilms = getDataFromLocalStorage(nameLibrary);
+  // // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
+  // addClassToElement(refs.paginationAnchorRef, 'hidden');
+  // const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
+  const startRendering = () => {
+    makeMarkupLibraryCardsList(arrayFilms);
+  };
+
+  const onLoaderHidden = () => {
+    addClassToElement(refs.loader, 'is-hidden');
+  };
+
+  setTimeout(startRendering, 400);
+  setTimeout(onLoaderHidden, 400);
+
+  // addClassToElement(refs.loader, 'is-hidden');
 };
 
 const renderingSearchCardsList = () => {
   const searchQuery = trim(refs.searchInput.value);
   if (!searchQuery) {
     loadHomePage();
-    toastr.warning('Empty request. Please enter what you want to find');
+    const lang = localStorage.getItem('language');
+    let warningStr =
+      lang === 'en'
+        ? 'Empty request. Please enter what you want to find.'
+        : 'Запрос пуст. Пожалуйста, введите что вы хотите найти.';
+    toastr.warning(warningStr);
     return;
   }
 
@@ -278,4 +324,5 @@ export {
   makeMarkupLibraryCardsList,
   loadHomePage,
   renderingLibrary,
+  refreshLibrary,
 };
