@@ -179,31 +179,22 @@ const renderingLibraryCardsList = () => {
   // changeCursor();
 };
 
-const renderingLibrary = (e) => {
+const renderingLibrary = e => {
   clearCardsList();
   // console.log()
-  const nameLibrary = e.target.getAttribute('id') === 'watch' || e.target.getAttribute('id') === 'queue'
-    ? e.target.getAttribute('id')
-    : ''
+  const nameLibrary =
+    e.target.getAttribute('id') === 'watch' || e.target.getAttribute('id') === 'queue'
+      ? e.target.getAttribute('id')
+      : '';
 
-    console.log(e.target.getAttribute('id'))
-    const arrayFilms = getDataFromLocalStorage(nameLibrary);
+  console.log(e.target.getAttribute('id'));
+  const arrayFilms = getDataFromLocalStorage(nameLibrary);
   // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
   addClassToElement(refs.paginationAnchorRef, 'hidden');
   const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
   makeMarkupLibraryCardsList(arrayForMarkup);
   addClassToElement(refs.loader, 'is-hidden');
-  }
-
-
-
-
-
-
-
-
-
-
+};
 
 const renderingSearchCardsList = () => {
   const searchQuery = trim(refs.searchInput.value);
@@ -258,7 +249,7 @@ const loadLibraryPage = () => {
   removeClassFromElement(refs.loader, 'is-hidden');
   clearCardsList();
   showLoader();
-  setTimeout((renderingLibraryCardsList), 400); ///////////////////////
+  setTimeout(renderingLibraryCardsList, 400); ///////////////////////
 };
 
 // changeCursor();
@@ -286,5 +277,5 @@ export {
   makePosterPatch,
   makeMarkupLibraryCardsList,
   loadHomePage,
-  renderingLibrary
+  renderingLibrary,
 };
