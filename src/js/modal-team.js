@@ -20,7 +20,7 @@ const onBackdropClose = e => {
 };
 
 const  onCloseModal = () => {
-  refs.ftBackdropEl.classList.add('is-hidden');
+  addClassToElement(refs.ftBackdropEl, 'is-hidden');
   removeClassFromElement(refs.body, 'no__scroll')
 
 }
