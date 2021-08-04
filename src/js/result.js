@@ -170,6 +170,7 @@ const renderingTrendingCardsList = () => {
 };
 
 const renderingLibraryCardsList = () => {
+  
   const arrayFilms = getDataFromLocalStorage();
   // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
   addClassToElement(refs.paginationAnchorRef, 'hidden');
@@ -180,28 +181,30 @@ const renderingLibraryCardsList = () => {
 
 const renderingLibrary = (e) => {
   clearCardsList();
+  removeClassFromElement(refs.loader, 'is-hidden');
+  showLoader();
+
+ 
   const attrValueId = e.target.closest('[id]').getAttribute('id');
   const nameLibrary = attrValueId === 'watch' || attrValueId === 'queue'
     ? attrValueId
     : ''
 
     const arrayFilms = getDataFromLocalStorage(nameLibrary);
-  // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
-  addClassToElement(refs.paginationAnchorRef, 'hidden');
-  const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
-  makeMarkupLibraryCardsList(arrayForMarkup);
-  addClassToElement(refs.loader, 'is-hidden');
+  // // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
+  // addClassToElement(refs.paginationAnchorRef, 'hidden');
+  // const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
+  const startRendering = () => {makeMarkupLibraryCardsList(arrayFilms)};
+  
+  const onLoaderHidden = () => {
+    addClassToElement(refs.loader, 'is-hidden');
   }
 
+  setTimeout(startRendering, 400);
+  setTimeout(onLoaderHidden, 400);
 
-
-
-
-
-
-
-
-
+  // addClassToElement(refs.loader, 'is-hidden');
+  }
 
 const renderingSearchCardsList = () => {
   const searchQuery = trim(refs.searchInput.value);
