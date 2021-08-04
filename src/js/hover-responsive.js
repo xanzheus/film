@@ -1,5 +1,5 @@
 import VanillaTilt from 'vanilla-tilt';
-import refs from './refs';
+import { Theme, STORAGE_KEY } from './isChangeTheme';
 
 const options = {
   max: 15,
@@ -7,12 +7,6 @@ const options = {
   glare: true,
   'max-glare': 0.4,
   gyroscope: true,
-};
-
-const STORAGE_KEY = 'theme';
-const Theme = {
-  LIGHT: 'light__theme',
-  DARK: 'dark__theme',
 };
 
 export const getCardsMarkup = () => {

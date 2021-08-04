@@ -1,11 +1,12 @@
 import refs from './refs';
+import { loadHomePage } from './result';
 
-const Theme = {
+export const Theme = {
   LIGHT: 'light__theme',
   DARK: 'dark__theme',
 };
 
-const STORAGE_KEY = 'theme';
+export const STORAGE_KEY = 'theme';
 
 function onCheckboxClick(evt) {
   let value = '';
@@ -13,10 +14,12 @@ function onCheckboxClick(evt) {
     value = Theme.DARK;
     refs.body.classList.add(value);
     refs.body.classList.remove(Theme.LIGHT);
+    loadHomePage();
   } else {
     value = Theme.LIGHT;
     refs.body.classList.remove(Theme.DARK);
     refs.body.classList.add(value);
+    loadHomePage();
   }
   localStorage.setItem(STORAGE_KEY, value);
 }
