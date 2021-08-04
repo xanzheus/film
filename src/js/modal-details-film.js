@@ -143,7 +143,7 @@ const doActionsShowModal = function (markup) {
     }
     // console.log(e.target);
   });
-  changeCursor();
+  // changeCursor();
   //* end alex
 };
 
@@ -155,7 +155,7 @@ const getModalId = function (e) {
     const id = parentCard.dataset.id
     showTrailer.id = id
     getActiveInfo(id)
-    document.body.classList.add('no__scroll');
+    addClassToElement(refs.body, 'no__scroll');
        
 }
 
@@ -169,21 +169,21 @@ const showModal = function (markup) {
 // CLOSE MODAL
 
 const closeModalDetails = function () {
-  document.body.classList.remove('no__scroll');
+  removeClassFromElement(refs.body, 'no__scroll');
   refs.modalDetailsFilmButtonClose.removeEventListener('click', closeModalDetails);
   target.close();
 };
 
 const onEscClose = e => {
   if (e.code === 'Escape') {
-    document.body.classList.remove('no__scroll');
+    removeClassFromElement(refs.body, 'no__scroll');
     target.close();
   }
 };
 
 const onBackdropClose = e => {
   if (e.currentTarget === e.target) {
-    document.body.classList.remove('no__scroll');
+    removeClassFromElement(refs.body,'no__scroll');
     window.removeEventListener('keydown', onEscClose);
   }
 };
