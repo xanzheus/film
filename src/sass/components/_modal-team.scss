@@ -28,9 +28,9 @@
   background-color: transparent;
   border: 1px solid $color-accent;
 }
-.button-close > .material-icons {
+.modal-team .icon-close {
   font-size: 24px;
-  color: $color-accent;
+  fill: $color-accent;
 }
 
 .modal-team {
@@ -39,25 +39,21 @@
   top: 30px;
   transform: translateX(-50%);
   background-color: $color-accent-secondary;
-  width: 280px;
+  width: 320px;
   padding: 60px 15px 150px 15px;
   border-radius: 5px;
   transition: transform $time-main $timing-function-main; 
   
 
   @media screen and(min-width: $tablet) {
-    width: 618px;
+    width: 768px;
     top: 50%;
     transform: translate(-50%, -50%)
   }
 
   @media screen and(min-width: $desktop) {
-    width: 882px;
+    width: 1024px;
     padding-left: 27px;
-    // position: absolute;
-    // top: 80px;
-    // left: 0;
-    // height: 400px;
   }
 }
 
@@ -98,7 +94,7 @@
   border-radius: 50%;
 
   @media screen and(min-width: $desktop) {
-    width: 120px;
+    width: 130px;
   }
 }
 
@@ -121,10 +117,10 @@
   overflow: hidden;
 
   @media screen and(min-width: $desktop) {
-    width: 140px;
-    height: 140px;
+    width: 160px;
+    height: 160px;
     margin-bottom: 0;
-    margin-left: -20px;
+    margin-left: -15px;
   }
 }
 

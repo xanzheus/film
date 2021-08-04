@@ -2,7 +2,6 @@
  const makeMarkup = function (obj) {
      return  `<div class="modal">
      <button type="button" class="btn__close">
-        <i class="material-icons"> close </i>
     </button>
     
     <div class="modal__box" data-id="${obj.id}">
