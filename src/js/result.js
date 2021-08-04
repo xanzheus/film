@@ -206,6 +206,39 @@ const renderingLibrary = (e) => {
   // addClassToElement(refs.loader, 'is-hidden');
   }
 
+  // const refreshLibrary = (e) => {
+
+  //   if(!refs.controlWrapper.classList.contains('non-displayed')) {
+  //     return
+  //   }
+    
+  //   clearCardsList();
+  //   removeClassFromElement(refs.loader, 'is-hidden');
+  //   showLoader();
+  
+   
+  //   const attrValueId = e.target.closest('.modal__box').dataset.anchor;
+  //   console.log(attrValueId)
+  //   const nameLibrary = attrValueId === 'watch' || attrValueId === 'queue'
+  //     ? attrValueId
+  //     : ''
+  
+  //     const arrayFilms = getDataFromLocalStorage(nameLibrary);
+  //   // // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
+  //   // addClassToElement(refs.paginationAnchorRef, 'hidden');
+  //   // const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
+  //   const startRendering = () => {makeMarkupLibraryCardsList(arrayFilms)};
+    
+  //   const onLoaderHidden = () => {
+  //     addClassToElement(refs.loader, 'is-hidden');
+  //   }
+  // 
+    // setTimeout(startRendering, 400);
+    // setTimeout(onLoaderHidden, 400);
+  
+    // // addClassToElement(refs.loader, 'is-hidden');
+    // }
+
 const renderingSearchCardsList = () => {
   const searchQuery = trim(refs.searchInput.value);
   if (!searchQuery) {
@@ -287,5 +320,6 @@ export {
   makePosterPatch,
   makeMarkupLibraryCardsList,
   loadHomePage,
-  renderingLibrary
+  renderingLibrary,
+  // refreshLibrary
 };

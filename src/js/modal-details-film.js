@@ -4,6 +4,7 @@ import refs from './refs';
 import requestService from './request.service';
 import { makeMarkup } from './modal-details-film-tpl';
 import { ShowTrailer } from './trailer_to_film';
+import {refreshLibrary} from './result';
 
 import { addClassToElement, removeClassFromElement } from './actions-functions';
 import {
@@ -108,7 +109,7 @@ const doActionsShowModal = function (markup) {
         return el.id === Number(refs.currentCardId);
       });
       if (matchedElement) {
-        refs.buttonQueue.innerText = 'REMOVE FROM WATCHED';
+        refs.buttonQueue.innerText = 'REMOVE FROM QUEUE';
       }
     }
   };
@@ -116,7 +117,7 @@ const doActionsShowModal = function (markup) {
   chekWatchButtonValue();
   chekQueueButtonValue();
 
-  refs.modalBox.addEventListener('click', e => {
+const addFilmToLibrary = e => { 
     const buttonLabel = e.target.innerText; //Текст на кнопке
     const currentCardId = e.currentTarget.getAttribute('data-id'); //id текущей краты
     const btnValue = e.target.getAttribute('data-anchor'); //значение data-anchor
@@ -125,24 +126,31 @@ const doActionsShowModal = function (markup) {
     if (buttonLabel === 'ADD TO WATCHED') {
       e.target.innerText = 'REMOVE FROM WATCHED';
       addDataToLocalStorage(currentCardId, btnValue);
+      return
     }
 
     if (buttonLabel === 'REMOVE FROM WATCHED') {
       e.target.innerText = 'ADD TO WATCHED';
       removeFromLibrary(btnValue, currentCardId);
+      return
     }
 
     if (buttonLabel === 'ADD TO QUEUE') {
       e.target.innerText = 'REMOVE FROM QUEUE';
       addDataToLocalStorage(currentCardId, btnValue);
+      return
     }
 
     if (buttonLabel === 'REMOVE FROM QUEUE') {
       e.target.innerText = 'ADD TO QUEUE';
       removeFromLibrary(btnValue, currentCardId);
+      return
     }
-    // console.log(e.target);
-  });
+    console.log(e.target);
+}
+
+  refs.modalBox.addEventListener('click', addFilmToLibrary);
+  // refs.modalBox.addEventListener('click', refreshLibrary);
   // changeCursor();
   //* end alex
 };
