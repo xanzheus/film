@@ -1,5 +1,5 @@
 import RequestService from './request.service';
-import {makeValidatesReleaseDate, makePosterPatch} from './result'
+import { makeValidatesReleaseDate, makePosterPatch } from './result';
 const requestService = new RequestService();
 
 // Library of values (watch or queue)
@@ -30,8 +30,8 @@ const addDataToLocalStorage = function (currentCardId) {
 };
 
 const listGenres = array => {
-  return array.map(obj => obj.name)
-}
+  return array.map(obj => obj.name);
+};
 
 const createShortlibraryOfValues = function (film) {
   const libraryOfValues = {};
@@ -46,6 +46,12 @@ const createShortlibraryOfValues = function (film) {
 };
 
 const addDataToTheLibrary = function (film) {
+  const existDataFromLocalStorage = getDataFromLocalStorage(btnValue);
+
+  if (existDataFromLocalStorage !== null) {
+    localStorageLibrary[btnValue] = [...existDataFromLocalStorage];
+  }
+
   localStorageLibrary[btnValue].push(film);
   const arr = localStorageLibrary[btnValue];
   let uniqueArr = arr.reduce((unique, current) => {
