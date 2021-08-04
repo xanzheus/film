@@ -176,17 +176,15 @@ const renderingLibraryCardsList = () => {
   const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
   makeMarkupLibraryCardsList(arrayForMarkup);
   addClassToElement(refs.loader, 'is-hidden');
-  // changeCursor();
 };
 
 const renderingLibrary = (e) => {
   clearCardsList();
-  // console.log()
-  const nameLibrary = e.target.getAttribute('id') === 'watch' || e.target.getAttribute('id') === 'queue'
-    ? e.target.getAttribute('id')
+  const attrValueId = e.target.closest('[id]').getAttribute('id');
+  const nameLibrary = attrValueId === 'watch' || attrValueId === 'queue'
+    ? attrValueId
     : ''
 
-    console.log(e.target.getAttribute('id'))
     const arrayFilms = getDataFromLocalStorage(nameLibrary);
   // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
   addClassToElement(refs.paginationAnchorRef, 'hidden');
