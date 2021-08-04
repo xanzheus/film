@@ -11,7 +11,7 @@
   min-height: 230px;
   width: 100%;
 
-  padding: 36px 0 43px;
+  padding: 32px 0 43px;
 
   &__wrapper {
     display: flex;
@@ -37,7 +37,7 @@
       ),
       url('/images/header/rectangle_@1x_tab.jpg');
 
-    padding: 31px 0 59px;
+    padding: 27px 0 59px;
 
     @media (min-device-pixel-ratio: 2), (min-resolution: 2dppx) {
       background-image: linear-gradient(
@@ -230,11 +230,11 @@
 
   &__input {
     width: 100%;
-    height: 26px;
+    height: 20px;
 
     position: relative;
 
-    padding: 8px 8px 8px 4px;
+    padding: 2px;
 
     display: block;
     flex-direction: column;
@@ -268,7 +268,6 @@
 
   &__input:focus,
   &__input:hover {
-    outline: none;
     border-bottom: 1px solid $color-accent;
   }
 
@@ -279,7 +278,7 @@
   &__button {
     position: absolute;
     top: 50%;
-    right: -5px;
+    right: -8px;
 
     width: 30px;
     height: 30px;
@@ -380,7 +379,7 @@
 
 
 .localization {
-  width: 60px;
+  width: 90px;
   margin-left: auto;
   margin-right: 0;
 
@@ -389,12 +388,12 @@
   align-items: center;
 
   &__label {
-    width: 18px;
-    height: 10px;
-    display:block;
+    width: 26px;
+    height: 14px;
+    display: block;
     background-color: $color-text-secondary;
     // border: 1px solid $color-accent;
-    border-radius: 100px;
+    border-radius: 70px;
     position: relative;
     cursor: pointer;
     transition: $time-main;
@@ -404,26 +403,28 @@
 
   &__label::after {
     content: "";
-    width: 6px;
-    height: 6px;
+    width: 9px;
+    height: 9px;
     background-color: $color-light-main;
     position: absolute;
-    border-radius: 70px;
+    border-radius: 50%;
     top: 50%;
-    left: 2px;
+    left: 3px;
     transition: 0.5s;
 
     transform: translateY(-50%);
   }
 
-  &__text {
-    color: white;
-    font-size: 8px;
+  &__flag {
+    display: block;
   }
 
-  &__label,
-  &__text:not(:last-child) {
-    margin-right: 4px;
+  &__label {
+    margin-right: 7px;
+  }
+
+  &__flag:not(:last-child) {
+    margin-right: 8px;
   }
 
   &__checkbox {
@@ -450,7 +451,7 @@
 }
 
 .localization__label:active:after {
-  width: 6px;
+  width: 9px;
 }
 
 [lang=ru] {
