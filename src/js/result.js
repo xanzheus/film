@@ -206,38 +206,38 @@ const renderingLibrary = (e) => {
   // addClassToElement(refs.loader, 'is-hidden');
   }
 
-  // const refreshLibrary = (e) => {
+  const refreshLibrary = (e) => {
 
-  //   if(!refs.controlWrapper.classList.contains('non-displayed')) {
-  //     return
-  //   }
+    if(refs.controlWrapper.classList.contains('non-displayed')) {
+      console.log('exit')
+      return
+    }
     
-  //   clearCardsList();
-  //   removeClassFromElement(refs.loader, 'is-hidden');
-  //   showLoader();
+    clearCardsList();
+    removeClassFromElement(refs.loader, 'is-hidden');
+    showLoader();
   
    
-  //   const attrValueId = e.target.closest('.modal__box').dataset.anchor;
-  //   console.log(attrValueId)
-  //   const nameLibrary = attrValueId === 'watch' || attrValueId === 'queue'
-  //     ? attrValueId
-  //     : ''
-  
-  //     const arrayFilms = getDataFromLocalStorage(nameLibrary);
-  //   // // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
-  //   // addClassToElement(refs.paginationAnchorRef, 'hidden');
-  //   // const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
-  //   const startRendering = () => {makeMarkupLibraryCardsList(arrayFilms)};
+    // const attrValueId = e.target.dataset.anchor;
+    // console.log(attrValueId)
+    // const nameLibrary = e.target.dataset.anchor;
+    const nameLibrary = document.querySelector('.button-box__button--active').getAttribute('id')
+    console.log(nameLibrary)
+      const arrayFilms = getDataFromLocalStorage(nameLibrary);
+    // // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
+    // addClassToElement(refs.paginationAnchorRef, 'hidden');
+    // const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
+    const startRendering = () => {makeMarkupLibraryCardsList(arrayFilms)};
     
-  //   const onLoaderHidden = () => {
-  //     addClassToElement(refs.loader, 'is-hidden');
-  //   }
-  // 
-    // setTimeout(startRendering, 400);
-    // setTimeout(onLoaderHidden, 400);
+    const onLoaderHidden = () => {
+      addClassToElement(refs.loader, 'is-hidden');
+    }
   
-    // // addClassToElement(refs.loader, 'is-hidden');
-    // }
+    setTimeout(startRendering, 400);
+    setTimeout(onLoaderHidden, 400);
+  
+    // addClassToElement(refs.loader, 'is-hidden');
+    }
 
 const renderingSearchCardsList = () => {
   const searchQuery = trim(refs.searchInput.value);
@@ -325,5 +325,5 @@ export {
   makeMarkupLibraryCardsList,
   loadHomePage,
   renderingLibrary,
-  // refreshLibrary
+  refreshLibrary
 };
