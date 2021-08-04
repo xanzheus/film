@@ -25,4 +25,5 @@ export default {
   checkBox: document.getElementById('theme__switch-toggle'),
   body: document.querySelector('body'),
   footer: document.querySelector('.footer'),
+  modalTeam: document.querySelector('.modal-team'),
 };

@@ -16,6 +16,8 @@ function onCheckboxClick(evt) {
     refs.body.classList.remove(Theme.LIGHT);
     refs.footer.classList.add(value);
     refs.footer.classList.remove(Theme.LIGHT);
+    refs.modalTeam.classList.add(value);
+    refs.modalTeam.classList.remove(Theme.LIGHT);
     loadHomePage();
   } else {
     value = Theme.LIGHT;
@@ -23,6 +25,8 @@ function onCheckboxClick(evt) {
     refs.body.classList.add(value);
     refs.footer.classList.remove(Theme.DARK);
     refs.footer.classList.add(value);
+    refs.modalTeam.classList.remove(Theme.DARK);
+    refs.modalTeam.classList.add(value);
     loadHomePage();
   }
   localStorage.setItem(STORAGE_KEY, value);
@@ -34,9 +38,11 @@ function savedThemeOnReloaded() {
   if (savedValue) {
     refs.body.classList.add(savedValue);
     refs.footer.classList.add(savedValue);
+    refs.modalTeam.classList.add(savedValue);
   } else {
     refs.body.classList.add(Theme.LIGHT);
     refs.footer.classList.add(Theme.LIGHT);
+    refs.modalTeam.classList.add(Theme.LIGHT);
   }
 
   if (savedValue === Theme.DARK) {
