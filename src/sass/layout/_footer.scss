@@ -61,13 +61,17 @@
   line-height: 1.171;
   font-weight: 400;
   display: flex;
+  align-items: center;
+  justify-content: center;
+
 
   @media screen and(min-width:$tablet) {
     font-size: 14px;
   }
 }
 
-.material-icons {
+.heart {
+  display: block;
   color: $color-accent;
   font-size: 16px;
   margin-left: 5px;
