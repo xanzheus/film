@@ -370,3 +370,57 @@
 .non-displayed {
   display: none;
 }
+
+.header {
+  &__lang {
+    width: 100px;
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  &__lang-checkbox {
+    --active: #275EFE;
+    --active-inner: #fff;
+    --focus: 2px rgba(39, 94, 254, .3);
+    --border: #BBC1E1;
+    --border-hover: #275EFE;
+    --background: #fff;
+    --disabled: #F6F8FF;
+    --disabled-inner: #E1E6F9;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    height: 13px;
+    outline: none;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+    border: 1px solid $color-light-main;
+    background: $color-light-main;
+    transition: $time-main $timing-function-main;
+
+
+      width: 28px;
+      border-radius: 11px;
+      &::after {
+        left: 2px;
+        top: 2px;
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        background: $color-accent;
+        // transform: translateX(var(--x, 0));
+      }
+
+    // &:after {
+    //   content: '';
+    //   display: block;
+    //   left: 0;
+    //   top: 0;
+    //   position: absolute;
+    //   transition: transform $time-main $timing-function-main,
+    //               opacity $time-main $timing-function-main;
+    // }
+  }
+}
