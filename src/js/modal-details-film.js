@@ -162,6 +162,7 @@ const getModalId = function (e) {
 const showModal = function (markup) {
   target = basicLightbox.create(markup);
   target.show();
+  window.addEventListener('keydown', onEscClose);
 
   showTrailer.show();
 };
@@ -189,4 +190,4 @@ const onBackdropClose = e => {
 };
 
 refs.resultAnchor.addEventListener('click', getModalId);
-window.addEventListener('keydown', onEscClose);
+// window.addEventListener('keydown', onEscClose);
