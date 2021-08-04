@@ -2,6 +2,12 @@
   background-color: $color-accent-secondary;
   padding-top: 30px;
   padding-bottom: 30px;
+
+  &.dark__theme {
+    background-color: $color-dark-main;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56));
+    color: $color-light-main;
+  }
 }
 
 .footer__info {
@@ -22,7 +28,7 @@
   font-size: 16px;
   line-height: 1.171;
   font-weight: 400;
-  color: $color-dark-secondary;
+  color: inherit;
 
   @media screen and(min-width: $tablet) {
     font-size: 14px;
@@ -55,7 +61,7 @@
 }
 
 .footer__developed-text {
-  color: $color-dark-secondary;
+  color: inherit;
   font-size: 16px;
   line-height: 1.171;
   font-weight: 400;

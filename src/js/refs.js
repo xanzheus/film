@@ -24,4 +24,5 @@ export default {
   errorWrapper: document.querySelector('.error-box__wrapper'),
   checkBox: document.getElementById('theme__switch-toggle'),
   body: document.querySelector('body'),
+  footer: document.querySelector('.footer'),
 };

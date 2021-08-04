@@ -4,6 +4,7 @@ import refs from './refs';
 import requestService from './request.service';
 import { makeMarkup } from './modal-details-film-tpl';
 import { ShowTrailer } from './trailer_to_film';
+import { getModal } from './isChangeTheme';
 
 import { addClassToElement, removeClassFromElement } from './actions-functions';
 import {
@@ -72,7 +73,6 @@ const doActionsShowModal = function (markup) {
 
   refs.modalDetailsFilm = document.querySelector('.modal');
   refs.modalDetailsFilmButtonClose = refs.modalDetailsFilm.querySelector('.modal .btn__close');
-
   refs.modalDetailsFilmButtonClose.addEventListener('click', closeModalDetails);
 
   // *alex start
