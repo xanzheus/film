@@ -29,4 +29,5 @@ export default {
   modalTeam: document.querySelector('.modal-team'),
   langSwitch: document.querySelector('#lang-switch'),
   htmlDoc: document.querySelector('html'),
+  logo: document.querySelector('.logo__link'),
 };
