@@ -1,4 +1,5 @@
 import refs from './refs';
+import { loadHomePage, refreshLibrary } from './result';
 
 const { langSwitch, searchInput, htmlDoc } = refs;
 
