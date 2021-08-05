@@ -85,7 +85,6 @@ const doActionsShowModal = function (markup) {
 
   savedThemeOnReloadedModalCard();
 
-  // console.log(refs.currentCardId);
   const localStorageLanguage = localStorage.getItem('language');
 
   const buttonValues = {
@@ -196,24 +195,12 @@ const doActionsShowModal = function (markup) {
     }
   };
 
-  // console.log(e.target);
-
   refs.modalBox.addEventListener('click', addFilmToLibrary);
   refs.modalBox.addEventListener('click', refreshLibrary);
-  // changeCursor();
   //* end alex
 };
 
 const getModalId = function (e) {
-  // const parentCard = e.target.closest('.card');
-  // if (!parentCard) {
-  //   return;
-  // }
-  // const id = parentCard.dataset.id;
-  // showTrailer.id = id;
-  // getActiveInfo(id);
-  // document.body.classList.add('no__scroll');
-
   const parentCard = e.target.closest('.result__link');
   if (!parentCard) {
     return;

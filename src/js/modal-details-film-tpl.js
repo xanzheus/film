@@ -10,7 +10,6 @@ let langHide = langShow === 'en'
 */
  const makeMarkup = function (obj) {
      obj.poster_path = makePosterPatch(obj)
-    //  console.log(obj)
      return  `<div class="modal">
      <button type="button" class="btn__close">
     </button>
