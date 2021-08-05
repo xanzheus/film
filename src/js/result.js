@@ -12,7 +12,6 @@ import { clearSearchInput } from './clear-search-input';
 import { trim } from 'jquery';
 import { addErrorStartLoad, removeErrorStartLoad } from './error-load-page';
 import { getMarkupForLoadeMoreBtn } from './loadMoreBtn';
-// import {renderPaginationLibrary} from './pagination'
 import toastr from 'toastr';
 import tosrtOption from './toastr';
 import { savedThemeOnReloadedLoadeMoreBtn } from './isChangeTheme';
@@ -48,10 +47,6 @@ const addPaginationSearch = data => {
 };
 
 const addPaginationLibrary = array => {
-  // if (array.length > 21) {
-  //   renderPaginationLibrary(array);
-  // }
-
   makeMarkupLibraryCardsList(array);
 };
 
@@ -133,8 +128,7 @@ const makeGenresList = () => {
 const makePosterPatch = object => {
   return (object.poster_path = (object.poster_path && object.poster_path !== 'https://image.tmdb.org/t/p/w500null')
     ? requestService.getPrefixUrlImg(object.poster_path)
-    : // : // : "https://more-show.ru/upload/not-a/vailable.png"
-      'https://live.staticflickr.com/65535/51349451747_f6d7898f2c_n.jpg');
+    : 'https://live.staticflickr.com/65535/51349451747_f6d7898f2c_n.jpg');
 };
 
 const setValidatesPosterPath = array => {
@@ -167,13 +161,11 @@ const renderingTrendingCardsList = () => {
     .then(makeMarkupTrandingCardsList)
     .then(makeMarkupCardMoreLoad)
     .then(addClassToElement(refs.loader, 'is-hidden'))
-    // .then(changeCursor)
     .catch(onErrorMessage);
 };
 
 const renderingLibraryCardsList = () => {
   const arrayFilms = getDataFromLocalStorage();
-  // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
   addClassToElement(refs.paginationAnchorRef, 'hidden');
   const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
   makeMarkupLibraryCardsList(arrayForMarkup);
@@ -189,9 +181,6 @@ const renderingLibrary = e => {
   const nameLibrary = attrValueId === 'watch' || attrValueId === 'queue' ? attrValueId : '';
 
   const arrayFilms = getDataFromLocalStorage(nameLibrary);
-  // // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
-  // addClassToElement(refs.paginationAnchorRef, 'hidden');
-  // const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
   const startRendering = () => {
     makeMarkupLibraryCardsList(arrayFilms);
   };
@@ -202,13 +191,10 @@ const renderingLibrary = e => {
 
   setTimeout(startRendering, 400);
   setTimeout(onLoaderHidden, 400);
-
-  // addClassToElement(refs.loader, 'is-hidden');
 };
 
 const refreshLibrary = e => {
   if (refs.controlWrapper.classList.contains('non-displayed')) {
-    console.log('exit');
     return;
   }
 
@@ -216,15 +202,8 @@ const refreshLibrary = e => {
   removeClassFromElement(refs.loader, 'is-hidden');
   showLoader();
 
-  // const attrValueId = e.target.dataset.anchor;
-  // console.log(attrValueId)
-  // const nameLibrary = e.target.dataset.anchor;
   const nameLibrary = document.querySelector('.button-box__button--active').getAttribute('id');
-  console.log(nameLibrary);
   const arrayFilms = getDataFromLocalStorage(nameLibrary);
-  // // const arrayForMarkup =  addPaginationLibrary(arrayForPagination)
-  // addClassToElement(refs.paginationAnchorRef, 'hidden');
-  // const arrayForMarkup = makeMarkupLibraryCardsList(arrayFilms);
   const startRendering = () => {
     makeMarkupLibraryCardsList(arrayFilms);
   };
@@ -235,8 +214,6 @@ const refreshLibrary = e => {
 
   setTimeout(startRendering, 400);
   setTimeout(onLoaderHidden, 400);
-
-  // addClassToElement(refs.loader, 'is-hidden');
 };
 
 const renderingSearchCardsList = () => {
@@ -266,12 +243,10 @@ const renderingSearchCardsList = () => {
     .then(makeMarkupCardMoreLoad)
     .then(clearSearchInput)
     .then(addClassToElement(refs.loader, 'is-hidden'))
-    // .then(changeCursor)
     .catch(onErrorMessage);
 };
 
 const loadHomePage = () => {
-  // console.log('start')
   makeGenresList();
   clearCardsList();
   removeClassFromElement(refs.loader, 'is-hidden');
@@ -299,8 +274,6 @@ const loadLibraryPage = () => {
   showLoader();
   setTimeout(renderingLibraryCardsList, 400); ///////////////////////
 };
-
-// changeCursor();
 loadHomePage();
 
 export {

@@ -11,7 +11,6 @@ const addErrorStartLoad = () => {
   refs.resultSection.style.overflow = 'hidden';
   refs.resultSection.style.backgroundSize = 'contain';
   refs.resultSection.style.backgroundPosition = 'center center';
-  //   console.log('add');
   const lang = localStorage.getItem('language');
   let warningStr = lang === 'en'
           ? 'Sorry: Movie not found.'
@@ -28,7 +27,6 @@ const removeErrorStartLoad = () => {
   refs.resultSection.style.overflow = 'hidden';
   refs.resultSection.style.backgroundSize = 'contain';
   refs.resultSection.style.backgroundPosition = 'center center';
-  // console.log('remove')
 };
 
 export { addErrorStartLoad, removeErrorStartLoad };

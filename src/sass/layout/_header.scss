@@ -153,10 +153,6 @@
       display: inline-block;
     }
   }
-  // &:hover .logo__link,
-  // &:focus .logo__link {
-  //   transform: scale(1.15);
-  // }
 
   &:hover .logo__icon,
   &:focus .logo__icon {
@@ -251,20 +247,6 @@
     font-size: 14px;
     font-weight: 400;
   }
-
-  // &__input::after {
-  //   content: '';
-  //   position: absolute;
-
-  //   top: 0;
-  //   left: 0;
-
-  //   width: 100%;
-  //   height: 2px;
-  //   background-color: $color-light-main;
-  //   border: 1px solid $color-light-main;
-  //   color: $color-light-main;
-  // }
 
   &__input:focus,
   &__input:hover {
@@ -389,7 +371,6 @@
     height: 16px;
     display: block;
     background-color: $color-text-secondary;
-    // border: 1px solid $color-accent;
     border-radius: 70px;
     position: relative;
     cursor: pointer;

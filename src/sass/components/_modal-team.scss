@@ -73,9 +73,6 @@
   margin-bottom: 30px;
   @media screen and(min-width: $tablet) {
     font-size: 54px;
-
-    // margin-top: 20px;
-    // margin-bottom: 30px;
   }
 }
 
@@ -87,8 +84,6 @@
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    // width: 618px;
-    // max-width: 1440px;
     margin: 0 auto;
   }
 }
@@ -112,7 +107,6 @@
 }
 
 .modal-team__box {
-  // max-width: 100%;
   height: 175px;
   width: 175px;
   border-radius: 50%;
@@ -130,16 +124,12 @@
   }
 }
 
-.modal-team__image {
-}
-
 .modal-team__info {
   position: absolute;
   bottom: -80px;
   left: 50%;
   background-color: $color-accent;
   color: $color-light-main;
-  // font-family: 'Bebas Neue', cursive;
   padding: 15px 15px;
   border-radius: 100px;
   z-index: -1;

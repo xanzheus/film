@@ -75,7 +75,6 @@ const removeFromLibrary = function (val, curId) {
   const newAr = libraryFromLocalStorage.filter(n => {
     return n.id !== Number(curId);
   });
-  // localStorage.removeItem(val);
   localStorage.setItem(val, JSON.stringify(newAr));
 };
 
