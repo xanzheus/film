@@ -9,7 +9,7 @@ export const Theme = {
 
 export const STORAGE_KEY = 'theme';
 
-function onCheckboxClick(evt) {
+function ThemeSwitchingOnCheckbox(evt) {
   let value = '';
   if (evt.currentTarget.checked) {
     value = Theme.DARK;
@@ -53,4 +53,4 @@ function savedThemeOnReloaded() {
 
 savedThemeOnReloaded();
 
-refs.checkBox.addEventListener('change', onCheckboxClick);
+refs.checkBox.addEventListener('change', ThemeSwitchingOnCheckbox);

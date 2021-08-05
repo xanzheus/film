@@ -7,6 +7,7 @@ export const API__KEY = 'api_key=16092738eabd8acc3b7b5db91d1d6d26';
 
 // You can find examples of how functions work in the file "test-mosalov.js"
 export default class RequestService {
+  language = localStorage.getItem('language');
   constructor() {
     this.IMG__URL = 'https://image.tmdb.org/t/p/w500';
     this.trendingMovies = 'trending/movie/day';
@@ -15,7 +16,7 @@ export default class RequestService {
     this.geners = 'genre/movie/list';
     this.searchQuery = '';
     this.page = 1;
-    this.language = 'en';
+    this.language;
   }
   // This function await callback to output an error in hendler
   async getTrendingMovies() {
@@ -24,9 +25,10 @@ export default class RequestService {
       const response = await axios.get(url);
       return response?.data;
     } catch {
-      let warningStr = lang === 'en' 
-            ? 'Sorry: server trending error, please try again later'
-            : 'Извините, ошибка сервера. Пожалуйста, повторите запрос позже.';
+      let warningStr =
+        lang === 'en'
+          ? 'Sorry: server trending error, please try again later'
+          : 'Извините, ошибка сервера. Пожалуйста, повторите запрос позже.';
       toastr.info(warningStr);
     }
   }
@@ -41,9 +43,10 @@ export default class RequestService {
       const response = await axios.get(url);
       return response?.data;
     } catch {
-      let warningStr = lang === 'en' 
-            ? 'Sorry: server search error, please try again later'
-            : 'Извините, ошибка поиска на сервере. Пожалуйста, повторите запрос позже.';
+      let warningStr =
+        lang === 'en'
+          ? 'Sorry: server search error, please try again later'
+          : 'Извините, ошибка поиска на сервере. Пожалуйста, повторите запрос позже.';
       toastr.info(warningStr);
     }
   }
@@ -54,9 +57,10 @@ export default class RequestService {
       const response = await axios.get(url);
       return response?.data;
     } catch {
-      let warningStr = lang === 'en' 
-        ? 'Sorry: server error, please try again later'
-        : 'Извините, ошибка на сервере. Пожалуйста, повторите запрос позже.';
+      let warningStr =
+        lang === 'en'
+          ? 'Sorry: server error, please try again later'
+          : 'Извините, ошибка на сервере. Пожалуйста, повторите запрос позже.';
       toastr.error(warningStr);
     }
   }
@@ -68,9 +72,10 @@ export default class RequestService {
       const genresArray = await response.data.genres;
       return genresArray;
     } catch {
-      let warningStr = lang === 'en' 
-        ? 'Sorry: server error, please try again later'
-        : 'Извините, ошибка на сервере. Пожалуйста, повторите запрос позже.';
+      let warningStr =
+        lang === 'en'
+          ? 'Sorry: server error, please try again later'
+          : 'Извините, ошибка на сервере. Пожалуйста, повторите запрос позже.';
       toastr.error(warningStr);
     }
   }
