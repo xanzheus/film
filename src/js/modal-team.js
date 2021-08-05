@@ -6,7 +6,6 @@ import { addClassToElement, removeClassFromElement } from './actions-functions';
 const onEscCloseTeam = (e) => {
   if (e.code === 'Escape') {
     removeClassFromElement(refs.body, 'no__scroll');
-    // target.close();
     onCloseModal(e)
   }
 };

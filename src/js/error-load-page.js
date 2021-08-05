@@ -11,7 +11,6 @@ const addErrorStartLoad = () => {
   refs.resultSection.style.overflow = 'hidden';
   refs.resultSection.style.backgroundSize = 'contain';
   refs.resultSection.style.backgroundPosition = 'center center';
-  //   console.log('add');
   toastr.warning('Sorry: Movie not finded');
 };
 
@@ -23,7 +22,6 @@ const removeErrorStartLoad = () => {
   refs.resultSection.style.overflow = 'hidden';
   refs.resultSection.style.backgroundSize = 'contain';
   refs.resultSection.style.backgroundPosition = 'center center';
-  // console.log('remove')
 };
 
 export { addErrorStartLoad, removeErrorStartLoad };

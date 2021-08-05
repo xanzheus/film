@@ -72,49 +72,6 @@ export function renderPaginationTrandingMovie(totalItems) {
   });
 }
 
-// export function renderPaginationLibrary(array) {
-//   if(array.length === 0) {
-//     addErrorStartLoad()
-//     addClassToElement(refs.paginationAnchorRef,'hidden');
-//   }
-//     if (array.length === 1) {
-//       addClassToElement(refs.paginationAnchorRef,'hidden');
-//     } else {
-//       removeClassFromElement(refs.paginationAnchorRef, 'hidden');
-//       setTotalItems(array.length)
-//     }
-
-//     console.log('89898')
-//     const options = {///////////////////////////
-//       totalItems: array.length,//////////////////////////
-//       itemsPerPage: 21,//////////////////////////////
-//       visiblePages: 5,
-//       page: 1//////////////////////////////
-//     };////////////////////////////////////////
-//     const pagination = new Pagination(refs.paginationAnchorRef, options);
-
-//     const renderListLibrary = (e) => {
-//         const currentPage = e.page;
-//         setCurrentPage(currentPage)
-//         clearCardsList();
-//         // console.log('1')
-//         removeClassFromElement(refs.loader, 'is-hidden');
-//         showLoader()
-//         // const arrayForPagination = ;
-//         const renderingPage = () => {
-//           // console.log('2')
-//         makeMarkupLibraryCardsList(getDataFromLocalStorage().slice(20, 25))
-//         addClassToElement(refs.loader, 'is-hidden')
-//         makeMarkupCardMoreLoad
-//         addClassToElement(refs.loader, 'is-hidden')
-//         console.log('rtrtrt')
-//       }
-//       setTimeout(renderingPage, 400);
-//   }
-
-//   pagination.on('afterMove', renderListLibrary);
-// }
-
 export function renderPaginationSearchMovie(query, totalItems) {
   setTotalItems(totalItems);
   if (totalItems === 0) {
