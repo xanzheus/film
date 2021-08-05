@@ -1,5 +1,5 @@
 import refs from './refs';
-import { loadHomePage } from './result';
+import { loadHomePage, refreshLibrary } from './result';
 import { addClassToElement, removeClassFromElement } from './actions-functions';
 
 export const Theme = {
@@ -8,8 +8,6 @@ export const Theme = {
 };
 
 export const STORAGE_KEY = 'theme';
-
-
 
 function ThemeSwitchingOnCheckbox(evt) {
   let value = '';
@@ -21,7 +19,10 @@ function ThemeSwitchingOnCheckbox(evt) {
     removeClassFromElement(refs.footer, Theme.LIGHT);
     addClassToElement(refs.modalTeam, value);
     removeClassFromElement(refs.modalTeam, Theme.LIGHT);
-    loadHomePage();
+
+    if (!refs.controlWrapper.classList.contains('non-displayed')) {
+      console.log('z nen')
+      refreshLibrary();} else {loadHomePage();}
   } else {
     value = Theme.LIGHT;
     removeClassFromElement(refs.body, Theme.DARK);
@@ -30,7 +31,9 @@ function ThemeSwitchingOnCheckbox(evt) {
     addClassToElement(refs.footer, value);
     removeClassFromElement(refs.modalTeam, Theme.DARK);
     addClassToElement(refs.modalTeam, value);
-    loadHomePage();
+    if (!refs.controlWrapper.classList.contains('non-displayed')) {
+      console.log('z nen')
+      refreshLibrary();} else {loadHomePage();}
   }
   localStorage.setItem(STORAGE_KEY, value);
 };
