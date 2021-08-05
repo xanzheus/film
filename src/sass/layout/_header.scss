@@ -378,16 +378,14 @@
 }
 
 .localization {
-  width: 115px;
-  margin-left: auto;
-  margin-right: 0;
+  width: auto;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
 
   &__label {
-    width: 32px;
+    min-width: 32px;
     height: 16px;
     display: block;
     background-color: $color-text-secondary;

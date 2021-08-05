@@ -29,11 +29,16 @@ function showTrailerToFilm(id) {
       });
     })
     .catch(() => {
+      const lang = localStorage.getItem('language');
+      let warningStr = lang === 'en'
+                  ? 'Sorry: Trailer not finded'
+                  : 'Извините, трейлер не найден';
+
       const instance = basicLightbox.create(
         `
         <iframe width="560" height="315" src='https://www.youtube.com/embed/TSXXi2kvl_0'frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       `,
-        toastr.warning('Sorry: Trailer not finded'),
+        toastr.warning(warningStr),
       );
       const closeVideo = e => {
         if (e.code !== 'Escape') {
