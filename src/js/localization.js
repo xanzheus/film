@@ -1,5 +1,5 @@
 import refs from './refs';
-import { loadHomePage, refreshLibrary } from './result';
+import { refreshLibrary } from './result';
 
 const { langSwitch, searchInput, htmlDoc } = refs;
 
@@ -67,8 +67,9 @@ const languageSwitchingOnCheckbox = () => {
   }
   changePageLanguage(languageShow, languageHide);
   localStorage.setItem(LANGUAGE_ATTRIBUTE, languageShow);
+  
   if (!refs.controlWrapper.classList.contains('non-displayed')) {
-    refreshLibrary();} else {loadHomePage();}
+    refreshLibrary();} else {refs.logo.click();}
 };
 
 const checkLanguageInLocalStorageOnPageLoad = () => {
