@@ -35,6 +35,7 @@ const listGenres = array => {
 
 const createShortlibraryOfValues = function (film) {
   const libraryOfValues = {};
+  libraryOfValues.title = film.title;
   libraryOfValues.id = film.id;
   libraryOfValues.original_title = film.original_title;
   libraryOfValues.genres = listGenres(film.genres);
