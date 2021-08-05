@@ -31,9 +31,9 @@ function ThemeSwitchingOnCheckbox(evt) {
     loadHomePage();
   }
   localStorage.setItem(STORAGE_KEY, value);
-}
+};
 
-function savedThemeOnReloaded() {
+const savedThemeOnReloaded = () => {
   const savedValue = localStorage.getItem(STORAGE_KEY);
 
   if (savedValue) {
@@ -49,7 +49,21 @@ function savedThemeOnReloaded() {
   if (savedValue === Theme.DARK) {
     refs.checkBox.setAttribute('checked', true);
   }
-}
+};
+
+export const savedThemeOnReloadedModalCard = () => {
+  const savedValue = localStorage.getItem(STORAGE_KEY);
+
+  if (savedValue) {
+    addClassToElement(refs.modalDetailsFilm, savedValue);
+  } else {
+    addClassToElement(refs.modalDetailsFilm, Theme.LIGHT);
+  }
+
+  if (savedValue === Theme.DARK) {
+    refs.checkBox.setAttribute('checked', true);
+  }
+};
 
 savedThemeOnReloaded();
 
