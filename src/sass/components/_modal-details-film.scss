@@ -10,10 +10,11 @@
   position: absolute;
   left: 50%;
   top: 20px;
-  transform: translate(-50%, 0);
+  transform: translateX(-50%);
   width: 280px;
   background-color: $color-light-main;
   padding: 48px 20px 41px;
+  min-height: 600px;
 
   &.modal.dark__theme {
     background-color: $color-background;
@@ -44,6 +45,7 @@
   @media screen and (min-width: $desktop) {
     width: 882px;
     padding: 50px 30px 41px;
+    top: 150px;
   }
 }
 
