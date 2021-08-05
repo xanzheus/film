@@ -15,6 +15,7 @@ import { getMarkupForLoadeMoreBtn } from './loadMoreBtn';
 // import {renderPaginationLibrary} from './pagination'
 import toastr from 'toastr';
 import tosrtOption from './toastr';
+import { savedThemeOnReloadedLoadeMoreBtn } from './isChangeTheme';
 
 const requestService = new RequestService();
 let genresList;
@@ -62,6 +63,7 @@ const makeMarkupCardMoreLoad = () => {
   if ((!currentPage && totalItems > 1) || (totalItems !== 1 && currentPage < totalItems)) {
     refs.resultAnchor.insertAdjacentHTML('beforeend', cardMoreLoad());
     getMarkupForLoadeMoreBtn();
+    savedThemeOnReloadedLoadeMoreBtn();
   }
 };
 

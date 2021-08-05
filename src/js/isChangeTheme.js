@@ -9,6 +9,8 @@ export const Theme = {
 
 export const STORAGE_KEY = 'theme';
 
+
+
 function ThemeSwitchingOnCheckbox(evt) {
   let value = '';
   if (evt.currentTarget.checked) {
@@ -58,6 +60,20 @@ export const savedThemeOnReloadedModalCard = () => {
     addClassToElement(refs.modalDetailsFilm, savedValue);
   } else {
     addClassToElement(refs.modalDetailsFilm, Theme.LIGHT);
+  }
+
+  if (savedValue === Theme.DARK) {
+    refs.checkBox.setAttribute('checked', true);
+  }
+};
+
+export const savedThemeOnReloadedLoadeMoreBtn = () => {
+  const savedValue = localStorage.getItem(STORAGE_KEY);
+
+  if (savedValue) {
+    addClassToElement(document.querySelector('.button-load-more'), savedValue);
+  } else {
+    addClassToElement(document.querySelector('.button-load-more'), Theme.LIGHT);
   }
 
   if (savedValue === Theme.DARK) {
