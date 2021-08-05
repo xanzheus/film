@@ -12,7 +12,12 @@ const addErrorStartLoad = () => {
   refs.resultSection.style.backgroundSize = 'contain';
   refs.resultSection.style.backgroundPosition = 'center center';
   //   console.log('add');
-  toastr.warning('Sorry: Movie not finded');
+  const lang = localStorage.getItem('language');
+  let warningStr = lang === 'en'
+          ? 'Sorry: Movie not found.'
+          : 'Извините, фильм не найден.';
+
+  toastr.warning(warningStr);
 };
 
 const removeErrorStartLoad = () => {
