@@ -66,6 +66,7 @@ const languageSwitchingOnCheckbox = () => {
   }
   changePageLanguage(languageShow, languageHide);
   localStorage.setItem(LANGUAGE_ATTRIBUTE, languageShow);
+  refs.logo.click();
 };
 
 const checkLanguageInLocalStorageOnPageLoad = () => {
