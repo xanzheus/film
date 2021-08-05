@@ -77,6 +77,7 @@ const makeValidatesReleaseDate = data => {
 };
 
 const makefilterObject = ({
+  title,
   poster_path,
   genre_ids,
   id,
@@ -85,6 +86,7 @@ const makefilterObject = ({
   vote_average,
 }) => {
   const newObject = {};
+  newObject.title = title;
   newObject.poster_path = poster_path;
   newObject.genre_ids = genre_ids;
   newObject.id = id;
