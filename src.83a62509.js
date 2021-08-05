@@ -139,4 +139,4 @@ var o;function t(o){return(t="function"==typeof Symbol&&"symbol"==typeof Symbol.
 },{"./refs":"VyiV"}],"Focm":[function(require,module,exports) {
 "use strict";require("./sass/main.scss"),require("./js/modal-team"),require("./js/modal-details-film"),require("./js/result"),require("./js/back_to_top"),require("./js/local-storage"),require("./js/trailer_to_film"),require("./js/header_switch"),require("./js/searchMovies"),require("./js/isChangeTheme"),require("./js/localization");
 },{"./sass/main.scss":"clu1","./js/modal-team":"O9Th","./js/modal-details-film":"d4RY","./js/result":"VuLd","./js/back_to_top":"aQ0b","./js/local-storage":"yGjV","./js/trailer_to_film":"eMRS","./js/header_switch":"XWkb","./js/searchMovies":"KyDk","./js/isChangeTheme":"pgCZ","./js/localization":"kQRN"}]},{},["Focm"], null)
-//# sourceMappingURL=/filmoteka-js/src.39a04aca.js.map
+//# sourceMappingURL=/filmoteka-js/src.83a62509.js.map
