@@ -21,7 +21,7 @@ function ThemeSwitchingOnCheckbox(evt) {
     removeClassFromElement(refs.modalTeam, Theme.LIGHT);
 
     if (!refs.controlWrapper.classList.contains('non-displayed')) {
-      console.log('z nen')
+
       refreshLibrary();} else {loadHomePage();}
   } else {
     value = Theme.LIGHT;
@@ -32,7 +32,7 @@ function ThemeSwitchingOnCheckbox(evt) {
     removeClassFromElement(refs.modalTeam, Theme.DARK);
     addClassToElement(refs.modalTeam, value);
     if (!refs.controlWrapper.classList.contains('non-displayed')) {
-      console.log('z nen')
+
       refreshLibrary();} else {loadHomePage();}
   }
   localStorage.setItem(STORAGE_KEY, value);
