@@ -54,4 +54,14 @@
   border: none;
   padding: 0;
   background-color: transparent;
+
+  &.dark__theme {
+    background-color: $color-accent;
+    border-radius: 4px;
+  }
+
+  &.dark__theme .card-load-more__symbol,
+  &.dark__theme .card-load-more__text {
+    color: $color-light-main;
+  }
 }

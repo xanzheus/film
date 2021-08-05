@@ -52,7 +52,7 @@ export default class RequestService {
   }
   // This function await callback to output an error in hendler
   async getDescriptionMovie(movieId) {
-    const url = `${this.movieById}/${movieId}?${API__KEY}`;
+    const url = `${this.movieById}/${movieId}?${API__KEY}&language=${this.language}`;
     try {
       const response = await axios.get(url);
       return response?.data;

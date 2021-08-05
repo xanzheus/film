@@ -14,6 +14,7 @@ import { addErrorStartLoad, removeErrorStartLoad } from './error-load-page';
 import { getMarkupForLoadeMoreBtn } from './loadMoreBtn';
 import toastr from 'toastr';
 import tosrtOption from './toastr';
+import { savedThemeOnReloadedLoadeMoreBtn } from './isChangeTheme';
 
 const requestService = new RequestService();
 let genresList;
@@ -57,6 +58,7 @@ const makeMarkupCardMoreLoad = () => {
   if ((!currentPage && totalItems > 1) || (totalItems !== 1 && currentPage < totalItems)) {
     refs.resultAnchor.insertAdjacentHTML('beforeend', cardMoreLoad());
     getMarkupForLoadeMoreBtn();
+    savedThemeOnReloadedLoadeMoreBtn();
   }
 };
 
@@ -75,6 +77,7 @@ const makeValidatesReleaseDate = data => {
 };
 
 const makefilterObject = ({
+  title,
   poster_path,
   genre_ids,
   id,
@@ -83,6 +86,7 @@ const makefilterObject = ({
   vote_average,
 }) => {
   const newObject = {};
+  newObject.title = title;
   newObject.poster_path = poster_path;
   newObject.genre_ids = genre_ids;
   newObject.id = id;
@@ -202,7 +206,6 @@ const refreshLibrary = e => {
 
   const nameLibrary = document.querySelector('.button-box__button--active').getAttribute('id');
   const arrayFilms = getDataFromLocalStorage(nameLibrary);
-  
   const startRendering = () => {
     makeMarkupLibraryCardsList(arrayFilms);
   };

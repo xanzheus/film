@@ -6,6 +6,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 1;
+  z-index: 11;
   overflow-y: scroll;
 
   &.is-hidden {
@@ -28,6 +29,7 @@
   background-color: transparent;
   background-image: url("data:image/svg+xml,%3Csvg width='30' height='30' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 8l14 14M8 22L22 8' stroke='%23000' stroke-width='2'/%3E%3C/svg%3E");
 }
+
 .icon-close {
   font-size: 24px;
   fill: $color-dark-main;
@@ -47,6 +49,11 @@
   &.dark__theme {
     background-color: $color-background;
   }
+
+  &.dark__theme .button-close {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='30px' viewBox='0 0 24 24' width='30px' fill='%23FFFFFF'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z'/%3E%3C/svg%3E");
+  }
+
   @media screen and(min-width: $tablet) {
     width: 768px;
     top: 50%;
@@ -66,6 +73,7 @@
   font-size: 48px;
   text-transform: uppercase;
   margin-bottom: 30px;
+
   @media screen and(min-width: $tablet) {
     font-size: 54px;
   }
@@ -75,6 +83,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   @media screen and(min-width: $tablet) {
     flex-direction: row;
     justify-content: center;
@@ -119,9 +128,6 @@
   }
 }
 
-.modal-team__image {
-}
-
 .modal-team__info {
   position: absolute;
   bottom: -80px;
@@ -162,8 +168,8 @@
   text-transform: uppercase;
 }
 
-.modal-team__box:hover + .modal-team__info,
-.modal-team__box:focus + .modal-team__info {
+.modal-team__box:hover+.modal-team__info,
+.modal-team__box:focus+.modal-team__info {
   z-index: 0;
   transform: translate(-50%, 2px);
   opacity: 1;

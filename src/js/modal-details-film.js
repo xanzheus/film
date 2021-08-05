@@ -202,7 +202,6 @@ const doActionsShowModal = function (markup) {
 
 const getModalId = function (e) {
   e.preventDefault();
- 
   const parentCard = e.target.closest('.result__link');
   if (!parentCard) {
     return;

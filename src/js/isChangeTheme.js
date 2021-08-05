@@ -1,5 +1,5 @@
 import refs from './refs';
-import { loadHomePage } from './result';
+import { loadHomePage, refreshLibrary } from './result';
 import { addClassToElement, removeClassFromElement } from './actions-functions';
 
 export const Theme = {
@@ -19,7 +19,10 @@ function ThemeSwitchingOnCheckbox(evt) {
     removeClassFromElement(refs.footer, Theme.LIGHT);
     addClassToElement(refs.modalTeam, value);
     removeClassFromElement(refs.modalTeam, Theme.LIGHT);
-    loadHomePage();
+
+    if (!refs.controlWrapper.classList.contains('non-displayed')) {
+      console.log('z nen')
+      refreshLibrary();} else {loadHomePage();}
   } else {
     value = Theme.LIGHT;
     removeClassFromElement(refs.body, Theme.DARK);
@@ -28,7 +31,9 @@ function ThemeSwitchingOnCheckbox(evt) {
     addClassToElement(refs.footer, value);
     removeClassFromElement(refs.modalTeam, Theme.DARK);
     addClassToElement(refs.modalTeam, value);
-    loadHomePage();
+    if (!refs.controlWrapper.classList.contains('non-displayed')) {
+      console.log('z nen')
+      refreshLibrary();} else {loadHomePage();}
   }
   localStorage.setItem(STORAGE_KEY, value);
 };
@@ -58,6 +63,20 @@ export const savedThemeOnReloadedModalCard = () => {
     addClassToElement(refs.modalDetailsFilm, savedValue);
   } else {
     addClassToElement(refs.modalDetailsFilm, Theme.LIGHT);
+  }
+
+  if (savedValue === Theme.DARK) {
+    refs.checkBox.setAttribute('checked', true);
+  }
+};
+
+export const savedThemeOnReloadedLoadeMoreBtn = () => {
+  const savedValue = localStorage.getItem(STORAGE_KEY);
+
+  if (savedValue) {
+    addClassToElement(document.querySelector('.button-load-more'), savedValue);
+  } else {
+    addClassToElement(document.querySelector('.button-load-more'), Theme.LIGHT);
   }
 
   if (savedValue === Theme.DARK) {
