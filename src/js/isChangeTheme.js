@@ -9,7 +9,6 @@ export const Theme = {
 
 export const STORAGE_KEY = 'theme';
 
-// console.log(document.querySelector('.button-load-more'));
 
 
 function ThemeSwitchingOnCheckbox(evt) {
