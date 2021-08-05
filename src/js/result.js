@@ -129,7 +129,7 @@ const makeGenresList = () => {
 };
 
 const makePosterPatch = object => {
-  return (object.poster_path = object.poster_path
+  return (object.poster_path = (object.poster_path && object.poster_path !== 'https://image.tmdb.org/t/p/w500null')
     ? requestService.getPrefixUrlImg(object.poster_path)
     : // : // : "https://more-show.ru/upload/not-a/vailable.png"
       'https://live.staticflickr.com/65535/51349451747_f6d7898f2c_n.jpg');

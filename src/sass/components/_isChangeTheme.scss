@@ -1,7 +1,7 @@
 .toolbar {
   position: absolute;
-  top: -7px;
-  right: 130px;
+  top: 130px;
+  right: 0px;
   display: flex;
   justify-content: flex-end;
   padding-right: 20px;
@@ -93,4 +93,8 @@
 .theme__switch-toggle:focus + .theme__switch-track,
 .theme__switch-toggle:active + .theme__switch-track {
   box-shadow: 0 0 0 3px $color-accent;
+}
+
+.tui-pagination a.tui-first-child.tui-page-btn:hover{
+  background-color: $color-accent-secondary
 }
