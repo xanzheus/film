@@ -7,6 +7,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 1;
   overflow-y: scroll;
+  transition: opacity $time-main $timing-function-main;
 
   &.is-hidden {
     opacity: 0;
@@ -42,13 +43,13 @@
   width: 280px;
   padding: 60px 15px 150px 15px;
   border-radius: 5px;
-  transition: transform $time-main $timing-function-main; 
-  
+  transition: transform $time-main $timing-function-main;
+  transform: translate(-50% -50%) scale(1);
 
   @media screen and(min-width: $tablet) {
     width: 618px;
     top: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
   }
 
   @media screen and(min-width: $desktop) {
@@ -59,18 +60,20 @@
     // height: 400px;
   }
 }
+.modal-backdrop.is-hidden .modal-team {
+  transform: translate(-50%, -50%) scale(0.9);
+}
 
 .modal-team__title {
   text-align: center;
   color: $color-accent;
-   
+
   font-size: 48px;
   text-transform: uppercase;
   margin-bottom: 30px;
   @media screen and(min-width: $tablet) {
-  
     font-size: 54px;
-  
+
     // margin-top: 20px;
     // margin-bottom: 30px;
   }
@@ -99,6 +102,12 @@
   @media screen and(min-width: $desktop) {
     width: 120px;
   }
+
+  @media screen and(min-width: $desktop) {
+    &:not(:first-child) {
+      margin-left: -20px;
+    }
+  }
 }
 
 .modal-team__box:hover,
@@ -120,7 +129,6 @@
 }
 
 .modal-team__image {
-  
 }
 
 .modal-team__info {
@@ -171,7 +179,7 @@
   opacity: 1;
   z-index: 1;
 
-  @media screen and(min-width: $desktop){
+  @media screen and(min-width: $desktop) {
     transform: translate(-50%, 20px);
   }
 }
