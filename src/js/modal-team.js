@@ -8,26 +8,33 @@ refs.ftBtnEl.addEventListener('click', onCloseModalBtn);
 refs.ftBackdropEl.addEventListener('click', onCloseModalBackdrop);
 window.addEventListener('keydown', onCloseModalEsc);
 
+function onCloseModal() {
+  addClassToElement(refs.ftBackdropEl, 'is-hidden');
+}
+
 function onCloseModalBtn(event) {
-  refs.ftBackdropEl.classList.add('is-hidden');
+  onCloseModal();
+  removeClassFromElement(refs.body, 'no__scroll');
 }
 
 function onCloseModalEsc(event) {
   if (event.code === 'Escape') {
-    console.log('Escape');
-    refs.ftBackdropEl.classList.add('is-hidden');
+    onCloseModal();
+    removeClassFromElement(refs.body, 'no__scroll');
   }
 }
 
 function onCloseModalBackdrop(event) {
   if (event.target === event.currentTarget) {
-    refs.ftBackdropEl.classList.add('is-hidden');
+    onCloseModal();
+    removeClassFromElement(refs.body, 'no__scroll');
   }
 }
 
 function onOpenModal(event) {
   event.preventDefault();
   removeClassFromElement(refs.ftBackdropEl, 'is-hidden');
+  addClassToElement(refs.body, 'no__scroll');
 }
 
 const markUp = itemsTemplate(team);
