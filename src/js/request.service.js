@@ -3,7 +3,7 @@ import toastr from 'toastr';
 import tosrtOption from './toastr';
 
 axios.defaults.baseURL = 'https://api.themoviedb.org/3/';
-export const API__KEY = 'api_key=16092738eabd8acc3b7b5db91d1d6d26';
+export const API__KEY = '7d26037feeaf4d437e8145fcf75aadec';
 
 // You can find examples of how functions work in the file "test-mosalov.js"
 export default class RequestService {
@@ -20,7 +20,7 @@ export default class RequestService {
   }
   // This function await callback to output an error in hendler
   async getTrendingMovies() {
-    const url = `${this.trendingMovies}?${API__KEY}&page=${this.page}&language=${this.language}`;
+    const url = `${this.trendingMovies}?api_key=${API__KEY}&page=${this.page}&language=${this.language}`;
     try {
       const response = await axios.get(url);
       return response?.data;
@@ -38,7 +38,7 @@ export default class RequestService {
       query: this.searchQuery,
       language: this.language,
     });
-    const url = `${this.searchMovies}?${API__KEY}&${searchParams}&page=${this.page}`;
+    const url = `${this.searchMovies}?api_key=${API__KEY}&${searchParams}&page=${this.page}`;
     try {
       const response = await axios.get(url);
       return response?.data;
@@ -52,7 +52,7 @@ export default class RequestService {
   }
   // This function await callback to output an error in hendler
   async getDescriptionMovie(movieId) {
-    const url = `${this.movieById}/${movieId}?${API__KEY}&language=${this.language}`;
+    const url = `${this.movieById}/${movieId}?api_key=${API__KEY}&language=${this.language}`;
     try {
       const response = await axios.get(url);
       return response?.data;
@@ -66,7 +66,7 @@ export default class RequestService {
   }
 
   async getGenresMovies() {
-    const url = `${this.geners}?${API__KEY}`;
+    const url = `${this.geners}?api_key=${API__KEY}`;
     try {
       const response = await axios.get(url);
       const genresArray = await response.data.genres;
